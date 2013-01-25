@@ -32,4 +32,44 @@ App::uses('Controller', 'Controller');
  * @link http://book.cakephp.org/2.0/en/controllers.html#the-app-controller
  */
 class AppController extends Controller {
+    //Helpers
+    public $helpers = array(
+        'Form',
+        'Html',
+        'Js'=>array("Jquery"), 
+        'Session',
+    	'TB' => array(
+        	"className" => "TwitterBootstrap.TwitterBootstrap"
+    	)
+    );
+	
+	//components
+	public $components = array(
+		'Acl',
+		'Session',
+		'Cookie',
+		'RequestHandler',
+		'Auth'=>array(
+ 			'loginAction'=>array('controller'=>'admins','action'=>'login'),
+          	'loginRedirect'=>array('controller'=>'admins','action'=>'index'),
+          	'logoutRedirect'=>array('controller'=>'admins','action'=>'login'),
+          	'authError'=>'You have been logged out. Please log in again.',
+			'authorize'=>array(
+				'Actions'=>array('actionPath'=>'controllers')
+			),
+			'authenticate' => array(
+            	'Form' => array(
+                	'userModel' => 'User',
+                	'fields'=>array(
+                		'username'=>'username',
+                		'password'=>'password'
+					)
+            	)
+        	)
+		)	
+	);	
+	public function isAuthorized($user)
+	{
+		return true;
+	}
 }

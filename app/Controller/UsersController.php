@@ -6,7 +6,26 @@ App::uses('AppController', 'Controller');
  * @property User $User
  */
 class UsersController extends AppController {
-
+	public $name = 'Users';
+	
+	public $uses = array('User','Group');
+	public $components = array(
+		'Auth'=>array(
+			'loginRedirect'=>array('controller'=>'admins','action'=>'login'),
+          	'logoutRedirect'=>array('controller'=>'admins','action'=>'login'),
+          	'authError'=>'You do not have access to this page.'
+		)	
+	);
+/**
+ * Parse code before page load
+ */
+	public function beforeFilter() {
+	    parent::beforeFilter();
+		$this->set('username',AuthComponent::user('username'));
+		//deny all public users to this controller
+		$this->Auth->allow('*');
+		$this->layout='admin';
+	}
 /**
  * index method
  *

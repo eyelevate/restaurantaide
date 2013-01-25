@@ -179,3 +179,12 @@ CakeLog::config('error', array(
 	'types' => array('warning', 'error', 'critical', 'alert', 'emergency'),
 	'file' => 'error',
 ));
+
+/*
+ * ACL extras
+ */
+CakePlugin::load('AclExtras');
+/**
+ * Twitter Bootstrap Helper
+ */
+CakePlugin::load('TwitterBootstrap');

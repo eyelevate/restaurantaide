@@ -7,9 +7,9 @@
 		//gebo_charts.fl_1();
 		//gebo_charts.fl_2();
 		//* sortable/searchable list
+
 		gebo_flist.init();
-		//* calendar
-		gebo_calendar.regular();
+		
 		//* responsive table
 		gebo_media_table.init();
 		//* resize elements on window resize
@@ -34,13 +34,52 @@
 		gebo_datepicker.init();
 		//* timepicker
 		//gebo_timepicker.init();
+		
+		
+
+	
 	});
 	
 	//* bootstrap datepicker
 	gebo_datepicker = {
 		init: function() {
-			$('#dp1').datepicker();
-			$('#dp2').datepicker();
+			$('#dp1').datepicker().on('changeDate', function(ev){
+				$("#dp1").datepicker('hide');
+			});
+			$('#dp2').datepicker().on('changeDate', function(ev){
+				$("#dp2").datepicker('hide');
+			});
+
+			$("#dp3").datepicker().change(function() {
+				var date = $(this).val();
+				gebo_datepicker.editSelect(date, '#addEditSelectableDates','#selectedSpan');
+				
+				$(this).val('');
+				$(this).blur();
+			});
+
+		}, 
+		editSelect: function(date, updateClass, updateCount){ //creates a multi select of the datepicker
+			var oldCount = $(updateClass+" li").length;
+			var count = parseInt(oldCount)+1;
+			var code_append = '<li class="label label-info" style="margin-bottom:1; margin-top:1px; margin-right:0px; margin-left:0px;"><button type="button" class="close closeEditSchedule" count="'+count+'">×</button><span class="date_to_edit">'+date+'</span></li>';
+			$(updateClass).append(code_append).fadeIn('slow');
+			gebo_datepicker.editCounter(count,updateCount);
+			gebo_datepicker.minusCounter(count,updateClass,updateCount);
+			
+		}, 
+		editCounter: function(count,counterClass){ //adds to the counter
+			$(counterClass).html(count);	
+		},
+		minusCounter: function(count,updateClass,counterClass){ //removes from the counter
+			$(".closeEditSchedule[count='"+count+"']").click(function(){
+				$(this).parent().fadeTo("slow", 0.00, function(){ //fade           	
+	                $(this).remove(); //then remove from the DOM
+	                var newCount = $(updateClass+" li").length;
+	                $(counterClass).html(newCount);
+	            });
+         	});
+	 
 		}
 	};
 	
@@ -158,76 +197,5 @@
     };
 
 
-	//* calendar
-	gebo_calendar = {
-		regular: function() {
-			var date = new Date();
-			var d = date.getDate();
-			var m = date.getMonth();
-			var y = date.getFullYear();
-			//gets json 
-			var getEvents = '';
-			//sets calendar
-			var calendar = $('#calendar').fullCalendar({
+	
 
-				header: {
-					left: 'prev next',
-					center: 'title,today',
-					right: 'month,agendaWeek,agendaDay'
-				},
-				buttonText: {
-					prev: '<i class="icon-chevron-left cal_prev" />',
-					next: '<i class="icon-chevron-right cal_next" />'
-				},
-				aspectRatio: 2,
-				selectable: false,
-				selectHelper: false,
-				select: function(start, end, allDay) {
-					var title = prompt('Event Title:');
-					if (title) {
-						calendar.fullCalendar('renderEvent',
-							{
-								title: title,
-								start: start,
-								end: end,
-								allDay: allDay
-							},
-							true // make the event "stick"
-						);
-					}
-					calendar.fullCalendar('unselect');
-				},
-				editable: false,
-				theme: false,
-				
-				events: '/schedules/getJson',
-				eventColor: '#bcdeee'
-			})
-		},
-		google: function() {
-			var calendar = $('#calendar_google').fullCalendar({
-				header: {
-					left: 'prev next',
-					center: 'title,today',
-					right: 'month,agendaWeek,agendaDay'
-				},
-				buttonText: {
-					prev: '<i class="icon-chevron-left cal_prev" />',
-					next: '<i class="icon-chevron-right cal_next" />'
-				},
-				aspectRatio: 3,
-				theme: false,
-				events: {
-					url:'http://www.google.com/calendar/feeds/usa__en%40holiday.calendar.google.com/public/basic',
-					title: 'Italian Holidays',
-					color: '#bcdeee'
-				},
-				eventClick: function(event) {
-					// opens events in a popup window
-					window.open(event.url, 'gcalevent', 'width=700,height=600');
-					return false;
-				}
-				
-			})
-		}
-	};

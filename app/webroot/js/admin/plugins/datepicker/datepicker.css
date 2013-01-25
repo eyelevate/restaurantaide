@@ -80,6 +80,9 @@
   color: #999999;
   cursor: default;
 }
+.datepicker td[blackout="notselected"]{
+	background-color:green;
+}
 .datepicker td.active,
 .datepicker td.active:hover,
 .datepicker td.active.disabled,

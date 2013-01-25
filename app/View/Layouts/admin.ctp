@@ -151,80 +151,63 @@ if (!isset($username)) {
 									</button>
 								</form>
 								<div id="side_accordion" class="accordion">
-								<?php
-								//creates the admin navigation and selects the page
-								if(isset($admin_nav)){
-									//set the collapsing id for the view
-									$collapse_id = 0;
-									//loop the values and create the necessary variables
-									foreach ($admin_nav as $key => $value) {
-										$mainHeader = $key;
-										$name = $admin_nav[$mainHeader]['name'];
-										$url = str_replace('/index','',$admin_nav[$mainHeader]['url']);
-										$icon = $admin_nav[$mainHeader]['icon'];
-										$collapse_id = $collapse_id+1;
-										if($admin_check == $name){
-											$firstClass = 'accordion-toggle';
-											$secondClass = 'accordion-body in collapse';
-											//debug($admin_nav[$mainHeader]['next']);
-										} else {
-											$firstClass = 'accordion-toggle collapsed';
-											$secondClass = 'accordion-body collapse';
-											//debug($admin_nav[$mainHeader]['next']);
-										}
-										?>
-										<div class="accordion-group">
-											<div class="accordion-heading">
-												<a href="#collapse-<?php echo $collapse_id;?>" data-parent="#side_accordion" data-toggle="collapse" class="<?php echo $firstClass;?>"> <i class="<?php echo $icon;?>"></i> <?php echo $name;?></a>
+									<div class="accordion-group">
+										<div class="accordion-heading">
+											<a href="#collapse-0" data-parent="#side_accordion" data-toggle="collapse" class="accordion-toggle collapsed"> <i class=""></i> Setup</a>
+										</div>
+										<div class="accordion-body collapse" id="collapse-0">
+											<div class="accordion-inner">
+												<ul class="nav nav-list">
+													<li class="nav-header"><i class=""></i>Order Categories</li>
+													<li class="notactive"><a href="/inventories/add"><i class=""></i>Add Category</a></li>
+													<li class="notactive"><a href="/inventories"><i class=""></i>View Categories</a></li>
+													<li class="nav-header"><i class=""></i>Order Items</li>
+													<li class="notactive"><a href="/inventories/add"><i class=""></i>Add Order Items</a></li>
+													<li class="notactive"><a href="/inventories"><i class=""></i>View Order Items</a></li>
+												</ul>
 											</div>
-											<div class="<?php echo $secondClass;?>" id="collapse-<?php echo $collapse_id;?>">
-												<div class="accordion-inner">
-													<ul class="nav nav-list">
-													<?php
-													if($admin_nav[$mainHeader]['next'] != 'empty'){
-														foreach ($admin_nav[$mainHeader]['next'] as $key=>$value) {
-															$name = $admin_nav[$mainHeader]['next'][$key]['name'];
-															$url = $admin_nav[$mainHeader]['next'][$key]['url'];
-															$icon = $admin_nav[$mainHeader]['next'][$key]['icon'];
-															if(isset($admin_pages)){
-																if($url == $admin_pages){
-																	$selected = 'active';	
-																} else {
-																	$selected = 'notactive';
-																}
-															} else {
-																$selected = 'notactive';
-															}
-															switch ($url) {
-																case 'Sub Header':
-																?>
-																<li class="nav-header"><i class="<?php $icon;?>"></i><?php echo $name;?></li>
-																<?php								
-																break;
-																case 'Line Break';
-																?>
-																<li class="divider"></li>
-																<?php
-																break;
-																default:
-																//enter in the $url variable for production
-																?>
-																<li class="<?php echo $selected;?>"><a href="<?php echo str_replace('/index','',$url);?>"><i class="<?php $icon;?>"></i><?php echo $name;?></a></li>
-																<?php
-																break;
-															}
-														}
-													}
-													?>
-													</ul>
-												</div>
+										</div>
+									</div>	
+									<div class="accordion-group">
+										<div class="accordion-heading">
+											<a href="#collapse-1" data-parent="#side_accordion" data-toggle="collapse" class="accordion-toggle collapsed"> <i class=""></i> Reports</a>
+										</div>
+										<div class="accordion-body collapse" id="collapse-1">
+											<div class="accordion-inner">
+												<ul class="nav nav-list">
+													<li class="nav-header"><i class=""></i>View Reports</li>
+													<li class="notactive"><a href="/inventories/add"><i class=""></i>End Of Day</a></li>
+													<li class="notactive"><a href="/inventories/add"><i class=""></i>Weekly Report</a></li>
+													<li class="notactive"><a href="/inventories/add"><i class=""></i>Monthly Report</a></li>
+													<li class="notactive"><a href="/inventories/add"><i class=""></i>Yearly Report</a></li>
+													<li class="nav-header"><i class=""></i>Create Report</li>
+													<li class="notactive"><a href="/inventories/add"><i class=""></i>Create Report</a></li>
+													
+													
+												</ul>
 											</div>
-										</div>		
-										<?php
-									}
-								}
-								?>
-							</div>
+										</div>
+									</div>
+									<div class="accordion-group">
+										<div class="accordion-heading">
+											<a href="#collapse-2" data-parent="#side_accordion" data-toggle="collapse" class="accordion-toggle collapsed"> <i class=""></i> Management</a>
+										</div>
+										<div class="accordion-body collapse" id="collapse-2">
+											<div class="accordion-inner">
+												<ul class="nav nav-list">
+													<li class="nav-header"><i class=""></i>Users</li>
+													<li class="notactive"><a href="/inventories/add"><i class=""></i>Add User</a></li>
+													<li class="notactive"><a href="/inventories"><i class=""></i>View Users</a></li>
+													<li class="nav-header"><i class=""></i>Company</li>
+													<li class="notactive"><a href="/inventories/add"><i class=""></i>View Company</a></li>
+													
+													
+												</ul>
+											</div>
+										</div>
+									</div>
+		
+								</div>
 							<div class="push"></div>
 						</div>
 					</div>

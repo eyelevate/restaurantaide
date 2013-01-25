@@ -153,35 +153,47 @@ if (!isset($username)) {
 								<div id="side_accordion" class="accordion">
 									<div class="accordion-group">
 										<div class="accordion-heading">
-											<a href="#collapse-0" data-parent="#side_accordion" data-toggle="collapse" class="accordion-toggle collapsed"> <i class=""></i> Setup</a>
+											<a href="#collapse-0" data-parent="#side_accordion" data-toggle="collapse" class="accordion-toggle"> <i class=""></i>Dashboard</a>
 										</div>
-										<div class="accordion-body collapse" id="collapse-0">
+										<div class="accordion-body in collapse" id="collapse-0">
 											<div class="accordion-inner">
 												<ul class="nav nav-list">
-													<li class="nav-header"><i class=""></i>Order Categories</li>
-													<li class="notactive"><a href="/inventories/add"><i class=""></i>Add Category</a></li>
-													<li class="notactive"><a href="/inventories"><i class=""></i>View Categories</a></li>
-													<li class="nav-header"><i class=""></i>Order Items</li>
-													<li class="notactive"><a href="/inventories/add"><i class=""></i>Add Order Items</a></li>
-													<li class="notactive"><a href="/inventories"><i class=""></i>View Order Items</a></li>
+													<li class="active"><a href="/admins"><i class=""></i>Dashboard</a></li>
 												</ul>
 											</div>
 										</div>
 									</div>	
 									<div class="accordion-group">
 										<div class="accordion-heading">
-											<a href="#collapse-1" data-parent="#side_accordion" data-toggle="collapse" class="accordion-toggle collapsed"> <i class=""></i> Reports</a>
+											<a href="#collapse-1" data-parent="#side_accordion" data-toggle="collapse" class="accordion-toggle collapsed"> <i class=""></i> Setup</a>
 										</div>
 										<div class="accordion-body collapse" id="collapse-1">
 											<div class="accordion-inner">
 												<ul class="nav nav-list">
+													<li class="nav-header"><i class=""></i>Order Categories</li>
+													<li class="notactive"><a href="/categories/add"><i class=""></i>Add Category</a></li>
+													<li class="notactive"><a href="/categories"><i class=""></i>View Categories</a></li>
+													<li class="nav-header"><i class=""></i>Order Items</li>
+													<li class="notactive"><a href="/orders/add"><i class=""></i>Add Order Item</a></li>
+													<li class="notactive"><a href="/orders"><i class=""></i>View Order Items</a></li>
+												</ul>
+											</div>
+										</div>
+									</div>
+									<div class="accordion-group">
+										<div class="accordion-heading">
+											<a href="#collapse-2" data-parent="#side_accordion" data-toggle="collapse" class="accordion-toggle collapsed"> <i class=""></i> Reports</a>
+										</div>
+										<div class="accordion-body collapse" id="collapse-2">
+											<div class="accordion-inner">
+												<ul class="nav nav-list">
 													<li class="nav-header"><i class=""></i>View Reports</li>
-													<li class="notactive"><a href="/inventories/add"><i class=""></i>End Of Day</a></li>
-													<li class="notactive"><a href="/inventories/add"><i class=""></i>Weekly Report</a></li>
-													<li class="notactive"><a href="/inventories/add"><i class=""></i>Monthly Report</a></li>
-													<li class="notactive"><a href="/inventories/add"><i class=""></i>Yearly Report</a></li>
+													<li class="notactive"><a href="/reports/eod"><i class=""></i>End Of Day</a></li>
+													<li class="notactive"><a href="/reports/eow"><i class=""></i>Weekly Report</a></li>
+													<li class="notactive"><a href="/reports/eom"><i class=""></i>Monthly Report</a></li>
+													<li class="notactive"><a href="/reports/eoy"><i class=""></i>Yearly Report</a></li>
 													<li class="nav-header"><i class=""></i>Create Report</li>
-													<li class="notactive"><a href="/inventories/add"><i class=""></i>Create Report</a></li>
+													<li class="notactive"><a href="/reports/create"><i class=""></i>Create Report</a></li>
 													
 													
 												</ul>
@@ -190,16 +202,16 @@ if (!isset($username)) {
 									</div>
 									<div class="accordion-group">
 										<div class="accordion-heading">
-											<a href="#collapse-2" data-parent="#side_accordion" data-toggle="collapse" class="accordion-toggle collapsed"> <i class=""></i> Management</a>
+											<a href="#collapse-3" data-parent="#side_accordion" data-toggle="collapse" class="accordion-toggle collapsed"> <i class=""></i> Management</a>
 										</div>
-										<div class="accordion-body collapse" id="collapse-2">
+										<div class="accordion-body collapse" id="collapse-3">
 											<div class="accordion-inner">
 												<ul class="nav nav-list">
 													<li class="nav-header"><i class=""></i>Users</li>
-													<li class="notactive"><a href="/inventories/add"><i class=""></i>Add User</a></li>
-													<li class="notactive"><a href="/inventories"><i class=""></i>View Users</a></li>
+													<li class="notactive"><a href="/users/add"><i class=""></i>Add User</a></li>
+													<li class="notactive"><a href="/users"><i class=""></i>View Users</a></li>
 													<li class="nav-header"><i class=""></i>Company</li>
-													<li class="notactive"><a href="/inventories/add"><i class=""></i>View Company</a></li>
+													<li class="notactive"><a href="/companies"><i class=""></i>View Company</a></li>
 													
 													
 												</ul>

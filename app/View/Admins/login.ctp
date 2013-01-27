@@ -6,11 +6,17 @@ echo $this->TwitterBootstrap->flashes(array(
     )
 );
 
-echo $this->Form->create('User');
-echo $this->Form->input('username');
-echo $this->Form->input('password');
-echo $this->Form->submit('Admin Login');
-echo $this->Form->end();
-
-
 ?>
+<div class="row-fluid">
+	<div class="container span10 offset5">
+			<?php
+			echo $this->Form->create('User');
+			echo $this->Form->input('username');
+			echo $this->Form->input('password');
+			echo $this->Form->submit('Admin Login');
+			echo $this->Form->end();
+			?>			
+	
+	</div>	
+</div>
+

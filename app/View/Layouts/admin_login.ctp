@@ -86,8 +86,24 @@ if (!isset($username)) {
 								<li class="hidden-phone hidden-tablet">
 									<div class="nb_boxes clearfix"></div>
 								</li>
-	
-
+								<li class="divider-vertical hidden-phone hidden-tablet"></li>
+								<li class="dropdown">
+									<a href="#" class="dropdown-toggle nav_condensed" data-toggle="dropdown"><i class="flag-gb"></i> <b class="caret"></b></a>
+									<ul class="dropdown-menu">
+										<li>
+											<a href="javascript:void(0)"><i class="flag-de"></i> Deutsch</a>
+										</li>
+										<li>
+											<a href="javascript:void(0)"><i class="flag-fr"></i> Français</a>
+										</li>
+										<li>
+											<a href="javascript:void(0)"><i class="flag-es"></i> Español</a>
+										</li>
+										<li>
+											<a href="javascript:void(0)"><i class="flag-ru"></i> Pусский</a>
+										</li>
+									</ul>
+								</li>
 								<li class="divider-vertical hidden-phone hidden-tablet"></li>
 								<li class="dropdown">
 									<a href="#" class="dropdown-toggle" data-toggle="dropdown"><img src="/img/admin/user-avatar.png" alt="" class="user_avatar" /> <?php echo $username;?> <b class="caret"></b></a>
@@ -121,91 +137,7 @@ if (!isset($username)) {
 				</div>
 			</div>
 
-			<!-- sidebar -->
-			<a href="javascript:void(0)" class="sidebar_switch on_switch ttip_r" title="Hide Sidebar">Sidebar switch</a>
-			<div class="sidebar">
-				<div class="antiScroll">
-					<div class="antiscroll-inner">
-						<div class="antiscroll-content">
-							<div class="sidebar_inner">
-								<legend>Menu</legend>
 
-								<div id="side_accordion" class="accordion">
-									<div class="accordion-group">
-										<div class="accordion-heading">
-											<a href="#collapse-0" data-parent="#side_accordion" data-toggle="collapse" class="accordion-toggle"> <i class=""></i>Dashboard</a>
-										</div>
-										<div class="accordion-body in collapse" id="collapse-0">
-											<div class="accordion-inner">
-												<ul class="nav nav-list">
-													<li class="active"><a href="/admins"><i class=""></i>Dashboard</a></li>
-												</ul>
-											</div>
-										</div>
-									</div>	
-									<div class="accordion-group">
-										<div class="accordion-heading">
-											<a href="#collapse-1" data-parent="#side_accordion" data-toggle="collapse" class="accordion-toggle collapsed"> <i class=""></i> Setup</a>
-										</div>
-										<div class="accordion-body collapse" id="collapse-1">
-											<div class="accordion-inner">
-												<ul class="nav nav-list">
-													<li class="nav-header"><i class=""></i>Order Categories</li>
-													<li class="notactive"><a href="/categories/add"><i class=""></i>Add Category</a></li>
-													<li class="notactive"><a href="/categories"><i class=""></i>View Categories</a></li>
-													<li class="nav-header"><i class=""></i>Order Items</li>
-													<li class="notactive"><a href="/orders/add"><i class=""></i>Add Order Item</a></li>
-													<li class="notactive"><a href="/orders"><i class=""></i>View Order Items</a></li>
-												</ul>
-											</div>
-										</div>
-									</div>
-									<div class="accordion-group">
-										<div class="accordion-heading">
-											<a href="#collapse-2" data-parent="#side_accordion" data-toggle="collapse" class="accordion-toggle collapsed"> <i class=""></i> Reports</a>
-										</div>
-										<div class="accordion-body collapse" id="collapse-2">
-											<div class="accordion-inner">
-												<ul class="nav nav-list">
-													<li class="nav-header"><i class=""></i>View Reports</li>
-													<li class="notactive"><a href="/reports/eod"><i class=""></i>End Of Day</a></li>
-													<li class="notactive"><a href="/reports/eow"><i class=""></i>Weekly Report</a></li>
-													<li class="notactive"><a href="/reports/eom"><i class=""></i>Monthly Report</a></li>
-													<li class="notactive"><a href="/reports/eoy"><i class=""></i>Yearly Report</a></li>
-													<li class="nav-header"><i class=""></i>Create Report</li>
-													<li class="notactive"><a href="/reports/create"><i class=""></i>Create Report</a></li>
-													
-													
-												</ul>
-											</div>
-										</div>
-									</div>
-									<div class="accordion-group">
-										<div class="accordion-heading">
-											<a href="#collapse-3" data-parent="#side_accordion" data-toggle="collapse" class="accordion-toggle collapsed"> <i class=""></i> Management</a>
-										</div>
-										<div class="accordion-body collapse" id="collapse-3">
-											<div class="accordion-inner">
-												<ul class="nav nav-list">
-													<li class="nav-header"><i class=""></i>Users</li>
-													<li class="notactive"><a href="/users/add"><i class=""></i>Add User</a></li>
-													<li class="notactive"><a href="/users"><i class=""></i>View Users</a></li>
-													<li class="nav-header"><i class=""></i>Company</li>
-													<li class="notactive"><a href="/companies"><i class=""></i>View Company</a></li>
-													
-													
-												</ul>
-											</div>
-										</div>
-									</div>
-		
-								</div>
-							<div class="push"></div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
 <?php
  echo $this -> Html -> script(array(//a lot of this is more than we need, but I will optimize later JFD 10/9
 	'admin/jquery.min.js', //jQuery

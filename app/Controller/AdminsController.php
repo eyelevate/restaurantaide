@@ -7,15 +7,15 @@ App::uses('AppController', 'Controller');
 class AdminsController extends AppController {
 
 	public $name = 'Admins';
-	public $uses = array('User','Group');
+	public $uses = array('User','Group','Category','Order','Company');
 
 
 	public function beforeFilter()
 	{
 		parent::beforeFilter();
-		//set the default layout
-		$this->layout = 'admin';
 		
+		$this->set('username',AuthComponent::user('username'));
+		$this->set('company_id',$this->Session->read('Company.company_id'));
 
 		//set the authorized pages
 		$this->Auth->allow('login','logout');
@@ -31,8 +31,7 @@ class AdminsController extends AppController {
  */
 	public function login()
 	{
-		//No admin navigation here
-		
+		$this->layout = 'admin_login';
 		//set autherror to page
 		$this->set('authError',$this->Auth->authError);
 		
@@ -42,6 +41,13 @@ class AdminsController extends AppController {
 	    	$username = $this->request->data['User']['username'];
 			//login User with auth component
 	        if ($this->Auth->login()) {
+				$id = AuthComponent::user('id');
+				$companies = $this->User->find('all',array('conditions'=>array('User.id'=>$id)));
+				foreach ($companies as $cid) {
+					$company_id = $cid['User']['company_id'];
+				} 
+				$this->Session->write('Company.company_id',$company_id);
+				//debug($this->Session->read('Company.company_id'));
 	            return $this->redirect($this->Auth->redirect());
 	        } else {
 	        //the password is incorrect 
@@ -67,12 +73,19 @@ class AdminsController extends AppController {
  * @return void
  */
 	public function index() {
+		//set the default layout
+		$this->layout = 'admin';
 
 		//set username
 		$username = $this->Auth->user('username');
 		$this->set('username',$username);
 		//set the action levels
 		$group_id = $this->Auth->user('group_id');
+		$company_id = $this->Session->read('Company.company_id');
+		$categories = $this->Category->find('all',array('conditions'=>array('company_id'=>$company_id)));
+		$orders = $this->Order->find('all',array('conditions'=>array('company_id'=>$company_id)));
+		$this->set('categories',$categories);
+		$this->set('orders',$orders);
 		
 	}
 

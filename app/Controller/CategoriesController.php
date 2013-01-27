@@ -6,15 +6,38 @@ App::uses('AppController', 'Controller');
  * @property Category $Category
  */
 class CategoriesController extends AppController {
+	public $name = 'Categories';
+	public $uses = array('User','Group','Category','Order','Company');
+	
+	public function beforeFilter()
+	{
+		parent::beforeFilter();
+		//set the default layout
+		$this->layout = 'admin';
+		$this->set('username',AuthComponent::user('username'));
+		$this->set('company_id',$this->Session->read('Company.company_id'));			
 
+		//set the authorized pages
+		$this->Auth->deny('*');
+		$this->Auth->authError = 'You do not have access to this page. Please Login';
+	}	
+	
 /**
  * index method
  *
  * @return void
  */
 	public function index() {
+		$company_id = $this->Session->read('Company.company_id');
+		$this->paginate = array(
+			'conditions'=>array('company_id'=>$company_id),
+		    'limit' => 10, // this was the option which you forgot to mention
+		    'order' => array(
+		        'id' => 'ASC')
+		);	
+		$categories = $this->paginate('Category');	
 		$this->Category->recursive = 0;
-		$this->set('categories', $this->paginate());
+		$this->set('categories', $categories);
 	}
 
 /**
@@ -39,7 +62,9 @@ class CategoriesController extends AppController {
  */
 	public function add() {
 		if ($this->request->is('post')) {
+			
 			$this->Category->create();
+			$this->request->data['Category']['company_id'] = $this->Session->read('Company.company_id');
 			if ($this->Category->save($this->request->data)) {
 				$this->Session->setFlash(__('The category has been saved'));
 				$this->redirect(array('action' => 'index'));
@@ -47,8 +72,7 @@ class CategoriesController extends AppController {
 				$this->Session->setFlash(__('The category could not be saved. Please, try again.'));
 			}
 		}
-		$companies = $this->Category->Company->find('list');
-		$this->set(compact('companies'));
+
 	}
 
 /**

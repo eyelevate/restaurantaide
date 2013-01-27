@@ -1,6 +1,6 @@
 <div class="orders index">
 	<h2><?php echo __('Orders'); ?></h2>
-	<table cellpadding="0" cellspacing="0">
+	<table class="table table-bordered table-hover table-striped">
 	<tr>
 			<th><?php echo $this->Paginator->sort('id'); ?></th>
 			<th><?php echo $this->Paginator->sort('company_id'); ?></th>
@@ -50,13 +50,4 @@
 	?>
 	</div>
 </div>
-<div class="actions">
-	<h3><?php echo __('Actions'); ?></h3>
-	<ul>
-		<li><?php echo $this->Html->link(__('New Order'), array('action' => 'add')); ?></li>
-		<li><?php echo $this->Html->link(__('List Companies'), array('controller' => 'companies', 'action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New Company'), array('controller' => 'companies', 'action' => 'add')); ?> </li>
-		<li><?php echo $this->Html->link(__('List Invoice Lineitems'), array('controller' => 'invoice_lineitems', 'action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New Invoice Lineitem'), array('controller' => 'invoice_lineitems', 'action' => 'add')); ?> </li>
-	</ul>
-</div>
+

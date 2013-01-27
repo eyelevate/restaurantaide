@@ -1,13 +1,12 @@
 <?php
 App::uses('AppModel', 'Model');
 /**
- * Order Model
+ * TaxInfo Model
  *
  * @property Company $Company
- * @property InvoiceLineitem $InvoiceLineitem
  */
-class Order extends AppModel {
-	public $name = 'Order';
+class TaxInfo extends AppModel {
+
 /**
  * Validation rules
  *
@@ -24,7 +23,7 @@ class Order extends AppModel {
 				//'on' => 'create', // Limit validation to 'create' or 'update' operations
 			),
 		),
-		'name' => array(
+		'state' => array(
 			'notempty' => array(
 				'rule' => array('notempty'),
 				//'message' => 'Your custom message here',
@@ -52,26 +51,4 @@ class Order extends AppModel {
 			'order' => ''
 		)
 	);
-
-/**
- * hasMany associations
- *
- * @var array
- */
-	public $hasMany = array(
-		'InvoiceLineitem' => array(
-			'className' => 'InvoiceLineitem',
-			'foreignKey' => 'order_id',
-			'dependent' => false,
-			'conditions' => '',
-			'fields' => '',
-			'order' => '',
-			'limit' => '',
-			'offset' => '',
-			'exclusive' => '',
-			'finderQuery' => '',
-			'counterQuery' => ''
-		)
-	);
-
 }

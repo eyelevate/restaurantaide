@@ -6,7 +6,7 @@ App::uses('AppModel', 'Model');
  * @property Company $Company
  */
 class Category extends AppModel {
-
+	public $name = 'Category';
 /**
  * Validation rules
  *
@@ -23,6 +23,16 @@ class Category extends AppModel {
 				//'on' => 'create', // Limit validation to 'create' or 'update' operations
 			),
 		),
+		'name' => array(
+        	'notempty' => array(
+            	'rule'    => 'notEmpty',
+            	'message' => 'This field cannot be left blank'
+             ),
+			// 'unique'=>array(
+				// 'rule'    => 'isUnique',
+				// 'message' => 'This name has already been taken.'
+			// )
+		)
 	);
 
 	//The Associations below have been created with all possible keys, those that are not needed can be removed

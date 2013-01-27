@@ -3,20 +3,21 @@
 	<fieldset>
 		<legend><?php echo __('Add Category'); ?></legend>
 	<?php
-		echo $this->Form->input('company_id');
-		echo $this->Form->input('category_list');
-		echo $this->Form->input('name');
-		echo $this->Form->input('status');
+
+		//echo $this->Form->input('category_list');
+		echo $this->Form->input('name',array(
+			'label'=>'Category Label <span class="f_req">*</span>',
+			'placeholder'=>'Name of the category',
+			'class'=>'span6',
+			'div'=>'control-group',
+			'error'=>array('attributes' => array('class' => 'help-block')),
+			
+		));
+		//echo $this->Form->input('status');
 	?>
 	</fieldset>
-<?php echo $this->Form->end(__('Submit')); ?>
-</div>
-<div class="actions">
-	<h3><?php echo __('Actions'); ?></h3>
-	<ul>
-
-		<li><?php echo $this->Html->link(__('List Categories'), array('action' => 'index')); ?></li>
-		<li><?php echo $this->Html->link(__('List Companies'), array('controller' => 'companies', 'action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New Company'), array('controller' => 'companies', 'action' => 'add')); ?> </li>
-	</ul>
+<?php
+	echo $this->Form->submit(__('Submit'),array('class'=>'btn btn-primary'));
+	echo $this->Form->end(); 
+?>
 </div>

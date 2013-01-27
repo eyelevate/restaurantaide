@@ -6,15 +6,38 @@ App::uses('AppController', 'Controller');
  * @property Order $Order
  */
 class OrdersController extends AppController {
+	public $name = 'Orders';
+	public $uses = array('User','Group','Category','Order','Company');
+	
+	public function beforeFilter()
+	{
+		parent::beforeFilter();
+		//set the default layout
+		$this->layout = 'admin';
+		$this->set('username',AuthComponent::user('username'));
+		$this->set('company_id',$this->Session->read('Company.company_id'));	
 
+		//set the authorized pages
+		$this->Auth->deny('*');
+		$this->Auth->authError = 'You do not have access to this page. Please Login';
+	}	
+	
 /**
  * index method
  *
  * @return void
  */
 	public function index() {
+		$company_id = $this->Session->read('Company.company_id');
+		$this->paginate = array(
+			'conditions'=>array('company_id'=>$company_id),
+		    'limit' => 10, // this was the option which you forgot to mention
+		    'order' => array(
+		        'id' => 'ASC')
+		);	
+		$orders = $this->paginate('Order');	
 		$this->Order->recursive = 0;
-		$this->set('orders', $this->paginate());
+		$this->set('orders', $orders);
 	}
 
 /**
@@ -38,8 +61,12 @@ class OrdersController extends AppController {
  * @return void
  */
 	public function add() {
+		$company_id = $this->Session->read('Company.company_id');
+		$categories = $this->Category->find('all',array('conditions'=>array('company_id'=>$company_id)));
+		$this->set('categories',$categories);
 		if ($this->request->is('post')) {
 			$this->Order->create();
+			$this->request->data['Order']['company_id'] = $this->Session->read('Company.company_id');
 			if ($this->Order->save($this->request->data)) {
 				$this->Session->setFlash(__('The order has been saved'));
 				$this->redirect(array('action' => 'index'));

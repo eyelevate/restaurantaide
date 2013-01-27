@@ -1,6 +1,6 @@
 <div class="companies index">
 	<h2><?php echo __('Companies'); ?></h2>
-	<table cellpadding="0" cellspacing="0">
+	<table class="table table-striped table-bordered table-hover">
 	<tr>
 			<th><?php echo $this->Paginator->sort('id'); ?></th>
 			<th><?php echo $this->Paginator->sort('user_id'); ?></th>
@@ -50,23 +50,4 @@
 	?>
 	</div>
 </div>
-<div class="actions">
-	<h3><?php echo __('Actions'); ?></h3>
-	<ul>
-		<li><?php echo $this->Html->link(__('New Company'), array('action' => 'add')); ?></li>
-		<li><?php echo $this->Html->link(__('List Users'), array('controller' => 'users', 'action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New User'), array('controller' => 'users', 'action' => 'add')); ?> </li>
-		<li><?php echo $this->Html->link(__('List Categories'), array('controller' => 'categories', 'action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New Category'), array('controller' => 'categories', 'action' => 'add')); ?> </li>
-		<li><?php echo $this->Html->link(__('List Invoice Lineitems'), array('controller' => 'invoice_lineitems', 'action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New Invoice Lineitem'), array('controller' => 'invoice_lineitems', 'action' => 'add')); ?> </li>
-		<li><?php echo $this->Html->link(__('List Invoices'), array('controller' => 'invoices', 'action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New Invoice'), array('controller' => 'invoices', 'action' => 'add')); ?> </li>
-		<li><?php echo $this->Html->link(__('List Orders'), array('controller' => 'orders', 'action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New Order'), array('controller' => 'orders', 'action' => 'add')); ?> </li>
-		<li><?php echo $this->Html->link(__('List Printers'), array('controller' => 'printers', 'action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New Printer'), array('controller' => 'printers', 'action' => 'add')); ?> </li>
-		<li><?php echo $this->Html->link(__('List Tax Infos'), array('controller' => 'tax_infos', 'action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New Tax Info'), array('controller' => 'tax_infos', 'action' => 'add')); ?> </li>
-	</ul>
-</div>
+

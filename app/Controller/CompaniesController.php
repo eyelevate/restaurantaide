@@ -6,7 +6,22 @@ App::uses('AppController', 'Controller');
  * @property Company $Company
  */
 class CompaniesController extends AppController {
+	public $name = 'Companies';
+	public $uses = array('User','Group','Category','Order','Company');
+	
+	public function beforeFilter()
+	{
+		parent::beforeFilter();
+		//set the default layout
+		$this->layout = 'admin';
+		$this->set('username',AuthComponent::user('username'));
+		$this->set('company_id',$this->Session->read('Company.company_id'));		
 
+		//set the authorized pages
+		$this->Auth->deny('*');
+		$this->Auth->authError = 'You do not have access to this page. Please Login';
+	}	
+	
 /**
  * index method
  *
@@ -14,7 +29,7 @@ class CompaniesController extends AppController {
  */
 	public function index() {
 		$this->Company->recursive = 0;
-		$this->set('companies', $this->paginate());
+		$this->set('companies', $this->paginate('Company'));
 	}
 
 /**

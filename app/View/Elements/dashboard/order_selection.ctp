@@ -44,9 +44,9 @@
 				$order_price = $order['Order']['price'];
 				if($category==$cat_id){
 				?>
-				<button class="ordersButton btn btn-large" type="button" category="<?php echo $category;?>" cat_name="<?php echo $cat_name;?>" count="0" value="<?php echo $order_id;?>" order_name="<?php echo $order_name;?>" price="<?php echo $order_price;?>">
+				<button id="ordersButton-<?php echo $order_id;?>" class="ordersButton btn btn-large" type="button" category="<?php echo $category;?>" cat_name="<?php echo $cat_name;?>" count="0" value="<?php echo $order_id;?>" order_name="<?php echo $order_name;?>" price="<?php echo $order_price;?>">
 					<?php echo $order_name;?>
-					<br/>
+					<br/><br/>
 					<span class="badge badge-inverse">$<?php echo $order_price;?></span>
 				</button>
 				<?php
@@ -70,9 +70,9 @@
 				$order_price = $order['Order']['price'];
 				if($category==$cat_id){
 				?>
-				<button class="ordersButton btn btn-large" type="button" category="<?php echo $category;?>" cat_name="<?php echo $cat_name;?>" count="0" value="<?php echo $order_id;?>" order_name="<?php echo $order_name;?>" price="<?php echo $order_price;?>">
+				<button id="ordersButton-<?php echo $order_id;?>" class="ordersButton btn btn-large" type="button" category="<?php echo $category;?>" cat_name="<?php echo $cat_name;?>" count="0" value="<?php echo $order_id;?>" order_name="<?php echo $order_name;?>" price="<?php echo $order_price;?>">
 					<?php echo $order_name;?>
-					<br/>
+					<br/><br/>
 					<span class="badge badge-inverse">$<?php echo $order_price;?></span>
 				</button>
 				<?php

@@ -1,21 +1,21 @@
 <div class="taxInfos form">
 <?php echo $this->Form->create('TaxInfo'); ?>
-	<fieldset>
+	<fieldset class="formSep">
 		<legend><?php echo __('Add Tax Info'); ?></legend>
 	<?php
-		echo $this->Form->input('company_id');
+		//echo $this->Form->input('company_id');
 		echo $this->Form->input('state');
-		echo $this->Form->input('rate');
+		echo $this->Form->input('rate',array(
+			'label'=>false,
+			'before'=>'<label>Tax Rate <span class="f_req">*</span></label><div class="input-append">',
+			'after'=>'<span class="add-ons">%</span></div><span class="help-block"></span>',
+			'error' => array('attributes' => array('class' => 'text-error')),
+		));
 	?>
 	</fieldset>
-<?php echo $this->Form->end(__('Submit')); ?>
+<?php 
+echo $this->Form->submit('Set Tax Rate',array('class'=>'btn btn-primary btn-large'));
+echo $this->Form->end(); 
+?>
 </div>
-<div class="actions">
-	<h3><?php echo __('Actions'); ?></h3>
-	<ul>
 
-		<li><?php echo $this->Html->link(__('List Tax Infos'), array('action' => 'index')); ?></li>
-		<li><?php echo $this->Html->link(__('List Companies'), array('controller' => 'companies', 'action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New Company'), array('controller' => 'companies', 'action' => 'add')); ?> </li>
-	</ul>
-</div>

@@ -128,9 +128,9 @@ if (!isset($username)) {
 					<div class="antiscroll-inner">
 						<div class="antiscroll-content">
 							<div class="sidebar_inner">
-								<legend>Menu</legend>
+								<h3 class="heading" style="margin-bottom:0px;">Main Menu</h3>
 
-								<div id="side_accordion" class="accordion">
+								<div id="side_accordion" class="accordion" style="margin-top:0px;">
 									<div class="accordion-group">
 										<div class="accordion-heading">
 											<a href="#collapse-0" data-parent="#side_accordion" data-toggle="collapse" class="accordion-toggle"> <i class=""></i>Dashboard</a>

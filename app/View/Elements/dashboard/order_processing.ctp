@@ -21,25 +21,25 @@
 		</tbody>
 		<tfoot>
 			<tr>
-				<th class="" colspan="4">Quantity</th>
-				<td></td>
+				<th class="" colspan="3" style="border-top:1px solid #5e5e5e;"></th>
+				<th style="border-top:1px solid #5e5e5e;">Quantity</th>
+				<td id="qtyTotalTd" style="border-top:1px solid #5e5e5e;"></td>
 			</tr>
 			<tr>
-				<th colspan="4">Pre-tax</th>
-				<td></td>
+				<th class="" colspan="3" style="border-top:none"></th>
+				<th>Pre-tax</th>
+				<td id="pretaxTotalTd"></td>
 			</tr>
 			<tr>
-				<th colspan="4">Tax</th>
-				<td></td>
+				<th class="" colspan="3" style="border-top:none"></th>
+				<th>Tax</th>
+				<td id="taxTotalTd"></td>
 			</tr>
 			<tr>
-				<th colspan="4">Total</th>
-				<td></td>
+				<th class="" colspan="3" style="border-top:none"></th>
+				<th>Total</th>
+				<td id="aftertaxTotalTd"></td>
 			</tr>
 		</tfoot>
 	</table>
-</div>
-<div>
-	<button class="btn btn-danger btn-large">Cancel</button>
-	<button class="btn btn-primary btn-large pull-right">Pay</button>
 </div>

@@ -7,7 +7,7 @@ App::uses('AppController', 'Controller');
 class AdminsController extends AppController {
 
 	public $name = 'Admins';
-	public $uses = array('User','Group','Category','Order','Company');
+	public $uses = array('User','Group','Category','Order','Company','TaxInfo','Invoice','InvoiceLineitem');
 
 
 	public function beforeFilter()
@@ -84,8 +84,10 @@ class AdminsController extends AppController {
 		$company_id = $this->Session->read('Company.company_id');
 		$categories = $this->Category->find('all',array('conditions'=>array('company_id'=>$company_id)));
 		$orders = $this->Order->find('all',array('conditions'=>array('company_id'=>$company_id)));
+		$taxes = $this->TaxInfo->find('all',array('conditions'=>array('company_id'=>$company_id)));
 		$this->set('categories',$categories);
 		$this->set('orders',$orders);
+		$this->set('taxes',$taxes);
 		
 	}
 

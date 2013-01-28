@@ -6,7 +6,7 @@ App::uses('AppModel', 'Model');
  * @property Company $Company
  */
 class TaxInfo extends AppModel {
-
+	public $name = 'TaxInfo';
 /**
  * Validation rules
  *

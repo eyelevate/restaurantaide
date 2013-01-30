@@ -9,9 +9,9 @@ node default {
 	include phpunit
 	include apache
 
-	mysqldb { "bbfl":
-        user => "brevica",
-        password => "cat3dog!b",
+	mysqldb { "restaurantaide":
+        user => "root",
+        password => "root",
     }
     
     mysqldb { "cake_test":

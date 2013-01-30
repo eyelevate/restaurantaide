@@ -45,9 +45,12 @@
 				if($category==$cat_id){
 				?>
 				<button id="ordersButton-<?php echo $order_id;?>" class="ordersButton btn btn-large" type="button" category="<?php echo $category;?>" cat_name="<?php echo $cat_name;?>" count="0" value="<?php echo $order_id;?>" order_name="<?php echo $order_name;?>" price="<?php echo $order_price;?>">
-					<?php echo $order_name;?>
-					<br/><br/>
-					<span class="badge badge-inverse">$<?php echo $order_price;?></span>
+					<p><?php echo $order_name;?></p>
+					<div>
+						<span class="badge badge-inverse">$<?php echo $order_price;?></span>	
+					</div>
+					
+					
 				</button>
 				<?php
 				}

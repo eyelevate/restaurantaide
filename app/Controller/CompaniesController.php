@@ -17,6 +17,11 @@ class CompaniesController extends AppController {
 		$this->set('username',AuthComponent::user('username'));
 		$this->set('company_id',$this->Session->read('Company.company_id'));		
 
+		//set the navigation menu_id		
+		$menu_ids = $this->Menu->find('all',array('conditions'=>array('name'=>'Super Administrator')));
+		$menu_id = $menu_ids[0]['Menu']['id'];		
+		$this->Session->write('Admin.menu_id',$menu_id);
+
 		//set the authorized pages
 		$this->Auth->deny('*');
 		$this->Auth->authError = 'You do not have access to this page. Please Login';
@@ -28,6 +33,15 @@ class CompaniesController extends AppController {
  * @return void
  */
 	public function index() {
+		//set the admin navigation
+		$admin_nav = $this->Menu_item->arrangeByTiers($this->Session->read('Admin.menu_id'));	
+		$page_url = '/companies/index';
+		$admin_check = $this->Menu_item->menuActiveHeaderCheck($page_url, $admin_nav);
+		$this->set('admin_nav',$admin_nav);
+		$this->set('admin_pages',$page_url);
+		$this->set('admin_check',$admin_check);			
+		
+		
 		$this->Company->recursive = 0;
 		$this->set('companies', $this->paginate('Company'));
 	}
@@ -40,6 +54,13 @@ class CompaniesController extends AppController {
  * @return void
  */
 	public function view($id = null) {
+		//set the admin navigation
+		$admin_nav = $this->Menu_item->arrangeByTiers($this->Session->read('Admin.menu_id'));	
+		$page_url = '/companies/view';
+		$admin_check = $this->Menu_item->menuActiveHeaderCheck($page_url, $admin_nav);
+		$this->set('admin_nav',$admin_nav);
+		$this->set('admin_pages',$page_url);
+		$this->set('admin_check',$admin_check);			
 		$this->Company->id = $id;
 		if (!$this->Company->exists()) {
 			throw new NotFoundException(__('Invalid company'));
@@ -53,6 +74,14 @@ class CompaniesController extends AppController {
  * @return void
  */
 	public function add() {
+		//set the admin navigation
+		$admin_nav = $this->Menu_item->arrangeByTiers($this->Session->read('Admin.menu_id'));	
+		$page_url = '/companies/add';
+		$admin_check = $this->Menu_item->menuActiveHeaderCheck($page_url, $admin_nav);
+		$this->set('admin_nav',$admin_nav);
+		$this->set('admin_pages',$page_url);
+		$this->set('admin_check',$admin_check);			
+		
 		if ($this->request->is('post')) {
 			$this->Company->create();
 			if ($this->Company->save($this->request->data)) {
@@ -74,6 +103,15 @@ class CompaniesController extends AppController {
  * @return void
  */
 	public function edit($id = null) {
+		//set the admin navigation
+		$admin_nav = $this->Menu_item->arrangeByTiers($this->Session->read('Admin.menu_id'));	
+		$page_url = '/companies/edit';
+		$admin_check = $this->Menu_item->menuActiveHeaderCheck($page_url, $admin_nav);
+		$this->set('admin_nav',$admin_nav);
+		$this->set('admin_pages',$page_url);
+		$this->set('admin_check',$admin_check);			
+		
+		
 		$this->Company->id = $id;
 		if (!$this->Company->exists()) {
 			throw new NotFoundException(__('Invalid company'));

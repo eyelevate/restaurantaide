@@ -27,10 +27,27 @@
  */
 	Router::connect('/', array('controller' => 'admins', 'action' => 'login', 'home'));
 
+
+	//Admins
+	Router::connect('/admins',array('controller'=>'admins','action'=>'index'));
+	Router::connect('/admins/:action',array('controller'=>'admins'));
+	Router::connect('/admins/:action/*',array('controller'=>'admins'));	
+	//Orders Controller
+	Router::connect('/categories',array('controller'=>'categories','action'=>'index'));
+	Router::connect('/categories/:action',array('controller'=>'categories'));
+	Router::connect('/categories/:action/*',array('controller'=>'categories'));	
 	//Groups Controller
 	Router::connect('/groups',array('controller'=>'groups','action'=>'index'));
 	Router::connect('/groups/:action',array('controller'=>'groups'));
 	Router::connect('/groups/:action/*',array('controller'=>'groups'));
+	//Orders Controller
+	Router::connect('/orders',array('controller'=>'orders','action'=>'index'));
+	Router::connect('/orders/:action',array('controller'=>'orders'));
+	Router::connect('/orders/:action/*',array('controller'=>'orders'));	
+	//Orders Controller
+	Router::connect('/tax_infos',array('controller'=>'tax_infos','action'=>'index'));
+	Router::connect('/tax_infos/:action',array('controller'=>'tax_infos'));
+	Router::connect('/tax_infos/:action/*',array('controller'=>'tax_infos'));	
 	//Users Controller 
 	Router::connect('/users',array('controller'=>'users','action'=>'index'));
 	Router::connect('/users/:action',array('controller'=>'users'));

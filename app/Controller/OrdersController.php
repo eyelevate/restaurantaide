@@ -7,7 +7,7 @@ App::uses('AppController', 'Controller');
  */
 class OrdersController extends AppController {
 	public $name = 'Orders';
-	public $uses = array('User','Group','Category','Order','Company');
+	public $uses = array('Menu','Menu_item','User','Group','Category','Order','Company');
 	
 	public function beforeFilter()
 	{
@@ -16,6 +16,11 @@ class OrdersController extends AppController {
 		$this->layout = 'admin';
 		$this->set('username',AuthComponent::user('username'));
 		$this->set('company_id',$this->Session->read('Company.company_id'));	
+
+		//set the navigation menu_id		
+		$menu_ids = $this->Menu->find('all',array('conditions'=>array('name'=>'Super Administrator')));
+		$menu_id = $menu_ids[0]['Menu']['id'];		
+		$this->Session->write('Admin.menu_id',$menu_id);
 
 		//set the authorized pages
 		$this->Auth->deny('*');
@@ -28,6 +33,15 @@ class OrdersController extends AppController {
  * @return void
  */
 	public function index() {
+		//set the admin navigation
+		$admin_nav = $this->Menu_item->arrangeByTiers($this->Session->read('Admin.menu_id'));	
+		$page_url = '/orders/index';
+		$admin_check = $this->Menu_item->menuActiveHeaderCheck($page_url, $admin_nav);
+		$this->set('admin_nav',$admin_nav);
+		$this->set('admin_pages',$page_url);
+		$this->set('admin_check',$admin_check);			
+		
+		
 		$company_id = $this->Session->read('Company.company_id');
 		$this->paginate = array(
 			'conditions'=>array('company_id'=>$company_id),
@@ -48,6 +62,14 @@ class OrdersController extends AppController {
  * @return void
  */
 	public function view($id = null) {
+		//set the admin navigation
+		$admin_nav = $this->Menu_item->arrangeByTiers($this->Session->read('Admin.menu_id'));	
+		$page_url = '/orders/view';
+		$admin_check = $this->Menu_item->menuActiveHeaderCheck($page_url, $admin_nav);
+		$this->set('admin_nav',$admin_nav);
+		$this->set('admin_pages',$page_url);
+		$this->set('admin_check',$admin_check);	
+				
 		$this->Order->id = $id;
 		if (!$this->Order->exists()) {
 			throw new NotFoundException(__('Invalid order'));
@@ -61,6 +83,15 @@ class OrdersController extends AppController {
  * @return void
  */
 	public function add() {
+		//set the admin navigation
+		$admin_nav = $this->Menu_item->arrangeByTiers($this->Session->read('Admin.menu_id'));	
+		$page_url = '/orders/add';
+		$admin_check = $this->Menu_item->menuActiveHeaderCheck($page_url, $admin_nav);
+		$this->set('admin_nav',$admin_nav);
+		$this->set('admin_pages',$page_url);
+		$this->set('admin_check',$admin_check);	
+
+
 		$company_id = $this->Session->read('Company.company_id');
 		$categories = $this->Category->find('all',array('conditions'=>array('company_id'=>$company_id)));
 		$this->set('categories',$categories);
@@ -86,6 +117,14 @@ class OrdersController extends AppController {
  * @return void
  */
 	public function edit($id = null) {
+		//set the admin navigation
+		$admin_nav = $this->Menu_item->arrangeByTiers($this->Session->read('Admin.menu_id'));	
+		$page_url = '/orders/edit';
+		$admin_check = $this->Menu_item->menuActiveHeaderCheck($page_url, $admin_nav);
+		$this->set('admin_nav',$admin_nav);
+		$this->set('admin_pages',$page_url);
+		$this->set('admin_check',$admin_check);	
+		
 		$this->Order->id = $id;
 		if (!$this->Order->exists()) {
 			throw new NotFoundException(__('Invalid order'));

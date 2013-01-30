@@ -7,7 +7,7 @@ App::uses('AppController', 'Controller');
  */
 class GroupsController extends AppController {
 	public $name = 'Groups';
-	public $uses = array('User','Group','Aco','Acl_permission');
+	public $uses = array('Menu','Menu_item','User','Group','Aco','Acl_permission');
 
 /**
  * Filter before page load
@@ -17,8 +17,14 @@ class GroupsController extends AppController {
 	public function beforeFilter() {
 	    parent::beforeFilter();
 		$this->set('username',AuthComponent::user('username'));
+		
+		//set the navigation menu_id		
+		$menu_ids = $this->Menu->find('all',array('conditions'=>array('name'=>'Super Administrator')));
+		$menu_id = $menu_ids[0]['Menu']['id'];		
+		$this->Session->write('Admin.menu_id',$menu_id);			
+		
 		$this->Auth->allow('*');
-		//$this->Auth->allow('*');
+		
 		$this->Auth->loginAction = array('controller' => 'admins', 'action' => 'login');
        // $this->Auth->loginRedirect = array('controller' => 'maps', 'action' => 'index');
         $this->Auth->logoutRedirect = array('controller' => 'admins', 'action' => 'login');
@@ -31,7 +37,13 @@ class GroupsController extends AppController {
  * @return void
  */
 	public function index() {
-			
+		//set the admin navigation
+		$admin_nav = $this->Menu_item->arrangeByTiers($this->Session->read('Admin.menu_id'));	
+		$page_url = '/groups/index';
+		$admin_check = $this->Menu_item->menuActiveHeaderCheck($page_url, $admin_nav);
+		$this->set('admin_nav',$admin_nav);
+		$this->set('admin_pages',$page_url);
+		$this->set('admin_check',$admin_check);				
 		//set variables
 		$group_id = AuthComponent::user('group_id');
 		if($group_id <3){	
@@ -56,6 +68,13 @@ class GroupsController extends AppController {
  * @return void
  */
 	public function view($id = null) {
+		//set the admin navigation
+		$admin_nav = $this->Menu_item->arrangeByTiers($this->Session->read('Admin.menu_id'));	
+		$page_url = '/groups/view';
+		$admin_check = $this->Menu_item->menuActiveHeaderCheck($page_url, $admin_nav);
+		$this->set('admin_nav',$admin_nav);
+		$this->set('admin_pages',$page_url);
+		$this->set('admin_check',$admin_check);	
 		$this->Group->id = $id;
 		if (!$this->Group->exists()) {
 			throw new NotFoundException(__('Invalid group'));
@@ -69,6 +88,13 @@ class GroupsController extends AppController {
  * @return void
  */
 	public function add() {
+		//set the admin navigation
+		$admin_nav = $this->Menu_item->arrangeByTiers($this->Session->read('Admin.menu_id'));	
+		$page_url = '/groups/add';
+		$admin_check = $this->Menu_item->menuActiveHeaderCheck($page_url, $admin_nav);
+		$this->set('admin_nav',$admin_nav);
+		$this->set('admin_pages',$page_url);
+		$this->set('admin_check',$admin_check);	
 		//get all the groups from the page
 		$groups = $this->Group->find('all',array('conditions'=>array('id !='=>1)));
 		$this->set('groups',$groups);
@@ -169,6 +195,13 @@ class GroupsController extends AppController {
  * @return void
  */
 	public function edit($id = null) {
+		//set the admin navigation
+		$admin_nav = $this->Menu_item->arrangeByTiers($this->Session->read('Admin.menu_id'));	
+		$page_url = '/groups/edit';
+		$admin_check = $this->Menu_item->menuActiveHeaderCheck($page_url, $admin_nav);
+		$this->set('admin_nav',$admin_nav);
+		$this->set('admin_pages',$page_url);
+		$this->set('admin_check',$admin_check);	
 		$this->Group->id = $id;
 		$group_id = AuthComponent::user('group_id');
 		if($group_id <3){	

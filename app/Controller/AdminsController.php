@@ -7,7 +7,7 @@ App::uses('AppController', 'Controller');
 class AdminsController extends AppController {
 
 	public $name = 'Admins';
-	public $uses = array('User','Group','Category','Order','Company','TaxInfo','Invoice','InvoiceLineitem');
+	public $uses = array('Menu','Menu_item','User','Group','Category','Order','Company','TaxInfo','Invoice','InvoiceLineitem');
 
 
 	public function beforeFilter()
@@ -16,7 +16,10 @@ class AdminsController extends AppController {
 		
 		$this->set('username',AuthComponent::user('username'));
 		$this->set('company_id',$this->Session->read('Company.company_id'));
-
+		//set the navigation menu_id		
+		$menu_ids = $this->Menu->find('all',array('conditions'=>array('name'=>'Super Administrator')));
+		$menu_id = $menu_ids[0]['Menu']['id'];		
+		$this->Session->write('Admin.menu_id',$menu_id);
 		//set the authorized pages
 		$this->Auth->allow('login','logout');
 		$this->Auth->authError = 'You do not have access to this page. Please Login';
@@ -75,7 +78,13 @@ class AdminsController extends AppController {
 	public function index() {
 		//set the default layout
 		$this->layout = 'admin';
-
+		//set the admin navigation
+		$admin_nav = $this->Menu_item->arrangeByTiers($this->Session->read('Admin.menu_id'));	
+		$page_url = '/admins/index';
+		$admin_check = $this->Menu_item->menuActiveHeaderCheck($page_url, $admin_nav);
+		$this->set('admin_nav',$admin_nav);
+		$this->set('admin_pages',$page_url);
+		$this->set('admin_check',$admin_check);
 		//set username
 		$username = $this->Auth->user('username');
 		$this->set('username',$username);
@@ -88,6 +97,40 @@ class AdminsController extends AppController {
 		$this->set('categories',$categories);
 		$this->set('orders',$orders);
 		$this->set('taxes',$taxes);
+		
+		if($this->request->is('post')){
+			//debug($this->request->data);
+			//get the invoice_number 
+			$find_new_id = $this->Invoice->find('all',array(
+				'conditions'=>array('Invoice.company_id'=>$company_id),
+				'order'=>'id desc',
+				'limit'=>'0,1'
+			));
+			if(count($find_new_id) >0){
+				foreach ($find_new_id as $fid) {
+					$new_id = $fid['Invoice']['invoice_number'] + 1;
+				}
+			} else {
+				$new_id = 1;
+			}
+			$this->request->data['Invoice']['invoice_number'] = $new_id;
+			$this->request->data['Invoice']['company_id'] = $company_id;
+			if($this->Invoice->save($this->request->data['Invoice'])){
+				foreach ($this->request->data['InvoiceLineitem'] as $key => $value) {
+					$this->request->data['InvoiceLineitem'][$key]['invoice_number'] = $new_id;
+				}
+				$this->InvoiceLineitem->saveAll($this->request->data['InvoiceLineitem']);
+				
+				$this->Session->setFlash(__('Successfully completed order #'.$new_id),'default',array(),'success');
+	
+			}
+			
+		}
+		
+	}
+
+	public function retract()
+	{
 		
 	}
 

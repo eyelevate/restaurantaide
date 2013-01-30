@@ -7,7 +7,7 @@ App::uses('AppController', 'Controller');
  */
 class TaxInfosController extends AppController {
 	public $name = 'TaxInfos';
-	public $uses = array('User','Group','TaxInfo');
+	public $uses = array('Menu','Menu_item','User','Group','TaxInfo');
 	
 	public function beforeFilter()
 	{
@@ -16,7 +16,10 @@ class TaxInfosController extends AppController {
 		$this->layout = 'admin';
 		$this->set('username',AuthComponent::user('username'));
 		$this->set('company_id',$this->Session->read('Company.company_id'));			
-
+		//set the navigation menu_id		
+		$menu_ids = $this->Menu->find('all',array('conditions'=>array('name'=>'Super Administrator')));
+		$menu_id = $menu_ids[0]['Menu']['id'];		
+		$this->Session->write('Admin.menu_id',$menu_id);	
 		//set the authorized pages
 		$this->Auth->deny('*');
 		$this->Auth->authError = 'You do not have access to this page. Please Login';
@@ -28,6 +31,15 @@ class TaxInfosController extends AppController {
  * @return void
  */
 	public function index() {
+		//set the admin navigation
+		$admin_nav = $this->Menu_item->arrangeByTiers($this->Session->read('Admin.menu_id'));	
+		$page_url = '/tax_infos/index';
+		$admin_check = $this->Menu_item->menuActiveHeaderCheck($page_url, $admin_nav);
+		$this->set('admin_nav',$admin_nav);
+		$this->set('admin_pages',$page_url);
+		$this->set('admin_check',$admin_check);			
+		
+		
 		$company_id = $this->Session->read('Company.company_id');
 		$this->paginate = array(
 			'conditions'=>array('company_id'=>$company_id),
@@ -48,6 +60,13 @@ class TaxInfosController extends AppController {
  * @return void
  */
 	public function view($id = null) {
+		//set the admin navigation
+		$admin_nav = $this->Menu_item->arrangeByTiers($this->Session->read('Admin.menu_id'));	
+		$page_url = '/tax_infos/view';
+		$admin_check = $this->Menu_item->menuActiveHeaderCheck($page_url, $admin_nav);
+		$this->set('admin_nav',$admin_nav);
+		$this->set('admin_pages',$page_url);
+		$this->set('admin_check',$admin_check);	
 		$this->TaxInfo->id = $id;
 		if (!$this->TaxInfo->exists()) {
 			throw new NotFoundException(__('Invalid tax info'));
@@ -61,6 +80,13 @@ class TaxInfosController extends AppController {
  * @return void
  */
 	public function add() {
+		//set the admin navigation
+		$admin_nav = $this->Menu_item->arrangeByTiers($this->Session->read('Admin.menu_id'));	
+		$page_url = '/tax_infos/view';
+		$admin_check = $this->Menu_item->menuActiveHeaderCheck($page_url, $admin_nav);
+		$this->set('admin_nav',$admin_nav);
+		$this->set('admin_pages',$page_url);
+		$this->set('admin_check',$admin_check);	
 		if ($this->request->is('post')) {
 			$company_id = $this->Session->read('Company.company_id');
 			$this->request->data['TaxInfo']['company_id'] = $company_id;
@@ -84,6 +110,13 @@ class TaxInfosController extends AppController {
  * @return void
  */
 	public function edit($id = null) {
+		//set the admin navigation
+		$admin_nav = $this->Menu_item->arrangeByTiers($this->Session->read('Admin.menu_id'));	
+		$page_url = '/tax_infos/edit';
+		$admin_check = $this->Menu_item->menuActiveHeaderCheck($page_url, $admin_nav);
+		$this->set('admin_nav',$admin_nav);
+		$this->set('admin_pages',$page_url);
+		$this->set('admin_check',$admin_check);	
 		$this->TaxInfo->id = $id;
 		if (!$this->TaxInfo->exists()) {
 			throw new NotFoundException(__('Invalid tax info'));

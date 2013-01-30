@@ -5,3 +5,8 @@
 .modal-backdrop{
 	background: rgba(0,0,0);
 }
+.ordersButton{
+	width:150px;
+	height:75px;
+	margin-top:3px;
+}

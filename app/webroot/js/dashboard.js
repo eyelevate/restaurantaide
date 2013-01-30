@@ -1,7 +1,9 @@
 $(document).ready(function(){
-	
+	dashboard.basicScripts();
 	dashboard.selection();
 	dashboard.numberformat();	
+	
+	dashboard.finishOrder();
 
 });
 
@@ -9,6 +11,13 @@ $(document).ready(function(){
  * Functions
  */
 dashboard = {
+	basicScripts: function(){
+		$("#cancelOrderButton").click(function(){
+			if(confirm('This will cancel your order. Are you sure?')){
+				location.reload();
+			}
+		});	
+	},
 	numberformat: function(){
 		//number formatting
 
@@ -85,6 +94,7 @@ dashboard = {
 			$("#cashTendered").val('');
 			$("#changeDue").val('');
 		});
+
 	},
 	totals: function(){
 		//first grab all of the rows from tbody get qty, pretax
@@ -127,10 +137,23 @@ dashboard = {
 		//add to payment modal
 		$(".totalDue").val(total_after_tax);
 		
+	},
+	finishOrder: function(){
+		$("#finishOrderButton").click(function(){
+			var type = $("#paymentTypeUl .active").attr('row');
+			$(".paymentTypeInput").val(type);
+
+			//do printing scripts here
+			
+			
+			//send the form 
+			$(".invoiceForm").submit();
+		});
 	}
 }
 
 var newRow = function(count, order_id, order_name, cat_name, cat_id, new_price, after_tax){
+	after_tax = after_tax.toFixed(2);
 	var idx = $("#orderProcessingTable tbody tr").length;
 
 	tr = 
@@ -142,17 +165,18 @@ var newRow = function(count, order_id, order_name, cat_name, cat_id, new_price, 
 			'<td>'+
 				'<button type="button" id="remove-'+order_id+'" class="btn btn-link btn-small" style="padding:0;">remove</button>'+
 				'<div class="hiddenOrderForm hide">'+
-					'<input class="qtyInput" type="hidden" name="data[InvoiceLineItem]['+idx+'][quantity]" value="'+count+'"/>'+
-					'<input class="catidInput" type="hidden" name="data[InvoiceLineItem]['+idx+'][category]" value="'+cat_id+'"/>'+
-					'<input class="orderidInput" type="hidden" name="data[InvoiceLineItem]['+idx+'][order_id]" value="'+order_id+'"/>'+
-					'<input class="pretaxInput" type="hidden" name="data[InvoiceLineItem]['+idx+'][pre_tax]" value="'+new_price+'"/>'+
-					'<input class="aftertaxInput" type="hidden" name="data[InvoiceLineItem]['+idx+'][after_tax]" value="'+after_tax+'"/>'+
+					'<input class="qtyInput" type="hidden" name="data[InvoiceLineitem]['+idx+'][quantity]" value="'+count+'"/>'+
+					'<input class="catidInput" type="hidden" name="data[InvoiceLineitem]['+idx+'][category]" value="'+cat_id+'"/>'+
+					'<input class="orderidInput" type="hidden" name="data[InvoiceLineitem]['+idx+'][order_id]" value="'+order_id+'"/>'+
+					'<input class="pretaxInput" type="hidden" name="data[InvoiceLineitem]['+idx+'][pre_tax]" value="'+new_price+'"/>'+
+					'<input class="aftertaxInput" type="hidden" name="data[InvoiceLineitem]['+idx+'][after_tax]" value="'+after_tax+'"/>'+
 				'<div>'+
 			'</td>'+
 		'</tr>';
 	return tr;
 }
 var updateRow = function(count, order_id, order_name, cat_name, cat_id, new_price, after_tax){
+	after_tax = after_tax.toFixed(2);
 	var idx = $("#orderProcessingTable tbody #orderTr-"+order_id).attr('row');
 
 	tr = 
@@ -163,11 +187,11 @@ var updateRow = function(count, order_id, order_name, cat_name, cat_id, new_pric
 		'<td>'+
 			'<button type="button" id="remove-'+order_id+'" class="btn btn-link btn-small" style="padding:0;">remove</button>'+
 			'<div class="hiddenOrderForm hide">'+
-				'<input class="qtyInput" type="hidden" name="data[InvoiceLineItem]['+idx+'][quantity]" value="'+count+'"/>'+
-				'<input class="catidInput" type="hidden" name="data[InvoiceLineItem]['+idx+'][category]" value="'+cat_id+'"/>'+
-				'<input class="orderidInput" type="hidden" name="data[InvoiceLineItem]['+idx+'][order_id]" value="'+order_id+'"/>'+
-				'<input class="pretaxInput" type="hidden" name="data[InvoiceLineItem]['+idx+'][pre_tax]" value="'+new_price+'"/>'+
-				'<input class="aftertaxInput" type="hidden" name="data[InvoiceLineItem]['+idx+'][after_tax]" value="'+after_tax+'"/>'+
+				'<input class="qtyInput" type="hidden" name="data[InvoiceLineitem]['+idx+'][quantity]" value="'+count+'"/>'+
+				'<input class="catidInput" type="hidden" name="data[InvoiceLineitem]['+idx+'][category]" value="'+cat_id+'"/>'+
+				'<input class="orderidInput" type="hidden" name="data[InvoiceLineitem]['+idx+'][order_id]" value="'+order_id+'"/>'+
+				'<input class="pretaxInput" type="hidden" name="data[InvoiceLineitem]['+idx+'][pre_tax]" value="'+new_price+'"/>'+
+				'<input class="aftertaxInput" type="hidden" name="data[InvoiceLineitem]['+idx+'][after_tax]" value="'+after_tax+'"/>'+
 			'<div>'+
 		'</td>';
 	return tr;	
@@ -188,6 +212,7 @@ var updateTotalBeforeTax = function(before_tax){
 }
 
 var updateTotalAfterTax = function(after_tax){
+
 	input = 
 		'<input type="hidden" name="data[Invoice][after_tax]" value="'+after_tax+'"/>';
 		

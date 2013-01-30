@@ -8,7 +8,7 @@ App::uses('AppController', 'Controller');
 class UsersController extends AppController {
 	public $name = 'Users';
 	
-	public $uses = array('User','Group');
+	public $uses = array('Menu','Menu_item','User','Group');
 	public $components = array(
 		'Auth'=>array(
 			'loginRedirect'=>array('controller'=>'admins','action'=>'login'),
@@ -22,6 +22,12 @@ class UsersController extends AppController {
 	public function beforeFilter() {
 	    parent::beforeFilter();
 		$this->set('username',AuthComponent::user('username'));
+		
+		//set the navigation menu_id		
+		$menu_ids = $this->Menu->find('all',array('conditions'=>array('name'=>'Super Administrator')));
+		$menu_id = $menu_ids[0]['Menu']['id'];		
+		$this->Session->write('Admin.menu_id',$menu_id);			
+		
 		//deny all public users to this controller
 		$this->Auth->allow('*');
 		$this->layout='admin';
@@ -32,8 +38,23 @@ class UsersController extends AppController {
  * @return void
  */
 	public function index() {
+		//set the admin navigation
+		$admin_nav = $this->Menu_item->arrangeByTiers($this->Session->read('Admin.menu_id'));	
+		$page_url = '/users/index';
+		$admin_check = $this->Menu_item->menuActiveHeaderCheck($page_url, $admin_nav);
+		$this->set('admin_nav',$admin_nav);
+		$this->set('admin_pages',$page_url);
+		$this->set('admin_check',$admin_check);			
+		$company_id = $this->Session->read('Company.company_id');
+		$this->paginate = array(
+			'conditions'=>array('company_id'=>$company_id),
+		    'limit' => 10, // this was the option which you forgot to mention
+		    'order' => array(
+		        'id' => 'ASC')
+		);	
+		$users = $this->paginate('User');	
 		$this->User->recursive = 0;
-		$this->set('users', $this->paginate());
+		$this->set('users', $users);
 	}
 
 /**
@@ -44,6 +65,14 @@ class UsersController extends AppController {
  * @return void
  */
 	public function view($id = null) {
+		//set the admin navigation
+		$admin_nav = $this->Menu_item->arrangeByTiers($this->Session->read('Admin.menu_id'));	
+		$page_url = '/users/view';
+		$admin_check = $this->Menu_item->menuActiveHeaderCheck($page_url, $admin_nav);
+		$this->set('admin_nav',$admin_nav);
+		$this->set('admin_pages',$page_url);
+		$this->set('admin_check',$admin_check);		
+		
 		$this->User->id = $id;
 		if (!$this->User->exists()) {
 			throw new NotFoundException(__('Invalid user'));
@@ -57,6 +86,14 @@ class UsersController extends AppController {
  * @return void
  */
 	public function add() {
+		//set the admin navigation
+		$admin_nav = $this->Menu_item->arrangeByTiers($this->Session->read('Admin.menu_id'));	
+		$page_url = '/users/add';
+		$admin_check = $this->Menu_item->menuActiveHeaderCheck($page_url, $admin_nav);
+		$this->set('admin_nav',$admin_nav);
+		$this->set('admin_pages',$page_url);
+		$this->set('admin_check',$admin_check);		
+		
 		if ($this->request->is('post')) {
 			$this->User->create();
 			$this->request->data['User']['company_id'] = AuthComponent::user('company_id');
@@ -79,6 +116,13 @@ class UsersController extends AppController {
  * @return void
  */
 	public function edit($id = null) {
+		//set the admin navigation
+		$admin_nav = $this->Menu_item->arrangeByTiers($this->Session->read('Admin.menu_id'));	
+		$page_url = '/users/edit';
+		$admin_check = $this->Menu_item->menuActiveHeaderCheck($page_url, $admin_nav);
+		$this->set('admin_nav',$admin_nav);
+		$this->set('admin_pages',$page_url);
+		$this->set('admin_check',$admin_check);		
 		$this->User->id = $id;
 		if (!$this->User->exists()) {
 			throw new NotFoundException(__('Invalid user'));

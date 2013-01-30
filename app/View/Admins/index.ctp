@@ -15,13 +15,13 @@ echo $this->TwitterBootstrap->flashes(array(
 );
 
 foreach ($taxes as $tax) {
-	$tax_rate = ($tax['TaxInfo']['rate'] / 100);
+	$tax_rate = $tax['TaxInfo']['rate'];
 }
 
-echo $this->Form->create();
+echo $this->Form->create('Invoice',array('class'=>'invoiceForm'));
 echo $this->Form->input('tax',array('type'=>'hidden','disabled'=>'disabled', 'value'=>$tax_rate,'id'=>'tax_rate'));
 ?>
-<div class="row-fluid span12 formSep">
+<div class="row-fluid span12">
 	<div class="row">
 		<div class="span6">
 			<h3 class="heading">Order Selection</h3>
@@ -38,16 +38,16 @@ echo $this->Form->input('tax',array('type'=>'hidden','disabled'=>'disabled', 'va
 			echo $this->element('/dashboard/order_processing',array(
 			));
 			?>
-		</div>		
+		<div>
+			<button id="cancelOrderButton" class="btn btn-danger btn-large" type="button">Cancel</button>
+		
+			<div step="1" class="paymentButton btn btn-primary btn-large pull-right" href="#processPayment" role="button" data-toggle="modal" data-backdrop="static" data-keyboard="false" >Payment</div>
+		</div>
+		</div>	
+	
 	</div>
 
 </div>
-<div>
-	<button class="btn btn-danger btn-large">Cancel</button>
-
-	<div step="1" class="paymentButton btn btn-primary btn-large pull-right" href="#processPayment" role="button" data-toggle="modal" data-backdrop="static" data-keyboard="false" >Payment</div>
-</div>
-
  
 <!-- Modal -->
 <div id="processPayment" row="1" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="sampleWarningLabel" aria-hidden="true">
@@ -57,7 +57,7 @@ echo $this->Form->input('tax',array('type'=>'hidden','disabled'=>'disabled', 'va
 	  	</div>
 	 	<div class="modal-body">
 			<div class="tabbable tabs-left">
-				<ul class="nav nav-tabs">
+				<ul id="paymentTypeUl" class="nav nav-tabs">
 					<li class="active" row="cash">
 						<a id="payment-cash" data-toggle="tab" href="#tab_cash">Cash</a>
 					</li>
@@ -165,19 +165,18 @@ echo $this->Form->input('tax',array('type'=>'hidden','disabled'=>'disabled', 'va
 			</div>
 	    
 		</div>
-	
+		
 	  	<div class="modal-footer">
 			<button class="btn btn-large pull-left" data-dismiss="modal" aria-hidden="true">Cancel</button>
-			<?php 
-			echo $this->Form->submit('Finish & Reciept',array('class'=>'btn btn-large btn-primary pull-right'));
-
-			?>
+			<button id="finishOrderButton" type="button" class="btn btn-primary btn-large pull-right" >Finish & Print</button>
 	  	</div>
 	  	
 	</div>
 
 </div>
+
 <div id="invoiceSummary"></div>
 <?php
+echo $this->Form->input('payment_type',array('type'=>'hidden','class'=>'paymentTypeInput'));
 echo $this->Form->end();
 ?>

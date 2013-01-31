@@ -6,7 +6,11 @@
 	background: rgba(0,0,0);
 }
 .ordersButton{
-	width:150px;
-	height:75px;
+	width:135px;
+	height:85px;
 	margin-top:3px;
+}
+.quickCashButton{
+	width:60px;
+	height:25px;
 }

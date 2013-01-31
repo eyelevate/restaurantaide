@@ -10,8 +10,8 @@ node default {
 	include apache
 
 	mysqldb { "bbfl":
-        user => "brevica",
-        password => "cat3dog!b",
+        user => "restaurantaide",
+        password => "root",
     }
     
     mysqldb { "cake_test":

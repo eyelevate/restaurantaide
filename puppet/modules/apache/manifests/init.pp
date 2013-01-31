@@ -30,16 +30,16 @@ class apache {
 		require => Package["apache2"],
 	}
 	
-	file { "/etc/apache2/sites-available/bbfl":
-		source => "puppet:///modules/apache/bbfl",
+	file { "/etc/apache2/sites-available/restaurantaide":
+		source => "puppet:///modules/apache/restaurantaide",
 		notify => Service["apache2"],
 		require => Package["apache2"],
 	}
 	
-	file { '/etc/apache2/sites-enabled/bbfl':
+	file { '/etc/apache2/sites-enabled/restaurantaide':
 		ensure => 'link',
 		notify => Service["apache2"],
-		target => '/etc/apache2/sites-available/bbfl',
-		require => File["/etc/apache2/sites-available/bbfl"],
+		target => '/etc/apache2/sites-available/restaurantaide',
+		require => File["/etc/apache2/sites-available/restaurantaide"],
 	}
 }

@@ -131,7 +131,63 @@ class AdminsController extends AppController {
 
 	public function retract()
 	{
+		//set the default layout
+		$this->layout = 'admin';
+		//set the admin navigation
+		$admin_nav = $this->Menu_item->arrangeByTiers($this->Session->read('Admin.menu_id'));	
+		$page_url = '/admins/retract';
+		$admin_check = $this->Menu_item->menuActiveHeaderCheck($page_url, $admin_nav);
+		$this->set('admin_nav',$admin_nav);
+		$this->set('admin_pages',$page_url);
+		$this->set('admin_check',$admin_check);
 		
+		$company_id = $this->Session->read('Company.company_id');
+		$this->paginate = array(
+			'conditions'=>array('company_id'=>$company_id),
+		    'limit' => 50, // this was the option which you forgot to mention
+		    'order' => array(
+		        'id' => 'DESC')
+		);	
+		$invoices = $this->paginate('Invoice');	
+		$this->Invoice->recursive = 0;
+		$this->set('invoices', $invoices);	
+		
+	}
+
+/**
+ * delete method
+ *
+ * @throws MethodNotAllowedException
+ * @throws NotFoundException
+ * @param string $id
+ * @return void
+ */
+	public function delete($id = null) {
+		$find = $this->Invoice->find('all',array('conditions'=>array('id'=>$id)));
+		$company_id = $this->Session->read('Company.company_id');
+		if(count($find)>0){
+			foreach ($find as $ii) {	
+				$invoice_number = $ii['Invoice']['invoice_number'];
+				$this->InvoiceLineitem->query('delete from invoice_lineitems where invoice_number="'.$invoice_number.'" 
+					and company_id="'.$company_id.'"');
+			}
+		}
+		if (!$this->request->is('post')) {
+			throw new MethodNotAllowedException();
+		}
+		$this->Invoice->id = $id;
+		if (!$this->Invoice->exists()) {
+			throw new NotFoundException(__('Invalid invoice'));
+		}
+		
+		
+		if ($this->Invoice->delete()) {
+			 
+			$this->Session->setFlash(__('Invoice retracted'));
+			$this->redirect(array('action' => 'index'));
+		}
+		$this->Session->setFlash(__('Invoice was not deleted'));
+		$this->redirect(array('action' => 'index'));
 	}
 
 }

@@ -7,7 +7,7 @@ App::uses('AppController', 'Controller');
  */
 class CategoriesController extends AppController {
 	public $name = 'Categories';
-	public $uses = array('Menu','Menu_item','User','Group','Category','Order','Company');
+	public $uses = array('Menu','Menu_item','User','Group','Category','Order','Company','Invoice','InvoiceLineitem');
 	
 	public function beforeFilter()
 	{
@@ -137,7 +137,6 @@ class CategoriesController extends AppController {
 		$companies = $this->Category->Company->find('list');
 		$this->set(compact('companies'));
 	}
-
 /**
  * delete method
  *

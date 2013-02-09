@@ -17,9 +17,22 @@ class CategoriesController extends AppController {
 		$this->set('username',AuthComponent::user('username'));
 		$this->set('company_id',$this->Session->read('Company.company_id'));			
 		//set the navigation menu_id		
-		$menu_ids = $this->Menu->find('all',array('conditions'=>array('name'=>'Super Administrator')));
-		$menu_id = $menu_ids[0]['Menu']['id'];		
-		$this->Session->write('Admin.menu_id',$menu_id);		
+		$group_id = AuthComponent::user('group_id');
+		$user_group = $this->Group->find('all',array('conditions'=>array('id'=>$group_id)));
+		if(!empty($user_group)){
+		foreach ($user_group as $ug) {
+			$group_name = $ug['Group']['name'];
+		}		
+		} else {
+			$group_name = '';
+		}
+		$menu_ids = $this->Menu->find('all',array('conditions'=>array('name'=>$group_name)));
+		if(!empty($menu_ids)){
+			$menu_id = $menu_ids[0]['Menu']['id'];	
+		} else {
+			$menu_id = '0';
+		}	
+		$this->Session->write('Admin.menu_id',$menu_id);	
 		//set the authorized pages
 		$this->Auth->deny('*');
 		$this->Auth->authError = 'You do not have access to this page. Please Login';

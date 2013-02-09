@@ -22,9 +22,22 @@ class MenusController extends AppController {
 		
 		
 		//set the navigation menu_id		
-		$menu_ids = $this->Menu->find('all',array('conditions'=>array('name'=>'Super Administrator')));
-		$menu_id = $menu_ids[0]['Menu']['id'];		
-		$this->Session->write('Admin.menu_id',$menu_id);		
+		$group_id = AuthComponent::user('group_id');
+		$user_group = $this->Group->find('all',array('conditions'=>array('id'=>$group_id)));
+		if(!empty($user_group)){
+		foreach ($user_group as $ug) {
+			$group_name = $ug['Group']['name'];
+		}		
+		} else {
+			$group_name = '';
+		}
+		$menu_ids = $this->Menu->find('all',array('conditions'=>array('name'=>$group_name)));
+		if(!empty($menu_ids)){
+			$menu_id = $menu_ids[0]['Menu']['id'];	
+		} else {
+			$menu_id = '0';
+		}	
+		$this->Session->write('Admin.menu_id',$menu_id);	
 		
 		//deny all public users to this controller
 		$this->Auth->deny('*');

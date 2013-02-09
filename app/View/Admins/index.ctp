@@ -15,7 +15,7 @@ echo $this->TwitterBootstrap->flashes(array(
 );
 
 foreach ($taxes as $tax) {
-	$tax_rate = $tax['TaxInfo']['rate'];
+	$tax_rate = $tax['TaxInfo']['rate'] / 100;
 }
 
 echo $this->Form->create('Invoice',array('class'=>'invoiceForm'));

@@ -51,4 +51,16 @@ class Category extends AppModel {
 			'order' => ''
 		)
 	);
+	
+	public function getCategoryName($category_id)
+	{
+		$categories = $this->request('all',array('conditions'=>array('id'=>$id)));
+		if(count($categories) > 0){
+			foreach ($categories as $c) {
+				$category_name = $c['Category']['name'];
+			}
+		}
+		
+		return $category_name;
+	}
 }

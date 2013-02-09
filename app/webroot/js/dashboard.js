@@ -168,7 +168,7 @@ var newRow = function(count, order_id, order_name, cat_name, cat_id, new_price, 
 					'<input class="qtyInput" type="hidden" name="data[InvoiceLineitem]['+idx+'][quantity]" value="'+count+'"/>'+
 					'<input class="catidInput" type="hidden" name="data[InvoiceLineitem]['+idx+'][category]" value="'+cat_id+'"/>'+
 					'<input class="orderidInput" type="hidden" name="data[InvoiceLineitem]['+idx+'][order_id]" value="'+order_id+'"/>'+
-					'<input class="pretaxInput" type="hidden" name="data[InvoiceLineitem]['+idx+'][pre_tax]" value="'+new_price+'"/>'+
+					'<input class="pretaxInput" type="hidden" name="data[InvoiceLineitem]['+idx+'][before_tax]" value="'+new_price+'"/>'+
 					'<input class="aftertaxInput" type="hidden" name="data[InvoiceLineitem]['+idx+'][after_tax]" value="'+after_tax+'"/>'+
 				'<div>'+
 			'</td>'+

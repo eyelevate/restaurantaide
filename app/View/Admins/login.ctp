@@ -8,7 +8,7 @@ echo $this->TwitterBootstrap->flashes(array(
 
 ?>
 <div class="row-fluid">
-	<div class="container span10 offset5">
+	<div class="container">
 			<?php
 			echo $this->Form->create('User');
 			echo $this->Form->input('username');

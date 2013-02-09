@@ -2,25 +2,13 @@
 # vi: set ft=ruby :
 
 Vagrant::Config.run do |config|
-  # All Vagrant configuration is done here. The most common configuration
-  # options are documented and commented below. For a complete reference,
-  # please see the online documentation at vagrantup.com.
 
+#config.vm.define :web do |web_config|
   # Every Vagrant virtual environment requires a box to build off of.
-  config.vm.box = "lucid32"
+#  web_config.vm.box = "lucid32"
+#  web_config.vm.box_url = "http://files.vagrantup.com/lucid32.box"
 
-  # The url from where the 'config.vm.box' box will be fetched if it
-  # doesn't already exist on the user's system.
-  config.vm.box_url = "http://files.vagrantup.com/lucid32.box"
-
-  # Boot with a GUI so you can see the screen. (Default is headless)
-  # config.vm.boot_mode = :gui
-
-  # Assign this VM to a host-only network IP, allowing you to access it
-  # via the IP. Host-only networks can talk to the host machine as well as
-  # any other machines on the same network, but cannot be accessed (through this
-  # network interface) by any external networks.
-  # config.vm.network :hostonly, "192.168.1.97"
+#  web_config.vm.network :bridged, "192.168.33.10"
 
   # Assign this VM to a bridged network, allowing you to connect directly to a
   # network using the host's network device. This makes the VM appear as another
@@ -29,25 +17,80 @@ Vagrant::Config.run do |config|
 
   # Forward a port from the guest to the host, which allows for outside
   # computers to access the VM, whereas host only networking does not.
-  
-  # Mysql
-  config.vm.forward_port 3326, 3330
-  # Apache
-  config.vm.forward_port 80, 7890
+#   web_config.vm.forward_port 80, 8080
 
   # Share an additional folder to the guest VM. The first argument is
   # an identifier, the second is the path on the guest to mount the
   # folder, and the third is the path on the host to the actual folder.
-  # config.vm.share_folder "restaurantaide", "/restaurantaide", "restaurantaide"
+  # config.vm.share_folder "v-data", "/vagrant_data", "../data"
 
-  # Enable provisioning with Puppet stand alone.  Puppet manifests
-  # are contained in a directory path relative to this Vagrantfile.
-  # You will need to create the manifests directory and a manifest in
-  # the file base.pp in the manifests_path directory.
+#web_config.vm.provision :chef_solo do |chef|
+#    chef.cookbooks_path = "cookbooks"
+#	chef.add_recipe "apt"
+#    chef.add_recipe "vagrant_main"
+#	chef.add_recipe "apache2::mod_php5"
+	#chef.add_recipe "lamp::mcrypt"
+#	chef.add_recipe "php"
+#	chef.add_recipe "php::module_mysql"
+#	chef.add_recipe "git"
+	#chef.add_recipe "mysql"
 
-  config.vm.provision :puppet, :options => ["--modulepath","puppet/modules"] do |puppet|
-    puppet.manifests_path = "puppet/manifests"
-    puppet.manifest_file  = "base.pp"
-    puppet.module_path  = "puppet/modules"
+	# Setup site variables
+#	chef.json = {
+		#:apache2 => {
+		#	:default_modules => ["php5"]
+		#}
+		#:mysql => {
+		#	:server_root_password => "test"
+		#}
+#	}
+#  end
+  
+#end#web server
+
+config.vm.define :db do |db_config|
+  # Every Vagrant virtual environment requires a box to build off of.
+  db_config.vm.box = "lucid32"
+  db_config.vm.box_url = "http://files.vagrantup.com/lucid32.box"
+
+  db_config.vm.network :bridged, "192.168.33.11"
+
+  # Assign this VM to a bridged network, allowing you to connect directly to a
+  # network using the host's network device. This makes the VM appear as another
+  # physical device on your network.
+  # config.vm.network :bridged
+
+  # Forward a port from the guest to the host, which allows for outside
+  # computers to access the VM, whereas host only networking does not.
+   db_config.vm.forward_port 3306, 3306
+   db_config.vm.forward_port 80, 8080
+
+  # Share an additional folder to the guest VM. The first argument is
+  # an identifier, the second is the path on the guest to mount the
+  # folder, and the third is the path on the host to the actual folder.
+  # config.vm.share_folder "v-data", "/vagrant_data", "../data"
+
+db_config.vm.provision :chef_solo do |chef|
+    chef.cookbooks_path = "cookbooks"
+	chef.add_recipe "apt"
+    chef.add_recipe "vagrant_main"
+	chef.add_recipe "apache2::mod_php5"
+	chef.add_recipe "lamp::mcrypt"
+	chef.add_recipe "php"
+	chef.add_recipe "php::module_mysql"
+	chef.add_recipe "git"
+	chef.add_recipe "mysql"
+
+	# Setup site variables
+	chef.json = {
+		#:apache2 => {
+		#	:default_modules => ["php5"]
+		#}
+		:mysql => {
+			:server_root_password => "test"
+		}
+	}
   end
+  
+end#db server
 end

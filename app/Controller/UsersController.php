@@ -29,7 +29,7 @@ class UsersController extends AppController {
 		$this->Session->write('Admin.menu_id',$menu_id);			
 		
 		//deny all public users to this controller
-		$this->Auth->allow('*');
+		$this->Auth->deny('*');
 		$this->layout='admin';
 	}
 /**

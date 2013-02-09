@@ -44,7 +44,11 @@
 	Router::connect('/orders',array('controller'=>'orders','action'=>'index'));
 	Router::connect('/orders/:action',array('controller'=>'orders'));
 	Router::connect('/orders/:action/*',array('controller'=>'orders'));	
-	//Orders Controller
+	//Reports Controller
+	Router::connect('/reports',array('controller'=>'reports','action'=>'index'));
+	Router::connect('/reports/:action',array('controller'=>'reports'));
+	Router::connect('/reports/:action/*',array('controller'=>'reports'));	
+	//taxes Controller
 	Router::connect('/tax_infos',array('controller'=>'tax_infos','action'=>'index'));
 	Router::connect('/tax_infos/:action',array('controller'=>'tax_infos'));
 	Router::connect('/tax_infos/:action/*',array('controller'=>'tax_infos'));	

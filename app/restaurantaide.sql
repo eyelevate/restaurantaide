@@ -1,27 +1,25 @@
--- MySQL dump 10.13  Distrib 5.1.67, for debian-linux-gnu (i486)
+-- phpMyAdmin SQL Dump
+-- version 3.5.1
+-- http://www.phpmyadmin.net
 --
--- Host: localhost    Database: restaurantaide
--- ------------------------------------------------------
--- Server version	5.1.67-0ubuntu0.10.04.1
+-- Host: localhost
+-- Generation Time: Feb 08, 2013 at 10:23 AM
+-- Server version: 5.5.20
+-- PHP Version: 5.4.3
 
-/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
-/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
-/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8 */;
-/*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
-/*!40103 SET TIME_ZONE='+00:00' */;
-/*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
-/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
-/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
-/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
+SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
+SET time_zone = "+00:00";
+
+--
+-- Database: `restaurantaide`
+--
+
+-- --------------------------------------------------------
 
 --
 -- Table structure for table `acl_permissions`
 --
 
-DROP TABLE IF EXISTS `acl_permissions`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `acl_permissions` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `url` varchar(250) DEFAULT NULL,
@@ -29,26 +27,14 @@ CREATE TABLE `acl_permissions` (
   `created` datetime NOT NULL,
   `modified` datetime NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=latin1;
-/*!40101 SET character_set_client = @saved_cs_client */;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
---
--- Dumping data for table `acl_permissions`
---
-
-LOCK TABLES `acl_permissions` WRITE;
-/*!40000 ALTER TABLE `acl_permissions` DISABLE KEYS */;
-INSERT INTO `acl_permissions` VALUES (1,'controllers/Admins',2,'2013-01-28 21:01:55','2013-01-28 21:01:55'),(2,'controllers/Categories',2,'2013-01-28 21:01:55','2013-01-28 21:01:55'),(3,'controllers/Companies',2,'2013-01-28 21:01:55','2013-01-28 21:01:55'),(4,'controllers/Groups',2,'2013-01-28 21:01:55','2013-01-28 21:01:55'),(5,'controllers/Orders',2,'2013-01-28 21:01:55','2013-01-28 21:01:55'),(6,'controllers/Pages',2,'2013-01-28 21:01:55','2013-01-28 21:01:55'),(7,'controllers/Printers',2,'2013-01-28 21:01:55','2013-01-28 21:01:55'),(8,'controllers/TaxInfos',2,'2013-01-28 21:01:55','2013-01-28 21:01:55'),(9,'controllers/Users',2,'2013-01-28 21:01:55','2013-01-28 21:01:55');
-/*!40000 ALTER TABLE `acl_permissions` ENABLE KEYS */;
-UNLOCK TABLES;
+-- --------------------------------------------------------
 
 --
 -- Table structure for table `acos`
 --
 
-DROP TABLE IF EXISTS `acos`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `acos` (
   `id` int(10) NOT NULL AUTO_INCREMENT,
   `parent_id` int(10) DEFAULT NULL,
@@ -58,26 +44,141 @@ CREATE TABLE `acos` (
   `lft` int(10) DEFAULT NULL,
   `rght` int(10) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=68 DEFAULT CHARSET=latin1;
-/*!40101 SET character_set_client = @saved_cs_client */;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=128 ;
 
 --
 -- Dumping data for table `acos`
 --
 
-LOCK TABLES `acos` WRITE;
-/*!40000 ALTER TABLE `acos` DISABLE KEYS */;
-INSERT INTO `acos` VALUES (1,NULL,NULL,NULL,'controllers',1,134),(2,1,NULL,NULL,'Admins',2,19),(3,2,NULL,NULL,'login',3,4),(4,2,NULL,NULL,'logout',5,6),(5,2,NULL,NULL,'index',7,8),(6,2,NULL,NULL,'retract',9,10),(7,2,NULL,NULL,'add',11,12),(8,2,NULL,NULL,'edit',13,14),(9,2,NULL,NULL,'view',15,16),(10,2,NULL,NULL,'delete',17,18),(11,1,NULL,NULL,'Categories',20,31),(12,11,NULL,NULL,'index',21,22),(13,11,NULL,NULL,'view',23,24),(14,11,NULL,NULL,'add',25,26),(15,11,NULL,NULL,'edit',27,28),(16,11,NULL,NULL,'delete',29,30),(17,1,NULL,NULL,'Companies',32,43),(18,17,NULL,NULL,'index',33,34),(19,17,NULL,NULL,'view',35,36),(20,17,NULL,NULL,'add',37,38),(21,17,NULL,NULL,'edit',39,40),(22,17,NULL,NULL,'delete',41,42),(23,1,NULL,NULL,'Groups',44,57),(24,23,NULL,NULL,'index',45,46),(25,23,NULL,NULL,'view',47,48),(26,23,NULL,NULL,'add',49,50),(27,23,NULL,NULL,'initializeAcl',51,52),(28,23,NULL,NULL,'edit',53,54),(29,23,NULL,NULL,'delete',55,56),(30,1,NULL,NULL,'Menus',58,71),(31,30,NULL,NULL,'index',59,60),(32,30,NULL,NULL,'view',61,62),(33,30,NULL,NULL,'add',63,64),(34,30,NULL,NULL,'edit',65,66),(35,30,NULL,NULL,'delete',67,68),(36,30,NULL,NULL,'request',69,70),(37,1,NULL,NULL,'Orders',72,83),(38,37,NULL,NULL,'index',73,74),(39,37,NULL,NULL,'view',75,76),(40,37,NULL,NULL,'add',77,78),(41,37,NULL,NULL,'edit',79,80),(42,37,NULL,NULL,'delete',81,82),(43,1,NULL,NULL,'Pages',84,97),(44,43,NULL,NULL,'display',85,86),(45,43,NULL,NULL,'add',87,88),(46,43,NULL,NULL,'edit',89,90),(47,43,NULL,NULL,'index',91,92),(48,43,NULL,NULL,'view',93,94),(49,43,NULL,NULL,'delete',95,96),(50,1,NULL,NULL,'Printers',98,109),(51,50,NULL,NULL,'index',99,100),(52,50,NULL,NULL,'view',101,102),(53,50,NULL,NULL,'add',103,104),(54,50,NULL,NULL,'edit',105,106),(55,50,NULL,NULL,'delete',107,108),(56,1,NULL,NULL,'TaxInfos',110,121),(57,56,NULL,NULL,'index',111,112),(58,56,NULL,NULL,'view',113,114),(59,56,NULL,NULL,'add',115,116),(60,56,NULL,NULL,'edit',117,118),(61,56,NULL,NULL,'delete',119,120),(62,1,NULL,NULL,'Users',122,133),(63,62,NULL,NULL,'index',123,124),(64,62,NULL,NULL,'view',125,126),(65,62,NULL,NULL,'add',127,128),(66,62,NULL,NULL,'edit',129,130),(67,62,NULL,NULL,'delete',131,132);
-/*!40000 ALTER TABLE `acos` ENABLE KEYS */;
-UNLOCK TABLES;
+INSERT INTO `acos` (`id`, `parent_id`, `model`, `foreign_key`, `alias`, `lft`, `rght`) VALUES
+(1, NULL, NULL, NULL, 'controllers', 1, 242),
+(2, 1, NULL, NULL, 'Companies', 2, 19),
+(3, 2, NULL, NULL, 'index', 3, 4),
+(4, 2, NULL, NULL, 'view', 5, 6),
+(5, 2, NULL, NULL, 'add', 7, 8),
+(6, 2, NULL, NULL, 'edit', 9, 10),
+(7, 2, NULL, NULL, 'delete', 11, 12),
+(8, 2, NULL, NULL, 'isAuthorized', 13, 14),
+(9, 1, NULL, NULL, 'Groups', 20, 33),
+(10, 9, NULL, NULL, 'index', 21, 22),
+(11, 9, NULL, NULL, 'view', 23, 24),
+(12, 9, NULL, NULL, 'add', 25, 26),
+(13, 9, NULL, NULL, 'edit', 27, 28),
+(14, 9, NULL, NULL, 'delete', 29, 30),
+(15, 9, NULL, NULL, 'isAuthorized', 31, 32),
+(16, 1, NULL, NULL, 'Invoices', 34, 47),
+(17, 16, NULL, NULL, 'index', 35, 36),
+(18, 16, NULL, NULL, 'view', 37, 38),
+(19, 16, NULL, NULL, 'add', 39, 40),
+(20, 16, NULL, NULL, 'edit', 41, 42),
+(21, 16, NULL, NULL, 'delete', 43, 44),
+(22, 16, NULL, NULL, 'isAuthorized', 45, 46),
+(23, 1, NULL, NULL, 'Pages', 48, 53),
+(24, 23, NULL, NULL, 'display', 49, 50),
+(25, 23, NULL, NULL, 'isAuthorized', 51, 52),
+(26, 1, NULL, NULL, 'Users', 54, 71),
+(27, 26, NULL, NULL, 'index', 55, 56),
+(29, 26, NULL, NULL, 'add', 57, 58),
+(30, 26, NULL, NULL, 'edit', 59, 60),
+(31, 26, NULL, NULL, 'delete', 61, 62),
+(32, 26, NULL, NULL, 'login', 63, 64),
+(33, 26, NULL, NULL, 'logout', 65, 66),
+(34, 26, NULL, NULL, 'isAuthorized', 67, 68),
+(35, 1, NULL, NULL, 'AclExtras', 72, 73),
+(36, 1, NULL, NULL, 'Members', 74, 93),
+(37, 36, NULL, NULL, 'index', 75, 76),
+(38, 36, NULL, NULL, 'isAuthorized', 77, 78),
+(39, 1, NULL, NULL, 'Orders', 94, 109),
+(40, 39, NULL, NULL, 'index', 95, 96),
+(42, 39, NULL, NULL, 'add', 97, 98),
+(43, 39, NULL, NULL, 'edit', 99, 100),
+(44, 39, NULL, NULL, 'delete', 101, 102),
+(45, 39, NULL, NULL, 'isAuthorized', 103, 104),
+(46, 26, NULL, NULL, 'initDB', 69, 70),
+(47, 2, NULL, NULL, 'login', 15, 16),
+(48, 2, NULL, NULL, 'logout', 17, 18),
+(49, 36, NULL, NULL, 'dashboard', 79, 80),
+(50, 36, NULL, NULL, 'setup', 81, 82),
+(51, 36, NULL, NULL, 'management', 83, 84),
+(53, 36, NULL, NULL, 'marketing', 85, 86),
+(54, 36, NULL, NULL, 'help', 87, 88),
+(55, 36, NULL, NULL, 'utilities', 89, 90),
+(56, 1, NULL, NULL, 'Categories', 110, 123),
+(57, 56, NULL, NULL, 'index', 111, 112),
+(59, 56, NULL, NULL, 'add', 113, 114),
+(60, 56, NULL, NULL, 'edit', 115, 116),
+(61, 56, NULL, NULL, 'delete', 117, 118),
+(62, 56, NULL, NULL, 'isAuthorized', 119, 120),
+(63, 36, NULL, NULL, 'dashboard_request', 91, 92),
+(64, 1, NULL, NULL, 'Printers', 124, 135),
+(65, 64, NULL, NULL, 'index', 125, 126),
+(67, 64, NULL, NULL, 'add', 127, 128),
+(68, 64, NULL, NULL, 'edit', 129, 130),
+(69, 64, NULL, NULL, 'delete', 131, 132),
+(70, 64, NULL, NULL, 'isAuthorized', 133, 134),
+(71, 1, NULL, NULL, 'Reports', 136, 165),
+(72, 71, NULL, NULL, 'index', 137, 138),
+(73, 71, NULL, NULL, 'today', 139, 140),
+(74, 71, NULL, NULL, 'yesterday', 141, 142),
+(75, 71, NULL, NULL, 'byDates', 143, 144),
+(76, 71, NULL, NULL, 'thisWeek', 145, 146),
+(77, 71, NULL, NULL, 'lastWeek', 147, 148),
+(79, 71, NULL, NULL, 'thisMonth', 149, 150),
+(80, 71, NULL, NULL, 'lastMonth', 151, 152),
+(81, 71, NULL, NULL, 'byMonth', 153, 154),
+(82, 71, NULL, NULL, 'thisYear', 155, 156),
+(83, 71, NULL, NULL, 'lastYear', 157, 158),
+(84, 71, NULL, NULL, 'byYear', 159, 160),
+(85, 71, NULL, NULL, 'isAuthorized', 161, 162),
+(86, 71, NULL, NULL, 'byWeeks', 163, 164),
+(87, 39, NULL, NULL, 'request', 105, 106),
+(88, 1, NULL, NULL, 'FusionCharts', 166, 241),
+(89, 88, NULL, NULL, 'CombinationDemo', 167, 174),
+(90, 89, NULL, NULL, 'column3dlinedy', 168, 169),
+(91, 89, NULL, NULL, 'column2dlinedy', 170, 171),
+(92, 89, NULL, NULL, 'isAuthorized', 172, 173),
+(93, 88, NULL, NULL, 'FinancialDemo', 175, 180),
+(94, 93, NULL, NULL, 'candlestick', 176, 177),
+(95, 93, NULL, NULL, 'isAuthorized', 178, 179),
+(96, 88, NULL, NULL, 'FusionChartsDemo', 181, 186),
+(97, 96, NULL, NULL, 'index', 182, 183),
+(98, 96, NULL, NULL, 'isAuthorized', 184, 185),
+(99, 88, NULL, NULL, 'MultiSeriesDemo', 187, 200),
+(100, 99, NULL, NULL, 'column3d', 188, 189),
+(101, 99, NULL, NULL, 'column2d', 190, 191),
+(102, 99, NULL, NULL, 'area2d', 192, 193),
+(103, 99, NULL, NULL, 'line2d', 194, 195),
+(104, 99, NULL, NULL, 'bar2d', 196, 197),
+(105, 99, NULL, NULL, 'isAuthorized', 198, 199),
+(106, 88, NULL, NULL, 'OtherDemo', 201, 208),
+(107, 106, NULL, NULL, 'gantt', 202, 203),
+(108, 106, NULL, NULL, 'funnel', 204, 205),
+(109, 106, NULL, NULL, 'isAuthorized', 206, 207),
+(110, 88, NULL, NULL, 'SingleSeriesDemo', 209, 228),
+(111, 110, NULL, NULL, 'column2d', 210, 211),
+(112, 110, NULL, NULL, 'column3d', 212, 213),
+(113, 110, NULL, NULL, 'line2d', 214, 215),
+(114, 110, NULL, NULL, 'pie3d', 216, 217),
+(115, 110, NULL, NULL, 'pie2d', 218, 219),
+(116, 110, NULL, NULL, 'bar2d', 220, 221),
+(117, 110, NULL, NULL, 'area2d', 222, 223),
+(118, 110, NULL, NULL, 'doughnut2d', 224, 225),
+(119, 110, NULL, NULL, 'isAuthorized', 226, 227),
+(120, 88, NULL, NULL, 'StackedDemo', 229, 240),
+(121, 120, NULL, NULL, 'column2d', 230, 231),
+(122, 120, NULL, NULL, 'column3d', 232, 233),
+(123, 120, NULL, NULL, 'bar2d', 234, 235),
+(124, 120, NULL, NULL, 'area2d', 236, 237),
+(125, 120, NULL, NULL, 'isAuthorized', 238, 239),
+(126, 56, NULL, NULL, 'reorder', 121, 122),
+(127, 39, NULL, NULL, 'reorder', 107, 108);
+
+-- --------------------------------------------------------
 
 --
 -- Table structure for table `aros`
 --
 
-DROP TABLE IF EXISTS `aros`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `aros` (
   `id` int(10) NOT NULL AUTO_INCREMENT,
   `parent_id` int(10) DEFAULT NULL,
@@ -87,26 +188,29 @@ CREATE TABLE `aros` (
   `lft` int(10) DEFAULT NULL,
   `rght` int(10) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
-/*!40101 SET character_set_client = @saved_cs_client */;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=13 ;
 
 --
 -- Dumping data for table `aros`
 --
 
-LOCK TABLES `aros` WRITE;
-/*!40000 ALTER TABLE `aros` DISABLE KEYS */;
-INSERT INTO `aros` VALUES (1,NULL,'Group',1,NULL,1,4),(2,NULL,'Group',2,NULL,5,6),(3,1,'User',1,NULL,2,3);
-/*!40000 ALTER TABLE `aros` ENABLE KEYS */;
-UNLOCK TABLES;
+INSERT INTO `aros` (`id`, `parent_id`, `model`, `foreign_key`, `alias`, `lft`, `rght`) VALUES
+(1, NULL, 'Group', 1, NULL, 1, 4),
+(3, NULL, 'Group', 2, NULL, 5, 8),
+(4, NULL, 'Group', 3, NULL, 9, 12),
+(5, NULL, 'Group', 4, NULL, 13, 18),
+(7, 1, 'User', 1, NULL, 2, 3),
+(8, 3, 'User', 2, NULL, 6, 7),
+(10, 4, 'User', 4, NULL, 10, 11),
+(11, 5, 'User', 5, NULL, 14, 15),
+(12, 5, 'User', 6, NULL, 16, 17);
+
+-- --------------------------------------------------------
 
 --
 -- Table structure for table `aros_acos`
 --
 
-DROP TABLE IF EXISTS `aros_acos`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `aros_acos` (
   `id` int(10) NOT NULL AUTO_INCREMENT,
   `aro_id` int(10) NOT NULL,
@@ -117,26 +221,111 @@ CREATE TABLE `aros_acos` (
   `_delete` varchar(2) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`),
   UNIQUE KEY `ARO_ACO_KEY` (`aro_id`,`aco_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=latin1;
-/*!40101 SET character_set_client = @saved_cs_client */;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=96 ;
 
 --
 -- Dumping data for table `aros_acos`
 --
 
-LOCK TABLES `aros_acos` WRITE;
-/*!40000 ALTER TABLE `aros_acos` DISABLE KEYS */;
-INSERT INTO `aros_acos` VALUES (1,1,1,'1','1','1','1'),(2,2,1,'-1','-1','-1','-1'),(3,2,2,'1','1','1','1'),(4,2,10,'1','1','1','1'),(5,2,16,'1','1','1','1'),(6,2,22,'1','1','1','1'),(7,2,29,'1','1','1','1'),(8,2,35,'1','1','1','1'),(9,2,42,'1','1','1','1'),(10,2,48,'1','1','1','1'),(11,2,54,'1','1','1','1');
-/*!40000 ALTER TABLE `aros_acos` ENABLE KEYS */;
-UNLOCK TABLES;
+INSERT INTO `aros_acos` (`id`, `aro_id`, `aco_id`, `_create`, `_read`, `_update`, `_delete`) VALUES
+(1, 1, 1, '1', '1', '1', '1'),
+(2, 3, 1, '-1', '-1', '-1', '-1'),
+(3, 3, 5, '1', '1', '1', '1'),
+(4, 3, 6, '1', '1', '1', '1'),
+(5, 3, 4, '1', '1', '1', '1'),
+(6, 3, 7, '1', '1', '1', '1'),
+(7, 3, 29, '1', '1', '1', '1'),
+(8, 3, 30, '1', '1', '1', '1'),
+(10, 3, 31, '1', '1', '1', '1'),
+(11, 3, 37, '1', '1', '1', '1'),
+(12, 4, 1, '-1', '-1', '-1', '-1'),
+(13, 4, 29, '1', '1', '1', '1'),
+(14, 4, 30, '1', '1', '1', '1'),
+(16, 4, 31, '1', '1', '1', '1'),
+(17, 4, 37, '1', '1', '1', '1'),
+(18, 5, 1, '-1', '-1', '-1', '-1'),
+(19, 5, 37, '1', '1', '1', '1'),
+(20, 3, 49, '1', '1', '1', '1'),
+(21, 4, 49, '1', '1', '1', '1'),
+(22, 5, 49, '1', '1', '1', '1'),
+(23, 3, 50, '1', '1', '1', '1'),
+(24, 3, 51, '1', '1', '1', '1'),
+(25, 3, 53, '1', '1', '1', '1'),
+(27, 3, 54, '1', '1', '1', '1'),
+(28, 3, 55, '1', '1', '1', '1'),
+(29, 4, 50, '1', '1', '1', '1'),
+(30, 4, 51, '1', '1', '1', '1'),
+(31, 4, 53, '1', '1', '1', '1'),
+(33, 4, 54, '1', '1', '1', '1'),
+(34, 4, 55, '1', '1', '1', '1'),
+(35, 3, 40, '1', '1', '1', '1'),
+(36, 3, 42, '1', '1', '1', '1'),
+(37, 3, 43, '1', '1', '1', '1'),
+(38, 3, 44, '1', '1', '1', '1'),
+(39, 4, 40, '1', '1', '1', '1'),
+(40, 4, 42, '1', '1', '1', '1'),
+(41, 4, 43, '1', '1', '1', '1'),
+(42, 4, 44, '1', '1', '1', '1'),
+(43, 3, 57, '1', '1', '1', '1'),
+(44, 3, 59, '1', '1', '1', '1'),
+(45, 3, 60, '1', '1', '1', '1'),
+(46, 3, 61, '1', '1', '1', '1'),
+(47, 4, 57, '1', '1', '1', '1'),
+(48, 4, 59, '1', '1', '1', '1'),
+(49, 4, 60, '1', '1', '1', '1'),
+(50, 4, 61, '1', '1', '1', '1'),
+(51, 3, 63, '1', '1', '1', '1'),
+(52, 4, 63, '1', '1', '1', '1'),
+(53, 5, 63, '1', '1', '1', '1'),
+(54, 3, 65, '1', '1', '1', '1'),
+(55, 3, 67, '1', '1', '1', '1'),
+(56, 3, 68, '1', '1', '1', '1'),
+(57, 3, 69, '1', '1', '1', '1'),
+(58, 4, 65, '1', '1', '1', '1'),
+(59, 4, 67, '1', '1', '1', '1'),
+(60, 4, 68, '1', '1', '1', '1'),
+(61, 4, 69, '1', '1', '1', '1'),
+(62, 3, 72, '1', '1', '1', '1'),
+(63, 3, 73, '1', '1', '1', '1'),
+(64, 3, 74, '1', '1', '1', '1'),
+(65, 3, 76, '1', '1', '1', '1'),
+(66, 3, 79, '1', '1', '1', '1'),
+(67, 3, 82, '1', '1', '1', '1'),
+(68, 3, 77, '1', '1', '1', '1'),
+(69, 3, 80, '1', '1', '1', '1'),
+(70, 3, 83, '1', '1', '1', '1'),
+(71, 3, 75, '1', '1', '1', '1'),
+(72, 3, 81, '1', '1', '1', '1'),
+(73, 3, 84, '1', '1', '1', '1'),
+(74, 4, 72, '1', '1', '1', '1'),
+(75, 4, 73, '1', '1', '1', '1'),
+(76, 4, 74, '1', '1', '1', '1'),
+(77, 4, 76, '1', '1', '1', '1'),
+(78, 4, 79, '1', '1', '1', '1'),
+(79, 4, 82, '1', '1', '1', '1'),
+(80, 4, 77, '1', '1', '1', '1'),
+(81, 4, 80, '1', '1', '1', '1'),
+(82, 4, 83, '1', '1', '1', '1'),
+(83, 4, 75, '1', '1', '1', '1'),
+(84, 4, 81, '1', '1', '1', '1'),
+(85, 4, 84, '1', '1', '1', '1'),
+(86, 3, 86, '1', '1', '1', '1'),
+(87, 4, 86, '1', '1', '1', '1'),
+(88, 3, 27, '1', '1', '1', '1'),
+(89, 4, 27, '1', '1', '1', '1'),
+(90, 3, 87, '1', '1', '1', '1'),
+(91, 4, 87, '1', '1', '1', '1'),
+(92, 3, 127, '1', '1', '1', '1'),
+(93, 3, 126, '1', '1', '1', '1'),
+(94, 4, 127, '1', '1', '1', '1'),
+(95, 4, 126, '1', '1', '1', '1');
+
+-- --------------------------------------------------------
 
 --
 -- Table structure for table `categories`
 --
 
-DROP TABLE IF EXISTS `categories`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `categories` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
   `company_id` int(11) NOT NULL,
@@ -146,26 +335,23 @@ CREATE TABLE `categories` (
   `created` datetime NOT NULL,
   `modified` datetime NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
-/*!40101 SET character_set_client = @saved_cs_client */;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
 
 --
 -- Dumping data for table `categories`
 --
 
-LOCK TABLES `categories` WRITE;
-/*!40000 ALTER TABLE `categories` DISABLE KEYS */;
-INSERT INTO `categories` VALUES (1,1,1,'Combo',1,'2012-09-05 00:38:46','2012-09-24 01:02:43'),(2,1,2,'Sides',1,'2012-09-05 00:38:58','2012-09-24 01:02:43'),(3,1,3,'Additional',1,'2012-09-05 00:39:53','2012-09-24 01:02:43');
-/*!40000 ALTER TABLE `categories` ENABLE KEYS */;
-UNLOCK TABLES;
+INSERT INTO `categories` (`id`, `company_id`, `category_list`, `name`, `status`, `created`, `modified`) VALUES
+(1, 1, 1, 'Combo', 1, '2012-09-05 00:38:46', '2012-09-24 01:02:43'),
+(2, 1, 2, 'Sides', 1, '2012-09-05 00:38:58', '2012-09-24 01:02:43'),
+(3, 1, 3, 'Additional', 1, '2012-09-05 00:39:53', '2012-09-24 01:02:43');
+
+-- --------------------------------------------------------
 
 --
 -- Table structure for table `companies`
 --
 
-DROP TABLE IF EXISTS `companies`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `companies` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
   `user_id` int(11) DEFAULT NULL,
@@ -185,85 +371,45 @@ CREATE TABLE `companies` (
   `created` datetime NOT NULL,
   `modified` datetime NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
-/*!40101 SET character_set_client = @saved_cs_client */;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
 
 --
 -- Dumping data for table `companies`
 --
 
-LOCK TABLES `companies` WRITE;
-/*!40000 ALTER TABLE `companies` DISABLE KEYS */;
-INSERT INTO `companies` VALUES (1,1,0,'Poja','Roosevelt',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'51f8fcbe108e6be2f9511b3c21323bb50298e5e8','1 day','2012-08-31 19:31:50','2012-08-31 19:31:50');
-/*!40000 ALTER TABLE `companies` ENABLE KEYS */;
-UNLOCK TABLES;
+INSERT INTO `companies` (`id`, `user_id`, `type`, `name`, `area`, `address`, `suite`, `city`, `state`, `zipcode`, `phone`, `phone_fax`, `email`, `password`, `timed_login`, `created`, `modified`) VALUES
+(1, 2, 0, 'Poja', 'Roosevelt', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '51f8fcbe108e6be2f9511b3c21323bb50298e5e8', '1 day', '2012-08-31 19:31:50', '2012-08-31 19:31:50');
+
+-- --------------------------------------------------------
 
 --
 -- Table structure for table `groups`
 --
 
-DROP TABLE IF EXISTS `groups`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `groups` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(100) NOT NULL,
   `created` datetime DEFAULT NULL,
   `modified` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
-/*!40101 SET character_set_client = @saved_cs_client */;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
 
 --
 -- Dumping data for table `groups`
 --
 
-LOCK TABLES `groups` WRITE;
-/*!40000 ALTER TABLE `groups` DISABLE KEYS */;
-INSERT INTO `groups` VALUES (1,'Super Administrator','2013-01-28 21:01:22','2013-01-28 21:01:22'),(2,'Super Administrator','2013-01-28 21:01:55','2013-01-28 21:01:55');
-/*!40000 ALTER TABLE `groups` ENABLE KEYS */;
-UNLOCK TABLES;
+INSERT INTO `groups` (`id`, `name`, `created`, `modified`) VALUES
+(1, 'Administrator', '2012-08-31 07:41:03', '2012-08-31 07:41:03'),
+(2, 'Owner', '2012-08-31 07:42:12', '2012-08-31 07:42:12'),
+(3, 'Manager', '2012-08-31 07:42:22', '2012-08-31 07:42:22'),
+(4, 'Employee', '2012-08-31 07:42:33', '2012-08-31 07:42:33');
 
---
--- Table structure for table `invoice_lineitems`
---
-
-DROP TABLE IF EXISTS `invoice_lineitems`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `invoice_lineitems` (
-  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
-  `invoice_number` int(11) NOT NULL,
-  `category` varchar(100) DEFAULT NULL,
-  `company_id` int(11) DEFAULT NULL,
-  `order_id` int(11) DEFAULT NULL,
-  `quantity` int(11) DEFAULT NULL,
-  `before_tax` float(11,2) DEFAULT NULL,
-  `after_tax` float(11,4) DEFAULT NULL,
-  `day_paid` varchar(10) DEFAULT NULL,
-  `created` datetime NOT NULL,
-  `modified` datetime NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=20 DEFAULT CHARSET=latin1;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `invoice_lineitems`
---
-
-LOCK TABLES `invoice_lineitems` WRITE;
-/*!40000 ALTER TABLE `invoice_lineitems` DISABLE KEYS */;
-INSERT INTO `invoice_lineitems` VALUES (1,1,'1',NULL,3,1,NULL,6.0200,NULL,'2013-01-30 00:58:54','2013-01-30 00:58:54'),(2,1,'1',NULL,2,1,NULL,5.4600,NULL,'2013-01-30 00:58:54','2013-01-30 00:58:54'),(3,2,'1',NULL,1,1,NULL,5.4600,NULL,'2013-01-30 00:59:04','2013-01-30 00:59:04'),(4,2,'1',NULL,2,1,NULL,5.4600,NULL,'2013-01-30 00:59:04','2013-01-30 00:59:04'),(5,2,'1',NULL,3,1,NULL,6.0200,NULL,'2013-01-30 00:59:04','2013-01-30 00:59:04'),(6,3,'1',NULL,1,1,NULL,5.4600,NULL,'2013-01-30 00:59:17','2013-01-30 00:59:17'),(7,3,'1',NULL,2,1,NULL,5.4600,NULL,'2013-01-30 00:59:17','2013-01-30 00:59:17'),(8,3,'1',NULL,3,1,NULL,6.0200,NULL,'2013-01-30 00:59:17','2013-01-30 00:59:17'),(9,3,'1',NULL,4,1,NULL,5.7500,NULL,'2013-01-30 00:59:17','2013-01-30 00:59:17'),(10,4,'1',NULL,9,1,NULL,6.5600,NULL,'2013-01-30 00:59:26','2013-01-30 00:59:26'),(11,4,'1',NULL,1,1,NULL,5.4600,NULL,'2013-01-30 00:59:26','2013-01-30 00:59:26'),(12,4,'1',NULL,2,1,NULL,5.4600,NULL,'2013-01-30 00:59:26','2013-01-30 00:59:26'),(13,4,'1',NULL,3,1,NULL,6.0200,NULL,'2013-01-30 00:59:26','2013-01-30 00:59:26'),(14,4,'1',NULL,4,1,NULL,5.7500,NULL,'2013-01-30 00:59:26','2013-01-30 00:59:26'),(15,5,'1',NULL,9,1,NULL,6.5600,NULL,'2013-01-30 01:01:59','2013-01-30 01:01:59'),(16,5,'1',NULL,1,1,NULL,5.4600,NULL,'2013-01-30 01:01:59','2013-01-30 01:01:59'),(17,5,'1',NULL,2,1,NULL,5.4600,NULL,'2013-01-30 01:01:59','2013-01-30 01:01:59'),(18,5,'1',NULL,3,1,NULL,6.0200,NULL,'2013-01-30 01:01:59','2013-01-30 01:01:59'),(19,5,'1',NULL,4,1,NULL,5.7500,NULL,'2013-01-30 01:01:59','2013-01-30 01:01:59');
-/*!40000 ALTER TABLE `invoice_lineitems` ENABLE KEYS */;
-UNLOCK TABLES;
+-- --------------------------------------------------------
 
 --
 -- Table structure for table `invoices`
 --
 
-DROP TABLE IF EXISTS `invoices`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `invoices` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
   `invoice_number` int(11) NOT NULL,
@@ -278,26 +424,299 @@ CREATE TABLE `invoices` (
   `created` datetime NOT NULL,
   `modified` datetime NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
-/*!40101 SET character_set_client = @saved_cs_client */;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=36 ;
 
 --
 -- Dumping data for table `invoices`
 --
 
-LOCK TABLES `invoices` WRITE;
-/*!40000 ALTER TABLE `invoices` DISABLE KEYS */;
-INSERT INTO `invoices` VALUES (1,1,1,'10.49','11.48','cash',NULL,'','',NULL,'2013-01-30 00:58:54','2013-01-30 00:58:54'),(2,2,1,'15.48','16.94','credit',NULL,'','',NULL,'2013-01-30 00:59:04','2013-01-30 00:59:04'),(3,3,1,'20.73','22.69','cash',NULL,'','',NULL,'2013-01-30 00:59:17','2013-01-30 00:59:17'),(4,4,1,'26.72','29.25','cash',NULL,'','',NULL,'2013-01-30 00:59:26','2013-01-30 00:59:26'),(5,5,1,'26.72','29.25','cash',NULL,'','',NULL,'2013-01-30 01:01:59','2013-01-30 01:01:59');
-/*!40000 ALTER TABLE `invoices` ENABLE KEYS */;
-UNLOCK TABLES;
+INSERT INTO `invoices` (`id`, `invoice_number`, `company_id`, `before_tax`, `after_tax`, `payment_type`, `payment_number`, `credit_number`, `check_number`, `day_paid`, `created`, `modified`) VALUES
+(1, 1, 1, 167.35, 183.25, 'cash', NULL, NULL, NULL, 'Thursday', '2012-09-06 13:50:50', '2012-09-06 13:50:50'),
+(2, 2, 1, 40.21, 44.03, 'credit', NULL, NULL, NULL, 'Wednesday', '2012-09-12 15:01:06', '2012-09-12 15:01:06'),
+(3, 3, 1, 12.72, 13.93, 'credit', NULL, NULL, NULL, 'Wednesday', '2012-09-12 15:01:18', '2012-09-12 15:01:18'),
+(4, 4, 1, 31.71, 34.72, 'cash', NULL, NULL, NULL, 'Thursday', '2012-09-13 15:01:34', '2012-09-13 15:01:34'),
+(5, 5, 1, 21.14, 23.15, 'cash', NULL, NULL, NULL, 'Thursday', '2012-09-13 15:09:03', '2012-09-13 15:09:03'),
+(6, 6, 1, 14.66, 16.05, 'check', NULL, NULL, NULL, 'Thursday', '2012-09-13 15:09:12', '2012-09-13 15:09:12'),
+(7, 7, 1, 15.48, 16.95, 'credit', NULL, NULL, NULL, 'Friday', '2012-09-14 00:20:48', '2012-09-14 00:20:48'),
+(8, 8, 1, 15.74, 17.24, 'credit', NULL, NULL, NULL, 'Friday', '2012-09-14 00:23:00', '2012-09-14 00:23:00'),
+(9, 9, 1, 34.61, 37.90, 'cash', NULL, NULL, NULL, 'Friday', '2012-09-14 00:23:17', '2012-09-14 00:23:17'),
+(10, 10, 1, 13.34, 14.61, 'cash', NULL, NULL, NULL, 'Friday', '2012-09-14 01:45:46', '2012-09-14 01:45:46'),
+(11, 11, 1, 58.73, 64.31, 'credit', NULL, NULL, NULL, 'Saturday', '2012-09-15 02:27:34', '2012-09-15 02:27:34'),
+(12, 12, 1, 133.60, 146.29, 'credit', NULL, NULL, NULL, 'Saturday', '2012-09-15 02:27:47', '2012-09-15 02:27:47'),
+(13, 13, 1, 3.58, 3.92, 'cash', NULL, NULL, NULL, 'Saturday', '2012-09-15 02:27:56', '2012-09-15 02:27:56'),
+(14, 14, 1, 18.23, 19.96, 'credit', NULL, NULL, NULL, 'Monday', '2012-09-17 00:15:35', '2012-09-17 00:15:35'),
+(15, 15, 1, 33.56, 36.75, 'credit', NULL, NULL, NULL, 'Monday', '2012-09-17 00:15:44', '2012-09-17 00:15:44'),
+(16, 16, 1, 7.58, 8.30, 'credit', NULL, NULL, NULL, 'Monday', '2012-09-17 00:15:53', '2012-09-17 00:15:53'),
+(17, 17, 1, 8.04, 8.80, 'credit', NULL, NULL, NULL, 'Monday', '2012-09-17 00:16:03', '2012-09-17 00:16:03'),
+(18, 18, 1, 9.98, 10.93, 'credit', NULL, NULL, NULL, 'Monday', '2012-09-17 00:16:09', '2012-09-17 00:16:09'),
+(19, 19, 1, 32.96, 36.09, 'credit', NULL, NULL, NULL, 'Monday', '2012-09-17 00:16:19', '2012-09-17 00:16:19'),
+(20, 20, 1, 11.07, 12.12, 'credit', NULL, NULL, NULL, 'Monday', '2012-09-17 00:18:33', '2012-09-17 00:18:33'),
+(21, 21, 1, 11.99, 13.13, 'credit', NULL, NULL, NULL, 'Monday', '2012-09-17 00:18:40', '2012-09-17 00:18:40'),
+(22, 22, 1, 6.59, 7.22, 'credit', NULL, NULL, NULL, 'Monday', '2012-09-17 00:18:47', '2012-09-17 00:18:47'),
+(23, 23, 1, 6.34, 6.94, 'credit', NULL, NULL, NULL, 'Monday', '2012-09-17 00:18:54', '2012-09-17 00:18:54'),
+(24, 24, 1, 142.83, 156.40, 'cash', NULL, NULL, NULL, 'Tuesday', '2012-09-18 18:09:59', '2012-09-18 18:09:59'),
+(25, 25, 1, 52.90, 57.93, 'credit', NULL, NULL, NULL, 'Wednesday', '2012-09-19 16:28:41', '2012-09-19 16:28:41'),
+(26, 26, 1, 78.45, 85.90, 'credit', NULL, NULL, NULL, 'Wednesday', '2012-09-19 16:28:59', '2012-09-19 16:28:59'),
+(27, 27, 1, 36.95, 40.46, 'cash', NULL, NULL, NULL, 'Wednesday', '2012-09-19 16:30:03', '2012-09-19 16:30:03'),
+(28, 28, 1, 86.40, 94.61, 'credit', NULL, NULL, NULL, 'Thursday', '2012-09-20 14:27:38', '2012-09-20 14:27:38'),
+(29, 29, 1, 16.09, 17.62, 'check', NULL, NULL, NULL, 'Thursday', '2012-09-20 14:27:54', '2012-09-20 14:27:54'),
+(30, 30, 1, 31.71, 34.72, 'credit', NULL, NULL, NULL, 'Thursday', '2012-09-20 14:28:03', '2012-09-20 14:28:03'),
+(31, 31, 1, 158.48, 173.54, 'cash', NULL, NULL, NULL, 'Friday', '2012-09-21 13:21:35', '2012-09-21 13:21:35'),
+(32, 32, 1, 167.35, 183.25, 'check', NULL, NULL, NULL, 'Saturday', '2012-09-22 00:17:13', '2012-09-22 00:17:13'),
+(33, 33, 1, 16.48, 18.05, 'credit', NULL, NULL, NULL, 'Sunday', '2012-10-07 14:45:38', '2012-10-07 14:45:38'),
+(34, 34, 1, 15.06, 16.49, 'credit', NULL, NULL, NULL, 'Sunday', '2012-10-07 14:47:22', '2012-10-07 14:47:22'),
+(35, 35, 1, 3.58, 3.92, 'cash', NULL, NULL, NULL, 'Sunday', '2012-10-07 14:47:34', '2012-10-07 14:47:34');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `invoice_lineitems`
+--
+
+CREATE TABLE `invoice_lineitems` (
+  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `invoice_number` int(11) NOT NULL,
+  `category` varchar(100) DEFAULT NULL,
+  `company_id` int(11) DEFAULT NULL,
+  `order_id` int(11) DEFAULT NULL,
+  `quantity` int(11) DEFAULT NULL,
+  `before_tax` float(11,2) DEFAULT NULL,
+  `after_tax` decimal(11,2) DEFAULT NULL,
+  `day_paid` varchar(10) DEFAULT NULL,
+  `created` datetime NOT NULL,
+  `modified` datetime NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=203 ;
+
+--
+-- Dumping data for table `invoice_lineitems`
+--
+
+INSERT INTO `invoice_lineitems` (`id`, `invoice_number`, `category`, `company_id`, `order_id`, `quantity`, `before_tax`, `after_tax`, `day_paid`, `created`, `modified`) VALUES
+(1, 1, 'Combo', 1, 1, 5, 24.95, 27.32, 'Thursday', '2012-09-06 13:50:48', '2012-09-06 13:50:48'),
+(2, 1, 'Combo', 1, 2, 5, 24.95, 27.32, 'Thursday', '2012-09-06 13:50:48', '2012-09-06 13:50:48'),
+(3, 1, 'Sides', 1, 5, 5, 4.95, 5.42, 'Thursday', '2012-09-06 13:50:49', '2012-09-06 13:50:49'),
+(4, 1, 'Combo', 1, 4, 5, 26.25, 28.74, 'Thursday', '2012-09-06 13:50:49', '2012-09-06 13:50:49'),
+(5, 1, 'Combo', 1, 9, 5, 29.95, 32.80, 'Thursday', '2012-09-06 13:50:49', '2012-09-06 13:50:49'),
+(6, 1, 'Combo', 1, 3, 5, 27.50, 30.11, 'Thursday', '2012-09-06 13:50:49', '2012-09-06 13:50:49'),
+(7, 1, 'Sides', 1, 8, 5, 5.45, 5.97, 'Thursday', '2012-09-06 13:50:49', '2012-09-06 13:50:49'),
+(8, 1, 'Sides', 1, 10, 5, 5.45, 5.97, 'Thursday', '2012-09-06 13:50:49', '2012-09-06 13:50:49'),
+(9, 1, 'Sides', 1, 11, 5, 5.45, 5.97, 'Thursday', '2012-09-06 13:50:49', '2012-09-06 13:50:49'),
+(10, 1, 'Additional', 1, 6, 5, 4.95, 5.42, 'Thursday', '2012-09-06 13:50:49', '2012-09-06 13:50:49'),
+(11, 1, 'Additional', 1, 7, 5, 7.50, 8.21, 'Thursday', '2012-09-06 13:50:49', '2012-09-06 13:50:49'),
+(12, 2, 'Combo', 1, 2, 3, 14.97, 16.39, 'Wednesday', '2012-09-12 15:01:05', '2012-09-12 15:01:05'),
+(13, 2, 'Combo', 1, 1, 3, 14.97, 16.39, 'Wednesday', '2012-09-12 15:01:05', '2012-09-12 15:01:05'),
+(14, 2, 'Sides', 1, 8, 2, 2.18, 2.39, 'Wednesday', '2012-09-12 15:01:06', '2012-09-12 15:01:06'),
+(15, 2, 'Combo', 1, 3, 1, 5.50, 6.02, 'Wednesday', '2012-09-12 15:01:06', '2012-09-12 15:01:06'),
+(16, 2, 'Additional', 1, 7, 1, 1.50, 1.64, 'Wednesday', '2012-09-12 15:01:06', '2012-09-12 15:01:06'),
+(17, 2, 'Sides', 1, 10, 1, 1.09, 1.19, 'Wednesday', '2012-09-12 15:01:06', '2012-09-12 15:01:06'),
+(18, 3, 'Additional', 1, 6, 3, 2.97, 3.25, 'Wednesday', '2012-09-12 15:01:17', '2012-09-12 15:01:17'),
+(19, 3, 'Additional', 1, 7, 3, 4.50, 4.93, 'Wednesday', '2012-09-12 15:01:17', '2012-09-12 15:01:17'),
+(20, 3, 'Sides', 1, 5, 2, 1.98, 2.17, 'Wednesday', '2012-09-12 15:01:17', '2012-09-12 15:01:17'),
+(21, 3, 'Sides', 1, 10, 1, 1.09, 1.19, 'Wednesday', '2012-09-12 15:01:17', '2012-09-12 15:01:17'),
+(22, 3, 'Sides', 1, 11, 1, 1.09, 1.19, 'Wednesday', '2012-09-12 15:01:18', '2012-09-12 15:01:18'),
+(23, 3, 'Sides', 1, 8, 1, 1.09, 1.19, 'Wednesday', '2012-09-12 15:01:18', '2012-09-12 15:01:18'),
+(24, 4, 'Combo', 1, 9, 1, 5.99, 6.56, 'Thursday', '2012-09-13 15:01:33', '2012-09-13 15:01:33'),
+(25, 4, 'Combo', 1, 2, 3, 14.97, 16.39, 'Thursday', '2012-09-13 15:01:33', '2012-09-13 15:01:33'),
+(26, 4, 'Sides', 1, 8, 1, 1.09, 1.19, 'Thursday', '2012-09-13 15:01:33', '2012-09-13 15:01:33'),
+(27, 4, 'Combo', 1, 1, 1, 4.99, 5.46, 'Thursday', '2012-09-13 15:01:33', '2012-09-13 15:01:33'),
+(28, 4, 'Sides', 1, 5, 1, 0.99, 1.08, 'Thursday', '2012-09-13 15:01:33', '2012-09-13 15:01:33'),
+(29, 4, 'Sides', 1, 10, 1, 1.09, 1.19, 'Thursday', '2012-09-13 15:01:34', '2012-09-13 15:01:34'),
+(30, 4, 'Sides', 1, 11, 1, 1.09, 1.19, 'Thursday', '2012-09-13 15:01:34', '2012-09-13 15:01:34'),
+(31, 4, 'Additional', 1, 7, 1, 1.50, 1.64, 'Thursday', '2012-09-13 15:01:34', '2012-09-13 15:01:34'),
+(32, 5, 'Combo', 1, 2, 1, 4.99, 5.46, 'Thursday', '2012-09-13 15:09:02', '2012-09-13 15:09:02'),
+(33, 5, 'Sides', 1, 8, 1, 1.09, 1.19, 'Thursday', '2012-09-13 15:09:02', '2012-09-13 15:09:02'),
+(34, 5, 'Combo', 1, 3, 1, 5.50, 6.02, 'Thursday', '2012-09-13 15:09:02', '2012-09-13 15:09:02'),
+(35, 5, 'Combo', 1, 1, 1, 4.99, 5.46, 'Thursday', '2012-09-13 15:09:02', '2012-09-13 15:09:02'),
+(36, 5, 'Sides', 1, 10, 1, 1.09, 1.19, 'Thursday', '2012-09-13 15:09:02', '2012-09-13 15:09:02'),
+(37, 5, 'Sides', 1, 5, 1, 0.99, 1.08, 'Thursday', '2012-09-13 15:09:02', '2012-09-13 15:09:02'),
+(38, 5, 'Additional', 1, 6, 1, 0.99, 1.08, 'Thursday', '2012-09-13 15:09:02', '2012-09-13 15:09:02'),
+(39, 5, 'Additional', 1, 7, 1, 1.50, 1.64, 'Thursday', '2012-09-13 15:09:02', '2012-09-13 15:09:02'),
+(40, 6, 'Combo', 1, 9, 1, 5.99, 6.56, 'Thursday', '2012-09-13 15:09:11', '2012-09-13 15:09:11'),
+(41, 6, 'Combo', 1, 1, 1, 4.99, 5.46, 'Thursday', '2012-09-13 15:09:11', '2012-09-13 15:09:11'),
+(42, 6, 'Sides', 1, 8, 1, 1.09, 1.19, 'Thursday', '2012-09-13 15:09:12', '2012-09-13 15:09:12'),
+(43, 6, 'Additional', 1, 7, 1, 1.50, 1.64, 'Thursday', '2012-09-13 15:09:12', '2012-09-13 15:09:12'),
+(44, 6, 'Sides', 1, 10, 1, 1.09, 1.19, 'Thursday', '2012-09-13 15:09:12', '2012-09-13 15:09:12'),
+(45, 7, 'Combo', 1, 1, 1, 4.99, 5.46, 'Friday', '2012-09-14 00:20:48', '2012-09-14 00:20:48'),
+(46, 7, 'Combo', 1, 3, 1, 5.50, 6.02, 'Friday', '2012-09-14 00:20:48', '2012-09-14 00:20:48'),
+(47, 7, 'Combo', 1, 2, 1, 4.99, 5.46, 'Friday', '2012-09-14 00:20:48', '2012-09-14 00:20:48'),
+(48, 8, 'Combo', 1, 3, 1, 5.50, 6.02, 'Friday', '2012-09-14 00:22:59', '2012-09-14 00:22:59'),
+(49, 8, 'Combo', 1, 2, 1, 4.99, 5.46, 'Friday', '2012-09-14 00:22:59', '2012-09-14 00:22:59'),
+(50, 8, 'Combo', 1, 4, 1, 5.25, 5.75, 'Friday', '2012-09-14 00:23:00', '2012-09-14 00:23:00'),
+(51, 9, 'Sides', 1, 8, 1, 1.09, 1.19, 'Friday', '2012-09-14 00:23:17', '2012-09-14 00:23:17'),
+(52, 9, 'Sides', 1, 10, 1, 1.09, 1.19, 'Friday', '2012-09-14 00:23:17', '2012-09-14 00:23:17'),
+(53, 9, 'Sides', 1, 5, 1, 0.99, 1.08, 'Friday', '2012-09-14 00:23:17', '2012-09-14 00:23:17'),
+(54, 9, 'Additional', 1, 7, 1, 1.50, 1.64, 'Friday', '2012-09-14 00:23:17', '2012-09-14 00:23:17'),
+(55, 9, 'Combo', 1, 2, 1, 4.99, 5.46, 'Friday', '2012-09-14 00:23:17', '2012-09-14 00:23:17'),
+(56, 9, 'Combo', 1, 1, 5, 24.95, 27.32, 'Friday', '2012-09-14 00:23:17', '2012-09-14 00:23:17'),
+(57, 10, 'Combo', 1, 3, 1, 5.50, 6.02, 'Friday', '2012-09-14 01:45:45', '2012-09-14 01:45:45'),
+(58, 10, 'Combo', 1, 4, 1, 5.25, 5.75, 'Friday', '2012-09-14 01:45:45', '2012-09-14 01:45:45'),
+(59, 10, 'Sides', 1, 10, 1, 1.09, 1.19, 'Friday', '2012-09-14 01:45:45', '2012-09-14 01:45:45'),
+(60, 10, 'Additional', 1, 7, 1, 1.50, 1.64, 'Friday', '2012-09-14 01:45:45', '2012-09-14 01:45:45'),
+(61, 11, 'Combo', 1, 2, 1, 4.99, 5.46, 'Saturday', '2012-09-15 02:27:32', '2012-09-15 02:27:32'),
+(62, 11, 'Combo', 1, 9, 1, 5.99, 6.56, 'Saturday', '2012-09-15 02:27:33', '2012-09-15 02:27:33'),
+(63, 11, 'Combo', 1, 1, 1, 4.99, 5.46, 'Saturday', '2012-09-15 02:27:33', '2012-09-15 02:27:33'),
+(64, 11, 'Additional', 1, 7, 1, 1.50, 1.64, 'Saturday', '2012-09-15 02:27:33', '2012-09-15 02:27:33'),
+(65, 11, 'Combo', 1, 3, 1, 5.50, 6.02, 'Saturday', '2012-09-15 02:27:33', '2012-09-15 02:27:33'),
+(66, 11, 'Combo', 1, 4, 6, 31.50, 34.49, 'Saturday', '2012-09-15 02:27:33', '2012-09-15 02:27:33'),
+(67, 11, 'Sides', 1, 10, 1, 1.09, 1.19, 'Saturday', '2012-09-15 02:27:33', '2012-09-15 02:27:33'),
+(68, 11, 'Sides', 1, 8, 1, 1.09, 1.19, 'Saturday', '2012-09-15 02:27:33', '2012-09-15 02:27:33'),
+(69, 11, 'Sides', 1, 5, 1, 0.99, 1.08, 'Saturday', '2012-09-15 02:27:33', '2012-09-15 02:27:33'),
+(70, 11, 'Sides', 1, 11, 1, 1.09, 1.19, 'Saturday', '2012-09-15 02:27:33', '2012-09-15 02:27:33'),
+(71, 12, 'Combo', 1, 3, 5, 27.50, 30.11, 'Saturday', '2012-09-15 02:27:46', '2012-09-15 02:27:46'),
+(72, 12, 'Combo', 1, 2, 5, 24.95, 27.32, 'Saturday', '2012-09-15 02:27:46', '2012-09-15 02:27:46'),
+(73, 12, 'Combo', 1, 1, 5, 24.95, 27.32, 'Saturday', '2012-09-15 02:27:47', '2012-09-15 02:27:47'),
+(74, 12, 'Combo', 1, 9, 5, 29.95, 32.80, 'Saturday', '2012-09-15 02:27:47', '2012-09-15 02:27:47'),
+(75, 12, 'Combo', 1, 4, 5, 26.25, 28.74, 'Saturday', '2012-09-15 02:27:47', '2012-09-15 02:27:47'),
+(76, 13, 'Sides', 1, 5, 1, 0.99, 1.08, 'Saturday', '2012-09-15 02:27:56', '2012-09-15 02:27:56'),
+(77, 13, 'Additional', 1, 7, 1, 1.50, 1.64, 'Saturday', '2012-09-15 02:27:56', '2012-09-15 02:27:56'),
+(78, 13, 'Sides', 1, 8, 1, 1.09, 1.19, 'Saturday', '2012-09-15 02:27:56', '2012-09-15 02:27:56'),
+(79, 14, 'Combo', 1, 4, 1, 5.25, 5.75, 'Monday', '2012-09-17 00:15:34', '2012-09-17 00:15:34'),
+(80, 14, 'Combo', 1, 3, 1, 5.50, 6.02, 'Monday', '2012-09-17 00:15:34', '2012-09-17 00:15:34'),
+(81, 14, 'Combo', 1, 2, 1, 4.99, 5.46, 'Monday', '2012-09-17 00:15:34', '2012-09-17 00:15:34'),
+(82, 14, 'Additional', 1, 7, 1, 1.50, 1.64, 'Monday', '2012-09-17 00:15:34', '2012-09-17 00:15:34'),
+(83, 14, 'Additional', 1, 6, 1, 0.99, 1.08, 'Monday', '2012-09-17 00:15:34', '2012-09-17 00:15:34'),
+(84, 15, 'Combo', 1, 1, 1, 4.99, 5.46, 'Monday', '2012-09-17 00:15:43', '2012-09-17 00:15:43'),
+(85, 15, 'Combo', 1, 2, 1, 4.99, 5.46, 'Monday', '2012-09-17 00:15:43', '2012-09-17 00:15:43'),
+(86, 15, 'Combo', 1, 9, 1, 5.99, 6.56, 'Monday', '2012-09-17 00:15:43', '2012-09-17 00:15:43'),
+(87, 15, 'Combo', 1, 3, 3, 16.50, 18.07, 'Monday', '2012-09-17 00:15:43', '2012-09-17 00:15:43'),
+(88, 15, 'Sides', 1, 8, 1, 1.09, 1.19, 'Monday', '2012-09-17 00:15:43', '2012-09-17 00:15:43'),
+(89, 16, 'Sides', 1, 8, 1, 1.09, 1.19, 'Monday', '2012-09-17 00:15:52', '2012-09-17 00:15:52'),
+(90, 16, 'Combo', 1, 1, 1, 4.99, 5.46, 'Monday', '2012-09-17 00:15:53', '2012-09-17 00:15:53'),
+(91, 16, 'Additional', 1, 7, 1, 1.50, 1.64, 'Monday', '2012-09-17 00:15:53', '2012-09-17 00:15:53'),
+(92, 17, 'Sides', 1, 8, 3, 3.27, 3.58, 'Monday', '2012-09-17 00:16:03', '2012-09-17 00:16:03'),
+(93, 17, 'Sides', 1, 10, 2, 2.18, 2.39, 'Monday', '2012-09-17 00:16:03', '2012-09-17 00:16:03'),
+(94, 17, 'Sides', 1, 11, 1, 1.09, 1.19, 'Monday', '2012-09-17 00:16:03', '2012-09-17 00:16:03'),
+(95, 17, 'Additional', 1, 7, 1, 1.50, 1.64, 'Monday', '2012-09-17 00:16:03', '2012-09-17 00:16:03'),
+(96, 18, 'Combo', 1, 1, 1, 4.99, 5.46, 'Monday', '2012-09-17 00:16:09', '2012-09-17 00:16:09'),
+(97, 18, 'Combo', 1, 2, 1, 4.99, 5.46, 'Monday', '2012-09-17 00:16:09', '2012-09-17 00:16:09'),
+(98, 19, 'Additional', 1, 6, 1, 0.99, 1.08, 'Monday', '2012-09-17 00:16:18', '2012-09-17 00:16:18'),
+(99, 19, 'Combo', 1, 4, 2, 10.50, 11.50, 'Monday', '2012-09-17 00:16:19', '2012-09-17 00:16:19'),
+(100, 19, 'Combo', 1, 2, 1, 4.99, 5.46, 'Monday', '2012-09-17 00:16:19', '2012-09-17 00:16:19'),
+(101, 19, 'Combo', 1, 1, 1, 4.99, 5.46, 'Monday', '2012-09-17 00:16:19', '2012-09-17 00:16:19'),
+(102, 19, 'Combo', 1, 3, 1, 5.50, 6.02, 'Monday', '2012-09-17 00:16:19', '2012-09-17 00:16:19'),
+(103, 19, 'Combo', 1, 9, 1, 5.99, 6.56, 'Monday', '2012-09-17 00:16:19', '2012-09-17 00:16:19'),
+(104, 20, 'Combo', 1, 2, 1, 4.99, 5.46, 'Monday', '2012-09-17 00:18:32', '2012-09-17 00:18:32'),
+(105, 20, 'Combo', 1, 1, 1, 4.99, 5.46, 'Monday', '2012-09-17 00:18:33', '2012-09-17 00:18:33'),
+(106, 20, 'Sides', 1, 8, 1, 1.09, 1.19, 'Monday', '2012-09-17 00:18:33', '2012-09-17 00:18:33'),
+(107, 21, 'Combo', 1, 2, 1, 4.99, 5.46, 'Monday', '2012-09-17 00:18:40', '2012-09-17 00:18:40'),
+(108, 21, 'Combo', 1, 3, 1, 5.50, 6.02, 'Monday', '2012-09-17 00:18:40', '2012-09-17 00:18:40'),
+(109, 21, 'Additional', 1, 7, 1, 1.50, 1.64, 'Monday', '2012-09-17 00:18:40', '2012-09-17 00:18:40'),
+(110, 22, 'Combo', 1, 3, 1, 5.50, 6.02, 'Monday', '2012-09-17 00:18:46', '2012-09-17 00:18:46'),
+(111, 22, 'Sides', 1, 8, 1, 1.09, 1.19, 'Monday', '2012-09-17 00:18:46', '2012-09-17 00:18:46'),
+(112, 23, 'Combo', 1, 4, 1, 5.25, 5.75, 'Monday', '2012-09-17 00:18:54', '2012-09-17 00:18:54'),
+(113, 23, 'Sides', 1, 8, 1, 1.09, 1.19, 'Monday', '2012-09-17 00:18:54', '2012-09-17 00:18:54'),
+(114, 24, 'Combo', 1, 12, 1, 99.99, 109.49, 'Tuesday', '2012-09-18 18:09:58', '2012-09-18 18:09:58'),
+(115, 24, 'Combo', 1, 4, 1, 5.25, 5.75, 'Tuesday', '2012-09-18 18:09:58', '2012-09-18 18:09:58'),
+(116, 24, 'Combo', 1, 9, 2, 11.98, 13.12, 'Tuesday', '2012-09-18 18:09:58', '2012-09-18 18:09:58'),
+(117, 24, 'Combo', 1, 3, 2, 11.00, 12.05, 'Tuesday', '2012-09-18 18:09:58', '2012-09-18 18:09:58'),
+(118, 24, 'Sides', 1, 8, 1, 1.09, 1.19, 'Tuesday', '2012-09-18 18:09:58', '2012-09-18 18:09:58'),
+(119, 24, 'Combo', 1, 2, 1, 4.99, 5.46, 'Tuesday', '2012-09-18 18:09:58', '2012-09-18 18:09:58'),
+(120, 24, 'Sides', 1, 11, 1, 1.09, 1.19, 'Tuesday', '2012-09-18 18:09:58', '2012-09-18 18:09:58'),
+(121, 24, 'Additional', 1, 7, 1, 1.50, 1.64, 'Tuesday', '2012-09-18 18:09:58', '2012-09-18 18:09:58'),
+(122, 24, 'Additional', 1, 6, 6, 5.94, 6.50, 'Tuesday', '2012-09-18 18:09:59', '2012-09-18 18:09:59'),
+(123, 25, 'Combo', 1, 9, 1, 5.99, 6.56, 'Wednesday', '2012-09-19 16:28:39', '2012-09-19 16:28:39'),
+(124, 25, 'Combo', 1, 4, 3, 15.75, 17.25, 'Wednesday', '2012-09-19 16:28:39', '2012-09-19 16:28:39'),
+(125, 25, 'Combo', 1, 1, 1, 4.99, 5.46, 'Wednesday', '2012-09-19 16:28:40', '2012-09-19 16:28:40'),
+(126, 25, 'Sides', 1, 8, 3, 3.27, 3.58, 'Wednesday', '2012-09-19 16:28:40', '2012-09-19 16:28:40'),
+(127, 25, 'Sides', 1, 5, 3, 2.97, 3.25, 'Wednesday', '2012-09-19 16:28:40', '2012-09-19 16:28:40'),
+(128, 25, 'Sides', 1, 10, 3, 3.27, 3.58, 'Wednesday', '2012-09-19 16:28:40', '2012-09-19 16:28:40'),
+(129, 25, 'Combo', 1, 2, 1, 4.99, 5.46, 'Wednesday', '2012-09-19 16:28:40', '2012-09-19 16:28:40'),
+(130, 25, 'Combo', 1, 3, 1, 5.50, 6.02, 'Wednesday', '2012-09-19 16:28:40', '2012-09-19 16:28:40'),
+(131, 25, 'Sides', 1, 11, 2, 2.18, 2.39, 'Wednesday', '2012-09-19 16:28:41', '2012-09-19 16:28:41'),
+(132, 25, 'Additional', 1, 7, 2, 3.00, 3.29, 'Wednesday', '2012-09-19 16:28:41', '2012-09-19 16:28:41'),
+(133, 25, 'Additional', 1, 6, 1, 0.99, 1.08, 'Wednesday', '2012-09-19 16:28:41', '2012-09-19 16:28:41'),
+(134, 26, 'Combo', 1, 9, 1, 5.99, 6.56, 'Wednesday', '2012-09-19 16:28:57', '2012-09-19 16:28:57'),
+(135, 26, 'Combo', 1, 4, 3, 15.75, 17.25, 'Wednesday', '2012-09-19 16:28:57', '2012-09-19 16:28:57'),
+(136, 26, 'Combo', 1, 1, 1, 4.99, 5.46, 'Wednesday', '2012-09-19 16:28:57', '2012-09-19 16:28:57'),
+(137, 26, 'Combo', 1, 2, 3, 14.97, 16.39, 'Wednesday', '2012-09-19 16:28:57', '2012-09-19 16:28:57'),
+(138, 26, 'Combo', 1, 3, 3, 16.50, 18.07, 'Wednesday', '2012-09-19 16:28:58', '2012-09-19 16:28:58'),
+(139, 26, 'Additional', 1, 7, 3, 4.50, 4.93, 'Wednesday', '2012-09-19 16:28:58', '2012-09-19 16:28:58'),
+(140, 26, 'Additional', 1, 6, 3, 2.97, 3.25, 'Wednesday', '2012-09-19 16:28:58', '2012-09-19 16:28:58'),
+(141, 26, 'Sides', 1, 5, 3, 2.97, 3.25, 'Wednesday', '2012-09-19 16:28:58', '2012-09-19 16:28:58'),
+(142, 26, 'Sides', 1, 8, 3, 3.27, 3.58, 'Wednesday', '2012-09-19 16:28:58', '2012-09-19 16:28:58'),
+(143, 26, 'Sides', 1, 10, 3, 3.27, 3.58, 'Wednesday', '2012-09-19 16:28:58', '2012-09-19 16:28:58'),
+(144, 26, 'Sides', 1, 11, 3, 3.27, 3.58, 'Wednesday', '2012-09-19 16:28:58', '2012-09-19 16:28:58'),
+(145, 27, 'Combo', 1, 3, 1, 5.50, 6.02, 'Wednesday', '2012-09-19 16:30:01', '2012-09-19 16:30:01'),
+(146, 27, 'Combo', 1, 1, 1, 4.99, 5.46, 'Wednesday', '2012-09-19 16:30:01', '2012-09-19 16:30:01'),
+(147, 27, 'Combo', 1, 9, 1, 5.99, 6.56, 'Wednesday', '2012-09-19 16:30:02', '2012-09-19 16:30:02'),
+(148, 27, 'Combo', 1, 4, 1, 5.25, 5.75, 'Wednesday', '2012-09-19 16:30:02', '2012-09-19 16:30:02'),
+(149, 27, 'Combo', 1, 2, 1, 4.99, 5.46, 'Wednesday', '2012-09-19 16:30:02', '2012-09-19 16:30:02'),
+(150, 27, 'Sides', 1, 5, 1, 0.99, 1.08, 'Wednesday', '2012-09-19 16:30:02', '2012-09-19 16:30:02'),
+(151, 27, 'Sides', 1, 8, 1, 1.09, 1.19, 'Wednesday', '2012-09-19 16:30:02', '2012-09-19 16:30:02'),
+(152, 27, 'Sides', 1, 10, 1, 1.09, 1.19, 'Wednesday', '2012-09-19 16:30:02', '2012-09-19 16:30:02'),
+(153, 27, 'Sides', 1, 11, 1, 1.09, 1.19, 'Wednesday', '2012-09-19 16:30:02', '2012-09-19 16:30:02'),
+(154, 27, 'Additional', 1, 7, 2, 3.00, 3.29, 'Wednesday', '2012-09-19 16:30:02', '2012-09-19 16:30:02'),
+(155, 27, 'Additional', 1, 6, 3, 2.97, 3.25, 'Wednesday', '2012-09-19 16:30:03', '2012-09-19 16:30:03'),
+(156, 28, 'Combo', 1, 2, 4, 19.96, 21.86, 'Thursday', '2012-09-20 14:27:37', '2012-09-20 14:27:37'),
+(157, 28, 'Combo', 1, 3, 4, 22.00, 24.09, 'Thursday', '2012-09-20 14:27:37', '2012-09-20 14:27:37'),
+(158, 28, 'Combo', 1, 1, 2, 9.98, 10.93, 'Thursday', '2012-09-20 14:27:38', '2012-09-20 14:27:38'),
+(159, 28, 'Combo', 1, 4, 2, 10.50, 11.50, 'Thursday', '2012-09-20 14:27:38', '2012-09-20 14:27:38'),
+(160, 28, 'Combo', 1, 9, 4, 23.96, 26.24, 'Thursday', '2012-09-20 14:27:38', '2012-09-20 14:27:38'),
+(161, 29, 'Additional', 1, 7, 3, 4.50, 4.93, 'Thursday', '2012-09-20 14:27:53', '2012-09-20 14:27:53'),
+(162, 29, 'Additional', 1, 6, 2, 1.98, 2.17, 'Thursday', '2012-09-20 14:27:53', '2012-09-20 14:27:53'),
+(163, 29, 'Sides', 1, 10, 3, 3.27, 3.58, 'Thursday', '2012-09-20 14:27:53', '2012-09-20 14:27:53'),
+(164, 29, 'Sides', 1, 5, 2, 1.98, 2.17, 'Thursday', '2012-09-20 14:27:54', '2012-09-20 14:27:54'),
+(165, 29, 'Sides', 1, 8, 2, 2.18, 2.39, 'Thursday', '2012-09-20 14:27:54', '2012-09-20 14:27:54'),
+(166, 29, 'Sides', 1, 11, 2, 2.18, 2.39, 'Thursday', '2012-09-20 14:27:54', '2012-09-20 14:27:54'),
+(167, 30, 'Combo', 1, 1, 1, 4.99, 5.46, 'Thursday', '2012-09-20 14:28:02', '2012-09-20 14:28:02'),
+(168, 30, 'Combo', 1, 2, 2, 9.98, 10.93, 'Thursday', '2012-09-20 14:28:03', '2012-09-20 14:28:03'),
+(169, 30, 'Combo', 1, 9, 1, 5.99, 6.56, 'Thursday', '2012-09-20 14:28:03', '2012-09-20 14:28:03'),
+(170, 30, 'Combo', 1, 4, 1, 5.25, 5.75, 'Thursday', '2012-09-20 14:28:03', '2012-09-20 14:28:03'),
+(171, 30, 'Combo', 1, 3, 1, 5.50, 6.02, 'Thursday', '2012-09-20 14:28:03', '2012-09-20 14:28:03'),
+(172, 31, 'Combo', 1, 4, 8, 42.00, 45.99, 'Friday', '2012-09-21 13:21:34', '2012-09-21 13:21:34'),
+(173, 31, 'Combo', 1, 1, 6, 29.94, 32.78, 'Friday', '2012-09-21 13:21:34', '2012-09-21 13:21:34'),
+(174, 31, 'Combo', 1, 2, 1, 4.99, 5.46, 'Friday', '2012-09-21 13:21:34', '2012-09-21 13:21:34'),
+(175, 31, 'Combo', 1, 9, 7, 41.93, 45.91, 'Friday', '2012-09-21 13:21:34', '2012-09-21 13:21:34'),
+(176, 31, 'Additional', 1, 7, 7, 10.50, 11.50, 'Friday', '2012-09-21 13:21:35', '2012-09-21 13:21:35'),
+(177, 31, 'Additional', 1, 6, 7, 6.93, 7.59, 'Friday', '2012-09-21 13:21:35', '2012-09-21 13:21:35'),
+(178, 31, 'Sides', 1, 5, 7, 6.93, 7.59, 'Friday', '2012-09-21 13:21:35', '2012-09-21 13:21:35'),
+(179, 31, 'Sides', 1, 10, 7, 7.63, 8.35, 'Friday', '2012-09-21 13:21:35', '2012-09-21 13:21:35'),
+(180, 31, 'Sides', 1, 11, 7, 7.63, 8.35, 'Friday', '2012-09-21 13:21:35', '2012-09-21 13:21:35'),
+(181, 32, 'Combo', 1, 3, 5, 27.50, 30.11, 'Saturday', '2012-09-22 00:17:12', '2012-09-22 00:17:12'),
+(182, 32, 'Combo', 1, 2, 5, 24.95, 27.32, 'Saturday', '2012-09-22 00:17:12', '2012-09-22 00:17:12'),
+(183, 32, 'Combo', 1, 4, 5, 26.25, 28.74, 'Saturday', '2012-09-22 00:17:12', '2012-09-22 00:17:12'),
+(184, 32, 'Sides', 1, 5, 5, 4.95, 5.42, 'Saturday', '2012-09-22 00:17:12', '2012-09-22 00:17:12'),
+(185, 32, 'Combo', 1, 1, 5, 24.95, 27.32, 'Saturday', '2012-09-22 00:17:12', '2012-09-22 00:17:12'),
+(186, 32, 'Combo', 1, 9, 5, 29.95, 32.80, 'Saturday', '2012-09-22 00:17:12', '2012-09-22 00:17:12'),
+(187, 32, 'Sides', 1, 8, 5, 5.45, 5.97, 'Saturday', '2012-09-22 00:17:13', '2012-09-22 00:17:13'),
+(188, 32, 'Sides', 1, 10, 5, 5.45, 5.97, 'Saturday', '2012-09-22 00:17:13', '2012-09-22 00:17:13'),
+(189, 32, 'Sides', 1, 11, 5, 5.45, 5.97, 'Saturday', '2012-09-22 00:17:13', '2012-09-22 00:17:13'),
+(190, 32, 'Additional', 1, 6, 5, 4.95, 5.42, 'Saturday', '2012-09-22 00:17:13', '2012-09-22 00:17:13'),
+(191, 32, 'Additional', 1, 7, 5, 7.50, 8.21, 'Saturday', '2012-09-22 00:17:13', '2012-09-22 00:17:13'),
+(192, 33, 'Combo', 1, 9, 1, 5.99, 6.56, 'Sunday', '2012-10-07 14:45:38', '2012-10-07 14:45:38'),
+(193, 33, 'Combo', 1, 1, 1, 4.99, 5.46, 'Sunday', '2012-10-07 14:45:38', '2012-10-07 14:45:38'),
+(194, 33, 'Combo', 1, 3, 1, 5.50, 6.02, 'Sunday', '2012-10-07 14:45:38', '2012-10-07 14:45:38'),
+(195, 34, 'Combo', 1, 3, 1, 5.50, 6.02, 'Sunday', '2012-10-07 14:47:21', '2012-10-07 14:47:21'),
+(196, 34, 'Combo', 1, 1, 1, 4.99, 5.46, 'Sunday', '2012-10-07 14:47:21', '2012-10-07 14:47:21'),
+(197, 34, 'Sides', 1, 11, 1, 1.09, 1.19, 'Sunday', '2012-10-07 14:47:21', '2012-10-07 14:47:21'),
+(198, 34, 'Additional', 1, 7, 1, 1.50, 1.64, 'Sunday', '2012-10-07 14:47:22', '2012-10-07 14:47:22'),
+(199, 34, 'Sides', 1, 5, 2, 1.98, 2.17, 'Sunday', '2012-10-07 14:47:22', '2012-10-07 14:47:22'),
+(200, 35, 'Sides', 1, 8, 1, 1.09, 1.19, 'Sunday', '2012-10-07 14:47:34', '2012-10-07 14:47:34'),
+(201, 35, 'Additional', 1, 7, 1, 1.50, 1.64, 'Sunday', '2012-10-07 14:47:34', '2012-10-07 14:47:34'),
+(202, 35, 'Additional', 1, 6, 1, 0.99, 1.08, 'Sunday', '2012-10-07 14:47:34', '2012-10-07 14:47:34');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `menus`
+--
+
+CREATE TABLE `menus` (
+  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `name` varchar(100) DEFAULT NULL,
+  `edit_menu` text,
+  `created` datetime NOT NULL,
+  `modified` datetime NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+
+-- --------------------------------------------------------
 
 --
 -- Table structure for table `menu_items`
 --
 
-DROP TABLE IF EXISTS `menu_items`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `menu_items` (
   `menu_id` int(11) NOT NULL,
   `name` varchar(150) NOT NULL,
@@ -308,52 +727,13 @@ CREATE TABLE `menu_items` (
   `created` datetime NOT NULL,
   `modified` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-/*!40101 SET character_set_client = @saved_cs_client */;
 
---
--- Dumping data for table `menu_items`
---
-
-LOCK TABLES `menu_items` WRITE;
-/*!40000 ALTER TABLE `menu_items` DISABLE KEYS */;
-INSERT INTO `menu_items` VALUES (2,'Category Template',2,'Sub Header',6,'NULL','2013-01-30 01:25:39','2013-01-30 01:25:39'),(2,'Setup',1,'Main Header',5,'icon-cog','2013-01-30 01:25:39','2013-01-30 01:25:39'),(2,'Dashboard',1,'Main Header',1,'icon-home','2013-01-30 01:25:39','2013-01-30 01:25:39'),(2,'Navigation',2,'Sub Header',2,'NULL','2013-01-30 01:25:39','2013-01-30 01:25:39'),(2,'Dashboard',3,'/admins/index',3,'NULL','2013-01-30 01:25:40','2013-01-30 01:25:40'),(2,'Retract Order',3,'/admins/retract',4,'NULL','2013-01-30 01:25:40','2013-01-30 01:25:40'),(2,'View Categories',3,'/categories/index',7,'NULL','2013-01-30 01:25:40','2013-01-30 01:25:40'),(2,'Add Category',3,'/categories/add',8,'NULL','2013-01-30 01:25:41','2013-01-30 01:25:41'),(2,'Orders Template',2,'Sub Header',9,'NULL','2013-01-30 01:25:41','2013-01-30 01:25:41'),(2,'View Orders',3,'/orders/index',10,'NULL','2013-01-30 01:25:41','2013-01-30 01:25:41'),(2,'Add Orders',3,'/orders/add',11,'NULL','2013-01-30 01:25:41','2013-01-30 01:25:41'),(2,'Management',1,'Main Header',12,'icon-user','2013-01-30 01:25:42','2013-01-30 01:25:42'),(2,'User Template',2,'Sub Header',13,'NULL','2013-01-30 01:25:42','2013-01-30 01:25:42'),(2,'View Users',3,'/users/index',14,'NULL','2013-01-30 01:25:42','2013-01-30 01:25:42'),(2,'Add User',3,'/users/add',15,'NULL','2013-01-30 01:25:42','2013-01-30 01:25:42'),(2,'Reports',1,'Main Header',16,'icon-folder-open','2013-01-30 01:25:42','2013-01-30 01:25:42'),(2,'Reports Template',2,'Sub Header',17,'NULL','2013-01-30 01:25:42','2013-01-30 01:25:42');
-/*!40000 ALTER TABLE `menu_items` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `menus`
---
-
-DROP TABLE IF EXISTS `menus`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `menus` (
-  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
-  `name` varchar(100) DEFAULT NULL,
-  `edit_menu` text,
-  `created` datetime NOT NULL,
-  `modified` datetime NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `menus`
---
-
-LOCK TABLES `menus` WRITE;
-/*!40000 ALTER TABLE `menus` DISABLE KEYS */;
-INSERT INTO `menus` VALUES (2,'Super Administrator','\n			\n			\n			\n			\n\n		<li label=\"Dashboard\" icon=\"icon-home\" url=\"Main Header\"><div class=\"btn btn-large btn-block btn\" style=\"text-align:left;\"><span> <i id=\"icon_move_menu\" class=\"icon-move\"></i><span class=\"divisionUp\"><i class=\"icon-home\" chosen=\"icon-home\"></i> Dashboard - Main Header</span></span><button id=\"removeMenuRow\" name=\"Dashboard\" style=\"position:absolute;right:75px;\"><i class=\"icon-trash\"></i></button></div><ol tier=\"2\"><li class=\"\" style=\"\" label=\"Navigation\" icon=\"\" url=\"Sub Header\"><div class=\"btn btn-large btn-block btn-warning\" style=\"text-align:left;\"><span> <i id=\"icon_move_menu\" class=\"icon-move\"></i><span class=\"divisionUp\"><i class=\"\" chosen=\"\"></i> Navigation - Sub Header</span></span><button id=\"removeMenuRow\" name=\"Navigation\" style=\"position:absolute;right:75px;\"><i class=\"icon-trash\"></i></button></div><ol tier=\"3\"><li class=\"\" style=\"\" label=\"Dashboard\" icon=\"\" url=\"/admins/index\"><div class=\"btn btn-large btn-block btn btn-info\" style=\"text-align:left;\"><span> <i id=\"icon_move_menu\" class=\"icon-move\"></i><span class=\"divisionUp\"><i class=\"\" chosen=\"\"></i> Dashboard - /admins/index</span></span><button id=\"removeMenuRow\" name=\"Dashboard\" style=\"position:absolute;right:75px;\"><i class=\"icon-trash\"></i></button></div></li><li class=\"\" style=\"\" label=\"Retract Order\" icon=\"\" url=\"/admins/retract\"><div class=\"btn btn-large btn-block btn btn-info\" style=\"text-align:left;\"><span> <i id=\"icon_move_menu\" class=\"icon-move\"></i><span class=\"divisionUp\"><i class=\"\" chosen=\"\"></i> Retract Order - /admins/retract</span></span><button id=\"removeMenuRow\" name=\"Retract Order\" style=\"position:absolute;right:75px;\"><i class=\"icon-trash\"></i></button></div></li></ol></li></ol></li>		<li label=\"Setup\" icon=\"icon-cog\" url=\"Main Header\"><div class=\"btn btn-large btn-block btn\" style=\"text-align:left;\"><span> <i id=\"icon_move_menu\" class=\"icon-move\"></i><span class=\"divisionUp\"><i class=\"icon-cog\" chosen=\"icon-cog\"></i> Setup - Main Header</span></span><button id=\"removeMenuRow\" name=\"Setup\" style=\"position:absolute;right:75px;\"><i class=\"icon-trash\"></i></button></div><ol tier=\"2\"><li class=\"\" style=\"\" label=\"Category Template\" icon=\"\" url=\"Sub Header\"><div class=\"btn btn-large btn-block btn-warning\" style=\"text-align:left;\"><span> <i id=\"icon_move_menu\" class=\"icon-move\"></i><span class=\"divisionUp\"><i class=\"\" chosen=\"\"></i> Category Template - Sub Header</span></span><button id=\"removeMenuRow\" name=\"Category Template\" style=\"position:absolute;right:75px;\"><i class=\"icon-trash\"></i></button></div><ol tier=\"3\"><li class=\"\" style=\"\" label=\"View Categories\" icon=\"\" url=\"/categories/index\"><div class=\"btn btn-large btn-block btn btn-info\" style=\"text-align:left;\"><span> <i id=\"icon_move_menu\" class=\"icon-move\"></i><span class=\"divisionUp\"><i class=\"\" chosen=\"\"></i> View Categories - /categories/index</span></span><button id=\"removeMenuRow\" name=\"View Categories\" style=\"position:absolute;right:75px;\"><i class=\"icon-trash\"></i></button></div></li><li class=\"\" style=\"\" label=\"Add Category\" icon=\"\" url=\"/categories/add\"><div class=\"btn btn-large btn-block btn btn-info\" style=\"text-align:left;\"><span> <i id=\"icon_move_menu\" class=\"icon-move\"></i><span class=\"divisionUp\"><i class=\"\" chosen=\"\"></i> Add Category - /categories/add</span></span><button id=\"removeMenuRow\" name=\"Add Category\" style=\"position:absolute;right:75px;\"><i class=\"icon-trash\"></i></button></div></li></ol></li><li class=\"\" style=\"\" label=\"Orders Template\" icon=\"\" url=\"Sub Header\"><div class=\"btn btn-large btn-block btn-warning\" style=\"text-align:left;\"><span> <i id=\"icon_move_menu\" class=\"icon-move\"></i><span class=\"divisionUp\"><i class=\"\" chosen=\"\"></i> Orders Template - Sub Header</span></span><button id=\"removeMenuRow\" name=\"Orders Template\" style=\"position:absolute;right:75px;\"><i class=\"icon-trash\"></i></button></div><ol tier=\"3\"><li class=\"\" style=\"\" label=\"View Orders\" icon=\"\" url=\"/orders/index\"><div class=\"btn btn-large btn-block btn btn-info\" style=\"text-align:left;\"><span> <i id=\"icon_move_menu\" class=\"icon-move\"></i><span class=\"divisionUp\"><i class=\"\" chosen=\"\"></i> View Orders - /orders/index</span></span><button id=\"removeMenuRow\" name=\"View Orders\" style=\"position:absolute;right:75px;\"><i class=\"icon-trash\"></i></button></div></li><li class=\"\" style=\"\" label=\"Add Orders\" icon=\"\" url=\"/orders/add\"><div class=\"btn btn-large btn-block btn btn-info\" style=\"text-align:left;\"><span> <i id=\"icon_move_menu\" class=\"icon-move\"></i><span class=\"divisionUp\"><i class=\"\" chosen=\"\"></i> Add Orders - /orders/add</span></span><button id=\"removeMenuRow\" name=\"Add Orders\" style=\"position:absolute;right:75px;\"><i class=\"icon-trash\"></i></button></div></li></ol></li></ol></li>				<li label=\"Management\" icon=\"icon-user\" url=\"Main Header\"><div class=\"btn btn-large btn-block btn\" style=\"text-align:left;\"><span> <i id=\"icon_move_menu\" class=\"icon-move\"></i><span class=\"divisionUp\"><i class=\"icon-user\" chosen=\"icon-user\"></i> Management - Main Header</span></span><button id=\"removeMenuRow\" name=\"Management\" style=\"position:absolute;right:75px;\"><i class=\"icon-trash\"></i></button></div><ol tier=\"2\"><li class=\"\" style=\"\" label=\"User Template\" icon=\"\" url=\"Sub Header\"><div class=\"btn btn-large btn-block btn-warning\" style=\"text-align:left;\"><span> <i id=\"icon_move_menu\" class=\"icon-move\"></i><span class=\"divisionUp\"><i class=\"\" chosen=\"\"></i> User Template - Sub Header</span></span><button id=\"removeMenuRow\" name=\"User Template\" style=\"position:absolute;right:75px;\"><i class=\"icon-trash\"></i></button></div><ol tier=\"3\"><li class=\"\" style=\"\" label=\"View Users\" icon=\"\" url=\"/users/index\"><div class=\"btn btn-large btn-block btn btn-info\" style=\"text-align:left;\"><span> <i id=\"icon_move_menu\" class=\"icon-move\"></i><span class=\"divisionUp\"><i class=\"\" chosen=\"\"></i> View Users - /users/index</span></span><button id=\"removeMenuRow\" name=\"View Users\" style=\"position:absolute;right:75px;\"><i class=\"icon-trash\"></i></button></div></li><li class=\"\" style=\"\" label=\"Add User\" icon=\"\" url=\"/users/add\"><div class=\"btn btn-large btn-block btn btn-info\" style=\"text-align:left;\"><span> <i id=\"icon_move_menu\" class=\"icon-move\"></i><span class=\"divisionUp\"><i class=\"\" chosen=\"\"></i> Add User - /users/add</span></span><button id=\"removeMenuRow\" name=\"Add User\" style=\"position:absolute;right:75px;\"><i class=\"icon-trash\"></i></button></div></li></ol></li></ol></li>		<li label=\"Reports\" icon=\"icon-folder-open\" url=\"Main Header\"><div class=\"btn btn-large btn-block btn\" style=\"text-align:left;\"><span> <i id=\"icon_move_menu\" class=\"icon-move\"></i><span class=\"divisionUp\"><i class=\"icon-folder-open\" chosen=\"icon-folder-open\"></i> Reports - Main Header</span></span><button id=\"removeMenuRow\" name=\"Reports\" style=\"position:absolute;right:75px;\"><i class=\"icon-trash\"></i></button></div><ol tier=\"2\"><li class=\"\" style=\"\" label=\"Reports Template\" icon=\"\" url=\"Sub Header\"><div class=\"btn btn-large btn-block btn-warning\" style=\"text-align:left;\"><span> <i id=\"icon_move_menu\" class=\"icon-move\"></i><span class=\"divisionUp\"><i class=\"\" chosen=\"\"></i> Reports Template - Sub Header</span></span><button id=\"removeMenuRow\" name=\"Reports Template\" style=\"position:absolute;right:75px;\"><i class=\"icon-trash\"></i></button></div></li></ol></li>','2013-01-30 01:16:33','2013-01-30 01:25:37');
-/*!40000 ALTER TABLE `menus` ENABLE KEYS */;
-UNLOCK TABLES;
+-- --------------------------------------------------------
 
 --
 -- Table structure for table `orders`
 --
 
-DROP TABLE IF EXISTS `orders`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `orders` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
   `company_id` int(11) NOT NULL,
@@ -365,53 +745,31 @@ CREATE TABLE `orders` (
   `created` datetime NOT NULL,
   `modified` datetime NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=latin1;
-/*!40101 SET character_set_client = @saved_cs_client */;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=12 ;
 
 --
 -- Dumping data for table `orders`
 --
 
-LOCK TABLES `orders` WRITE;
-/*!40000 ALTER TABLE `orders` DISABLE KEYS */;
-INSERT INTO `orders` VALUES (1,1,4,1,'Chicken Teriyaki','Chicken over Rice combo','4.99','0000-00-00 00:00:00','2012-09-24 00:56:59'),(2,1,5,1,'Pork Combo','Pork over rice with salad','4.99','0000-00-00 00:00:00','2012-09-24 00:56:59'),(3,1,3,1,'Chicken & Pork Combo','Chicken & Pork Over rice & salad','5.50','0000-00-00 00:00:00','2012-09-24 00:56:59'),(4,1,1,1,'Beef Combo','Beef served over rice with salad','5.25','0000-00-00 00:00:00','2012-09-24 00:56:59'),(5,1,4,2,'Salad','add extra salad to the order','0.99','0000-00-00 00:00:00','2012-09-24 00:57:00'),(6,1,1,3,'Small Drink','Add a drink to the order','0.99','0000-00-00 00:00:00','2012-09-24 00:57:00'),(7,1,2,3,'Medium Drink','Add A medium size drink to the order','1.50','0000-00-00 00:00:00','2012-09-24 00:57:00'),(8,1,1,2,'Humbao (Beef)','Add a Beef humbao to the order.','1.09','0000-00-00 00:00:00','2012-09-24 00:56:59'),(9,1,2,1,'Seafood Combo','Shrimp, fish, scallops over rice','5.99','0000-00-00 00:00:00','2012-09-24 00:56:59'),(10,1,3,2,'Humbao (Vegetable)','a vegetable humbao','1.09','0000-00-00 00:00:00','2012-09-24 00:56:59'),(11,1,2,2,'Humbao (Kimchi)','a kimchi humbao','1.09','0000-00-00 00:00:00','2012-09-24 00:56:59');
-/*!40000 ALTER TABLE `orders` ENABLE KEYS */;
-UNLOCK TABLES;
+INSERT INTO `orders` (`id`, `company_id`, `order_list`, `category`, `name`, `description`, `price`, `created`, `modified`) VALUES
+(1, 1, 4, 1, 'Chicken Teriyaki', 'Chicken over Rice combo', 4.99, '0000-00-00 00:00:00', '2012-09-24 00:56:59'),
+(2, 1, 5, 1, 'Pork Combo', 'Pork over rice with salad', 4.99, '0000-00-00 00:00:00', '2012-09-24 00:56:59'),
+(3, 1, 3, 1, 'Chicken & Pork Combo', 'Chicken & Pork Over rice & salad', 5.50, '0000-00-00 00:00:00', '2012-09-24 00:56:59'),
+(4, 1, 1, 1, 'Beef Combo', 'Beef served over rice with salad', 5.25, '0000-00-00 00:00:00', '2012-09-24 00:56:59'),
+(5, 1, 4, 2, 'Salad', 'add extra salad to the order', 0.99, '0000-00-00 00:00:00', '2012-09-24 00:57:00'),
+(6, 1, 1, 3, 'Small Drink', 'Add a drink to the order', 0.99, '0000-00-00 00:00:00', '2012-09-24 00:57:00'),
+(7, 1, 2, 3, 'Medium Drink', 'Add A medium size drink to the order', 1.50, '0000-00-00 00:00:00', '2012-09-24 00:57:00'),
+(8, 1, 1, 2, 'Humbao (Beef)', 'Add a Beef humbao to the order.', 1.09, '0000-00-00 00:00:00', '2012-09-24 00:56:59'),
+(9, 1, 2, 1, 'Seafood Combo', 'Shrimp, fish, scallops over rice', 5.99, '0000-00-00 00:00:00', '2012-09-24 00:56:59'),
+(10, 1, 3, 2, 'Humbao (Vegetable)', 'a vegetable humbao', 1.09, '0000-00-00 00:00:00', '2012-09-24 00:56:59'),
+(11, 1, 2, 2, 'Humbao (Kimchi)', 'a kimchi humbao', 1.09, '0000-00-00 00:00:00', '2012-09-24 00:56:59');
 
---
--- Table structure for table `page_contents`
---
-
-DROP TABLE IF EXISTS `page_contents`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `page_contents` (
-  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
-  `page_id` int(11) NOT NULL,
-  `class_name` varchar(100) NOT NULL,
-  `html` text NOT NULL,
-  `created` datetime NOT NULL,
-  `modified` datetime NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `page_contents`
---
-
-LOCK TABLES `page_contents` WRITE;
-/*!40000 ALTER TABLE `page_contents` DISABLE KEYS */;
-/*!40000 ALTER TABLE `page_contents` ENABLE KEYS */;
-UNLOCK TABLES;
+-- --------------------------------------------------------
 
 --
 -- Table structure for table `pages`
 --
 
-DROP TABLE IF EXISTS `pages`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `pages` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `url` varchar(100) DEFAULT NULL,
@@ -427,25 +785,30 @@ CREATE TABLE `pages` (
   `modified` datetime NOT NULL,
   `status` int(2) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-/*!40101 SET character_set_client = @saved_cs_client */;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+
+-- --------------------------------------------------------
 
 --
--- Dumping data for table `pages`
+-- Table structure for table `page_contents`
 --
 
-LOCK TABLES `pages` WRITE;
-/*!40000 ALTER TABLE `pages` DISABLE KEYS */;
-/*!40000 ALTER TABLE `pages` ENABLE KEYS */;
-UNLOCK TABLES;
+CREATE TABLE `page_contents` (
+  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `page_id` int(11) NOT NULL,
+  `class_name` varchar(100) NOT NULL,
+  `html` text NOT NULL,
+  `created` datetime NOT NULL,
+  `modified` datetime NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+
+-- --------------------------------------------------------
 
 --
 -- Table structure for table `printers`
 --
 
-DROP TABLE IF EXISTS `printers`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `printers` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
   `company_id` int(11) NOT NULL,
@@ -453,26 +816,22 @@ CREATE TABLE `printers` (
   `created` datetime NOT NULL,
   `modified` datetime NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
-/*!40101 SET character_set_client = @saved_cs_client */;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
 
 --
 -- Dumping data for table `printers`
 --
 
-LOCK TABLES `printers` WRITE;
-/*!40000 ALTER TABLE `printers` DISABLE KEYS */;
-INSERT INTO `printers` VALUES (1,1,'epson','2012-09-08 20:02:58','2012-09-08 20:09:53'),(2,1,'star','2012-09-17 12:46:17','2012-09-17 12:46:17');
-/*!40000 ALTER TABLE `printers` ENABLE KEYS */;
-UNLOCK TABLES;
+INSERT INTO `printers` (`id`, `company_id`, `name`, `created`, `modified`) VALUES
+(1, 1, 'epson', '2012-09-08 20:02:58', '2012-09-08 20:09:53'),
+(2, 1, 'star', '2012-09-17 12:46:17', '2012-09-17 12:46:17');
+
+-- --------------------------------------------------------
 
 --
 -- Table structure for table `tax_infos`
 --
 
-DROP TABLE IF EXISTS `tax_infos`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `tax_infos` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
   `company_id` int(11) NOT NULL,
@@ -481,26 +840,21 @@ CREATE TABLE `tax_infos` (
   `created` datetime NOT NULL,
   `modified` datetime NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
-/*!40101 SET character_set_client = @saved_cs_client */;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
 
 --
 -- Dumping data for table `tax_infos`
 --
 
-LOCK TABLES `tax_infos` WRITE;
-/*!40000 ALTER TABLE `tax_infos` DISABLE KEYS */;
-INSERT INTO `tax_infos` VALUES (1,1,'WA','0.0950','0000-00-00 00:00:00','0000-00-00 00:00:00');
-/*!40000 ALTER TABLE `tax_infos` ENABLE KEYS */;
-UNLOCK TABLES;
+INSERT INTO `tax_infos` (`id`, `company_id`, `state`, `rate`, `created`, `modified`) VALUES
+(1, 1, 'WA', 0.0950, '0000-00-00 00:00:00', '0000-00-00 00:00:00');
+
+-- --------------------------------------------------------
 
 --
 -- Table structure for table `users`
 --
 
-DROP TABLE IF EXISTS `users`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `users` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `company_id` int(11) DEFAULT NULL,
@@ -511,26 +865,15 @@ CREATE TABLE `users` (
   `modified` datetime DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `username` (`username`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
-/*!40101 SET character_set_client = @saved_cs_client */;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=7 ;
 
 --
 -- Dumping data for table `users`
 --
 
-LOCK TABLES `users` WRITE;
-/*!40000 ALTER TABLE `users` DISABLE KEYS */;
-INSERT INTO `users` VALUES (1,1,'ydc2415','d32479828fb8f48ad50efd45c141014b56e74fb5',1,'2013-01-28 21:03:32','2013-01-28 21:03:32');
-/*!40000 ALTER TABLE `users` ENABLE KEYS */;
-UNLOCK TABLES;
-/*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
-
-/*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
-/*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
-/*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
-/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
-/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
-/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
-/*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
-
--- Dump completed on 2013-01-30 11:38:25
+INSERT INTO `users` (`id`, `company_id`, `username`, `password`, `group_id`, `created`, `modified`) VALUES
+(1, NULL, 'wondollaballa', '3d5f7889d1f80a2b7df147502a3fb3b686c88642', 1, '2012-08-31 07:50:28', '2012-08-31 07:50:28'),
+(2, 1, 'ydc2415', '51f8fcbe108e6be2f9511b3c21323bb50298e5e8', 2, '2012-08-31 07:50:54', '2012-08-31 07:50:54'),
+(4, NULL, 'TestManager', '51d7ba386795f1522863a286441d083741d5e492', 3, '2012-09-11 14:43:16', '2012-09-11 15:24:22'),
+(5, NULL, 'testEmployee', 'ee8e76f65abcabad3b97440ab7df3360dc68b367', 4, '2012-09-11 15:22:41', '2012-09-11 15:22:41'),
+(6, NULL, 'kimkim', '9efce43438016aa1a93f68b7cbd2db5507fee700', 4, '2012-09-18 18:13:41', '2012-09-18 18:13:41');

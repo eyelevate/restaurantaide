@@ -188,3 +188,7 @@ CakePlugin::load('AclExtras');
  * Twitter Bootstrap Helper
  */
 CakePlugin::load('TwitterBootstrap');
+/**
+ * Fusion Charts
+ */
+CakePlugin::load('FusionCharts');

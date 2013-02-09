@@ -73,5 +73,75 @@ class Order extends AppModel {
 			'counterQuery' => ''
 		)
 	);
+/**
+ * afterFindOrder action
+ *  @return array
+ */
+	public function afterFindOrder($results, $company_id)
+	{
+	    foreach ($results as $key => $val) {
+
+
+			if (isset($val['Order']['price'])){
+				$results[$key]['Order']['price'] = $this->moneyFormat($val['Order']['price']);
+			}
+			if(isset($val['Order']['category'])){
+				$results[$key]['Order']['category'] = $this->categoryFind($val['Order']['category'], $company_id);
+			}
+
+	    }
+	    return $results;		
+	}
+	
+	public function moneyFormat($value){
+		if ($value >= 0) {
+			return '$'.$value;	
+		} else {
+			return '($'.$value.')';
+		}
+	}
+	
+	public function categoryFind($value, $company_id)
+	{
+		$category = $this->Category->findAllByIdAndCompany_id($value, $company_id);
+		
+		$category_count = count($category);
+		if ($category_count>0) {
+			foreach ($category as $row) {
+				return $row['Category']['name'];
+			}
+		} 
+		
+	}
+	/**
+	 * get category id method
+	 * @param category name & company_id
+	 * @return id
+	 */
+	public function findCategoryId($value,$company_id)
+	{
+		$category = $this->Category->findAllByNameAndCompany_id($value, $company_id);
+		
+		$category_count = count($category);
+		if ($category_count>0) {
+			foreach ($category as $row) {
+				return $row['Category']['id'];
+			}
+		} 		
+	}
+	public function organizeOrderByCategory($categories, $company_id)
+	{
+		$orders_array = array();
+		foreach ($categories as $category) {
+			$category_id = $category['Category']['id'];
+			$find = $this->query('SELECT `Order`.`id`, `Order`.`name`, `Order`.`description`, `Order`.`price` 
+								  FROM `restaurantaide`.`orders` AS `Order`
+								  WHERE `Order`.`company_id` = '.$company_id.'
+								  AND `Order`.`category` ='.$category_id.'
+								  ORDER BY `Order`.`order_list` ASC');
+			$orders_array[$category_id] = $find;
+		}
+		return $orders_array;
+	}
 
 }

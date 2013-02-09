@@ -79,12 +79,14 @@ class AdminsController extends AppController {
 		//set the default layout
 		$this->layout = 'admin';
 		//set the admin navigation
+		
 		$admin_nav = $this->Menu_item->arrangeByTiers($this->Session->read('Admin.menu_id'));	
 		$page_url = '/admins/index';
 		$admin_check = $this->Menu_item->menuActiveHeaderCheck($page_url, $admin_nav);
 		$this->set('admin_nav',$admin_nav);
 		$this->set('admin_pages',$page_url);
 		$this->set('admin_check',$admin_check);
+	
 		//set username
 		$username = $this->Auth->user('username');
 		$this->set('username',$username);
@@ -113,6 +115,7 @@ class AdminsController extends AppController {
 			} else {
 				$new_id = 1;
 			}
+			$this->request->data['Invoice']['day_paid'] = date('l');
 			$this->request->data['Invoice']['invoice_number'] = $new_id;
 			$this->request->data['Invoice']['company_id'] = $company_id;
 			if($this->Invoice->save($this->request->data['Invoice'])){

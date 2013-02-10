@@ -1,5 +1,6 @@
 <?php
- 
+//add scripts to header
+echo $this->Html->css(array('reports'),FALSE);
 //jquery script
 
 
@@ -56,29 +57,29 @@
 				?>
 
 			</tbody>
-			<tfoot>
-				<tr>
-					<td class="reportTableTfootTd-empty"></td>
-					<td class="reportTableTfootTd-empty"></td>
-					<td class="reportTableTfootTd">Total Quantity</td>
-					<td><?php echo $category_quantity;?></td>
+			<tfoot class="reportsTfoot" >
+				<tr class="reportsTfootTrTop">
+					<td class="" style="border-top:1px solid #000000;"></td>
+					<td class="" style="border-top:1px solid #000000; border-left:none"></td>
+					<td class="" style="border-top:1px solid #000000;"><strong>Total Quantity</strong></td>
+					<td style="border-top:1px solid #000000;"><?php echo $category_quantity;?></td>
 				</tr>
 				<tr>
-					<td class="reportTableTfootTd-empty"></td>
-					<td class="reportTableTfootTd-empty"></td>
-					<td class="reportTableTfootTd">Total Before Tax</td>
-					<td><?php echo '$'.$category_before_tax;?></td>
+					<td class="" style="border-top:none; "></td>
+					<td class="" style="border-top:none; border-left:none;"></td>
+					<td class=""><strong>Total Before Tax</strong></td>
+					<td ><?php echo '$'.$category_before_tax;?></td>
 				</tr>
 				<tr>
-					<td class="reportTableTfootTd-empty"></td>
-					<td class="reportTableTfootTd-empty"></td>
-					<td class="reportTableTfootTd">Total Tax</td>
+					<td style="border-top:none;"></td>
+					<td style="border-top:none; border-left:none;"></td>
+					<td ><strong>Total Tax</strong></td>
 					<td><?php echo '$'.$category_sum_tax;?></td>
 				</tr>	
 				<tr>
-					<td class="reportTableTfootTd-empty"></td>
-					<td class="reportTableTfootTd-empty"></td>
-					<td class="reportTableTfootTd">Total After Tax</td>
+					<td style="border-top:none;"></td>
+					<td style="border-top:none; border-left:none;"></td>
+					<td><strong>Total After Tax</strong></td>
 					<td><?php echo '$'.$category_after_tax;?></td>
 				</tr>
 			</tfoot>
@@ -118,29 +119,29 @@
 			?>
 			
 		</tbody>
-		<tfoot>
+		<tfoot class="reportsTfoot">
 			<tr>
-				<td class="reportTableTfootTd-empty"></td>
-				<td class="reportTableTfootTd-empty"></td>
-				<td class="reportTableTfootTd">Total Quantity</td>
-				<td><?php echo $eod_quantity;?></td>
+				<td style="border-top:1px solid #000000;"></td>
+				<td style="border-top:1px solid #000000; border-left:none"></td>
+				<td style="border-top:1px solid #000000;"><strong>Total Quantity</strong></td>
+				<td style="border-top:1px solid #000000;"><?php echo $eod_quantity;?></td>
 			</tr>
 			<tr>
-				<td class="reportTableTfootTd-empty"></td>
-				<td class="reportTableTfootTd-empty"></td>
-				<td class="reportTableTfootTd">Total Before Tax</td>
+				<td style="border-top:none;"></td>
+				<td style="border-top:none; border-left:none;" ></td>
+				<td ><strong>Total Before Tax</strong></td>
 				<td><?php echo '$'.$eod_before_tax;?></td>
 			</tr>
 			<tr>
-				<td class="reportTableTfootTd-empty"></td>
-				<td class="reportTableTfootTd-empty"></td>
-				<td class="reportTableTfootTd">Total Tax</td>
+				<td style="border-top:none;"></td>
+				<td style="border-top:none; border-left:none;"></td>
+				<td ><strong>Total Tax</strong></td>
 				<td><?php echo '$'.$eod_sum_tax;?></td>
 			</tr>	
 			<tr>
-				<td class="reportTableTfootTd-empty"></td>
-				<td class="reportTableTfootTd-empty"></td>
-				<td class="reportTableTfootTd">Total After Tax</td>
+				<td style="border-top:none;"></td>
+				<td style="border-top:none; border-left:none;"></td>
+				<td ><strong>Total After Tax</strong></td>
 				<td><?php echo '$'.$eod_after_tax;?></td>
 			</tr>
 		</tfoot>

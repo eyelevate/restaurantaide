@@ -17,6 +17,22 @@ dashboard = {
 				location.reload();
 			}
 		});	
+		$("#paymentButton").click(function(){
+			var checkQty = $("#qtyTotalTd").html();
+			if(checkQty ==''){
+				checkQty = 0;
+			} else {
+				checkQty = parseInt(checkQty);
+			}
+
+			if(checkQty > 0){
+
+				$("#paymentButton-modal").click()
+			} else {
+
+				alert('You must select an order before processing');
+			}
+		});
 	},
 	numberformat: function(){
 		//number formatting
@@ -66,7 +82,20 @@ dashboard = {
 			var cashTendered = $(this).val();
 			var change = parseFloat(cashTendered) - parseFloat(cashDue);
 			var change = change.toFixed(2);
-			
+			if(change < 0){
+				$("#changeDue").parent().parent().parent().removeClass('success');				
+				$("#changeDue").parent().parent().parent().addClass('error');
+				$("#changeDue").parent().parent().parent().find('.help-block').html('Improper count of change. Please enter in a valid tender');	
+				$("#cashTendered").parent().parent().parent().addClass('error');
+				$("#cashTendered").parent().parent().parent().find('.help-block').html('');
+			} else {
+				$("#changeDue").parent().parent().parent().removeClass('error');
+				$("#changeDue").parent().parent().parent().addClass('success');
+				$("#changeDue").parent().parent().parent().find('.help-block').html('');
+				
+				$("#cashTendered").parent().parent().parent().removeClass('error');
+				$("#cashTendered").parent().parent().parent().find('.help-block').html('');		
+			}			
 			$("#changeDue").val(change);
 			
 			//clear out other payment inputs
@@ -81,11 +110,18 @@ dashboard = {
 			var change = parseFloat(cashTendered) - parseFloat(cashDue);
 			var change = change.toFixed(2);
 			if(change < 0){
+				$("#changeDue").parent().parent().parent().removeClass('success');				
 				$("#changeDue").parent().parent().parent().addClass('error');
-				$("#changeDue").parent().parent().parent().find('.help-block').html('Improper count of change. Please enter in a valid tender');
+				$("#changeDue").parent().parent().parent().find('.help-block').html('Improper count of change. Please enter in a valid tender');	
+				$("#cashTendered").parent().parent().parent().addClass('error');
+				$("#cashTendered").parent().parent().parent().find('.help-block').html('');
 			} else {
 				$("#changeDue").parent().parent().parent().removeClass('error');
+				$("#changeDue").parent().parent().parent().addClass('success');
 				$("#changeDue").parent().parent().parent().find('.help-block').html('');
+				
+				$("#cashTendered").parent().parent().parent().removeClass('error');
+				$("#cashTendered").parent().parent().parent().find('.help-block').html('');		
 			}
 			$("#changeDue").val(change);
 		});
@@ -150,13 +186,64 @@ dashboard = {
 			$(".paymentTypeInput").val(type);
 
 			//do printing scripts here
+			switch(type){
+				case 'cash':
+					var tendered = $("#cashTendered").val();
+					if(tendered =='' || tendered =='0.00'){
+						$("#cashTendered").parent().parent().parent().addClass('error');
+						$("#cashTendered").parent().parent().parent().find('.help-block').html('Not a valid tender amount');
+					} else {
+						$("#cashTendered").parent().parent().parent().removeClass('error');
+						$("#cashTendered").parent().parent().parent().find('.help-block').html('');		
+						var change = parseFloat($("#changeDue").val());
+						var change = change.toFixed(2);
+						if(change < 0){
+							$("#changeDue").parent().parent().parent().removeClass('success');				
+							$("#changeDue").parent().parent().parent().addClass('error');
+							$("#changeDue").parent().parent().parent().find('.help-block').html('Improper count of change. Please enter in a valid tendered amount.');	
+							$("#cashTendered").parent().parent().parent().addClass('error');
+							$("#cashTendered").parent().parent().parent().find('.help-block').html('');
+					
+						} else {
+							$("#changeDue").parent().parent().parent().removeClass('error');
+							$("#changeDue").parent().parent().parent().addClass('success');
+							$("#changeDue").parent().parent().parent().find('.help-block').html('');
+							
+							$("#cashTendered").parent().parent().parent().removeClass('error');
+							$("#cashTendered").parent().parent().parent().find('.help-block').html('');
+							dashboard.printSalesReciept();
+						
+									
+						}						
+					
+					}
+				break;
+				
+				case 'credit':
+					dashboard.printSalesReciept();
+				break;
+				
+				case 'check':
+					dashboard.printSalesReciept();
+				break;
+			}
 			
-			
-			//send the form 
-			$(".invoiceForm").submit();
 		});
+	},
+	printSalesReciept: function(){
+		
+		alert('now printing')
+		//print the copy and send the form
+		dashboard.printSalesCopy();
+		
+	},
+	printSalesCopy: function(){
+		alert('now sending')
+		//send the form 
+		//$(".invoiceForm").submit();				
 	}
 }
+
 
 var newRow = function(count, order_id, order_name, cat_name, cat_id, new_price, after_tax){
 	after_tax = after_tax.toFixed(2);

@@ -8,8 +8,9 @@
 		echo $this->Form->input('rate',array(
 			'label'=>false,
 			'before'=>'<label>Tax Rate <span class="f_req">*</span></label><div class="input-append">',
-			'after'=>'<span class="add-ons">%</span></div><span class="help-block"></span>',
+			'after'=>'<span class="add-on">%</span></div><span class="help-block"></span>',
 			'error' => array('attributes' => array('class' => 'text-error')),
+			'placeholder'=>'i.e. 9.50'
 		));
 	?>
 	</fieldset>

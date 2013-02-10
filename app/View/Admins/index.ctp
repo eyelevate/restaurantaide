@@ -2,6 +2,7 @@
 //add scripts to header
 echo $this->Html->css(array('dashboard'),FALSE);
 echo $this->Html->script(array(
+	'print.js',
 	'dashboard.js',
 	'admin/plugins/jquerypriceformat/jquery.price_format.1.7.min.js',
 	),
@@ -44,7 +45,8 @@ echo $this->Form->input('tax',array('type'=>'hidden','disabled'=>'disabled', 'va
 		<div>
 			<button id="cancelOrderButton" class="btn btn-danger btn-large" type="button">Cancel</button>
 		
-			<div step="1" class="paymentButton btn btn-primary btn-large pull-right" href="#processPayment" role="button" data-toggle="modal" data-backdrop="static" data-keyboard="false" >Payment</div>
+			<div id="paymentButton-modal" step="1" class="btn btn-primary btn-large pull-right hide" href="#processPayment" role="button" data-toggle="modal" data-backdrop="static" data-keyboard="false" >Payment</div>
+			<div id="paymentButton" class="btn btn-primary btn-large pull-right">Payment</div>
 		</div>
 		</div>	
 	
@@ -90,6 +92,7 @@ echo $this->Form->input('tax',array('type'=>'hidden','disabled'=>'disabled', 'va
 										<span class="add-on">$</span>
 										<input id="cashTendered" type="text" class="tendered span2"/>
 									</div>
+									<span class="help-block"></span>
 								</div>
 
 							</div>

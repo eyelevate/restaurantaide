@@ -95,7 +95,7 @@ class TaxInfosController extends AppController {
 	public function add() {
 		//set the admin navigation
 		$admin_nav = $this->Menu_item->arrangeByTiers($this->Session->read('Admin.menu_id'));	
-		$page_url = '/tax_infos/view';
+		$page_url = '/tax_infos/add';
 		$admin_check = $this->Menu_item->menuActiveHeaderCheck($page_url, $admin_nav);
 		$this->set('admin_nav',$admin_nav);
 		$this->set('admin_pages',$page_url);

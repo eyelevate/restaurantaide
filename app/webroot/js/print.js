@@ -1,10 +1,6 @@
 $(document).ready(function(){
 	printing.findPrinter();
-	
-	printing.printSalesReciept();
-	printing.printSalesCopy();
-	
-	
+
 });
 
 
@@ -16,12 +12,6 @@ $(document).ready(function(){
 printing = {
 	findPrinter: function(){
 		var mainPrinter = $("#mainPrinter").val();	
-		document.jzebra.findPrinter(mainPrinter);
-	},
-	printSalesReciept: function(){
-		
-	},
-	printSalesCopy: function(){
-		
+		//document.jzebra.findPrinter();
 	}
 }

@@ -133,6 +133,7 @@ class AdminsController extends AppController {
 			$this->request->data['Invoice']['company_id'] = $company_id;
 			if($this->Invoice->save($this->request->data['Invoice'])){
 				foreach ($this->request->data['InvoiceLineitem'] as $key => $value) {
+					$this->request->data['InvoiceLineitem'][$key]['category'] = $this->Category->getCategoryName($this->request->data['InvoiceLineitem'][$key]['category']);
 					$this->request->data['InvoiceLineitem'][$key]['day_paid'] = date('l');
 					$this->request->data['InvoiceLineitem'][$key]['company_id'] = $company_id;
 					$this->request->data['InvoiceLineitem'][$key]['invoice_number'] = $new_id;

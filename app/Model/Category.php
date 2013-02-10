@@ -54,7 +54,7 @@ class Category extends AppModel {
 	
 	public function getCategoryName($category_id)
 	{
-		$categories = $this->request('all',array('conditions'=>array('id'=>$id)));
+		$categories = $this->find('all',array('conditions'=>array('Category.id'=>$category_id)));
 		if(count($categories) > 0){
 			foreach ($categories as $c) {
 				$category_name = $c['Category']['name'];

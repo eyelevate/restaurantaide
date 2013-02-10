@@ -1,9 +1,3 @@
-<?php
-
-
-	
-
-?>
 <div class="chart">
 <?php echo $this->FusionCharts->render('Column3D Chart'); ?>
 </div>

@@ -6,7 +6,7 @@ App::uses('AppModel', 'Model');
  * @property Company $Company
  */
 class Printer extends AppModel {
-
+	public $name = 'Printer';
 /**
  * Validation rules
  *

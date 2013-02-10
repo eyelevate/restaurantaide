@@ -1,3 +1,4 @@
+
 <div class="categories form">
 <?php echo $this->Form->create('Category'); ?>
 	<fieldset>

@@ -1,8 +1,5 @@
 <?php
-//css links
-$this->Html->css(array('../js/jqueryUI/css/black-tie/jquery-ui-1.8.23.custom','frames_reports','content','tables','pagination','forms','buttons','style','navigation'),'stylesheet', array('inline' => false)); 
-//jquery script
-echo $this->Html->script(array('FusionCharts.js','jqueryUI/js/jquery-ui-1.8.23.custom.min.js','events.js'),FALSE);
+
 if(isset($setYear)){
 
 

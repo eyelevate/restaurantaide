@@ -1,9 +1,8 @@
 <div class="printers index">
 	<h2><?php echo __('Printers'); ?></h2>
-	<table cellpadding="0" cellspacing="0">
+	<table class="table table-hover table-bordered table-striped">
 	<tr>
 			<th><?php echo $this->Paginator->sort('id'); ?></th>
-			<th><?php echo $this->Paginator->sort('company_id'); ?></th>
 			<th><?php echo $this->Paginator->sort('name'); ?></th>
 			<th><?php echo $this->Paginator->sort('created'); ?></th>
 			<th><?php echo $this->Paginator->sort('modified'); ?></th>
@@ -13,9 +12,6 @@
 	foreach ($printers as $printer): ?>
 	<tr>
 		<td><?php echo h($printer['Printer']['id']); ?>&nbsp;</td>
-		<td>
-			<?php echo $this->Html->link($printer['Company']['name'], array('controller' => 'companies', 'action' => 'view', $printer['Company']['id'])); ?>
-		</td>
 		<td><?php echo h($printer['Printer']['name']); ?>&nbsp;</td>
 		<td><?php echo h($printer['Printer']['created']); ?>&nbsp;</td>
 		<td><?php echo h($printer['Printer']['modified']); ?>&nbsp;</td>
@@ -42,11 +38,4 @@
 	?>
 	</div>
 </div>
-<div class="actions">
-	<h3><?php echo __('Actions'); ?></h3>
-	<ul>
-		<li><?php echo $this->Html->link(__('New Printer'), array('action' => 'add')); ?></li>
-		<li><?php echo $this->Html->link(__('List Companies'), array('controller' => 'companies', 'action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New Company'), array('controller' => 'companies', 'action' => 'add')); ?> </li>
-	</ul>
-</div>
+

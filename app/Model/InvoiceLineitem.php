@@ -117,7 +117,7 @@ class InvoiceLineitem extends AppModel {
 					$category_id = $c['Category']['id'];
 					$sum = $this->query('SELECT sum(`Invoice_lineitem`.`after_tax`) AS sumAfterTax FROM invoice_lineitems as Invoice_lineitem
 										 WHERE `Invoice_lineitem`.`company_id` = '.$company_id.'
-										 AND `Invoice_lineitem`.`category` = "'.$category_id.'"
+										 AND `Invoice_lineitem`.`category` = "'.$category_name.'"
 										 AND `Invoice_lineitem`.`created` BETWEEN "'.$start.'" AND "'.$end.'"');	
 										 
 					foreach ($sum as $s) {
@@ -129,7 +129,7 @@ class InvoiceLineitem extends AppModel {
 						$total ='0.00';
 					}	
 					
-					$todayArray[$category_id] = array(
+					$todayArray[$idx] = array(
 						'name'=>$category_name,
 						'total'=>$total,
 						'start'=>$start,
@@ -153,8 +153,14 @@ class InvoiceLineitem extends AppModel {
 										 WHERE `Invoice_lineitem`.`company_id` = '.$company_id.'
 										 AND `Invoice_lineitem`.`category` = "'.$category_name.'"
 										 AND `Invoice_lineitem`.`created` BETWEEN "'.$start.'" AND "'.$end.'"');
-					foreach ($sum as $s) {
-						$total = $s['Invoice_lineitem']['sumAfterTax'];
+					
+
+					if(count($sum)>0){
+						foreach ($sum as $s) {
+							$total = $s[0]['sumAfterTax'];
+						}
+					} else {
+						$total = 0;
 					}
 					if($total > 0){
 						$total = number_format(round($total,2),2);	
@@ -566,8 +572,12 @@ class InvoiceLineitem extends AppModel {
 										   AND `Invoice_lineitem`.`created` BETWEEN "'.$startMonth.'" AND "'.$endMonth.'"
 										   ORDER BY `Invoice_lineitem`.`id` DESC
 										   LIMIT 0,1');
-				foreach ($finishMonth as $row) {
-					$finish = $row['Invoice_lineitem']['created'];
+				if(count($finishMonth) > 0){
+					foreach ($finishMonth as $row) {
+						$finish = $row['Invoice_lineitem']['created'];
+					}
+				} else {
+					$finish = date('Y-m-d H:i:s','0');
 				}
 				$month_end = date('m',strtotime($finish))+1;
 				$months = $month_end-$month_start;

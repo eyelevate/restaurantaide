@@ -1,3 +1,11 @@
+<?php
+//load scripts to layout
+echo $this->Html->script(array(
+	'admin/plugins/jquerypriceformat/jquery.price_format.1.7.min.js',
+	'orders.js'),FALSE);
+
+?>
+
 <div class="orders form">
 <?php echo $this->Form->create('Order'); ?>
 	<fieldset>

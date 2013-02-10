@@ -135,7 +135,6 @@ class ReportsController extends AppController {
 				'subCaption'				=> $today,
 				'xAxisName'					=> 'Type',
 				'yAxisName'					=> 'Sales',
-				'yAxisMaxValue'				=> $maxAmount,
 				'hoverCapBg'				=> 'DEDEBE',
 				'hoverCapBorder'			=> '889E6D',
 				'decimalPrecision'			=> '2',
@@ -171,7 +170,6 @@ class ReportsController extends AppController {
 				$day.' Avg. ($'.$dayAvg.')'
 			)
 		);
-
 		for ($i=0; $i < $category_count; $i++) { 
 			$category_name[$i] = $salesData1[$i]['name'];
 			$category_price1[$i] = sprintf('%.2f',$salesData1[$i]['total']);

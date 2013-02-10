@@ -21,6 +21,9 @@ foreach ($taxes as $tax) {
 echo $this->Form->create('Invoice',array('class'=>'invoiceForm'));
 echo $this->Form->input('tax',array('type'=>'hidden','disabled'=>'disabled', 'value'=>$tax_rate,'id'=>'tax_rate'));
 ?>
+<div class="hide">
+	<applet name="jZebra" code="jzebra.RawPrintApplet.class" archive="js/jzebra/jzebra.jar" width="100" height="100"></applet>	
+</div>
 <div class="row-fluid span12">
 	<div class="row">
 		<div class="span6">
@@ -94,25 +97,26 @@ echo $this->Form->input('tax',array('type'=>'hidden','disabled'=>'disabled', 'va
 								<div class="controls">
 									<ul class="unstyled">
 										<li class="">
-											<button id="oneDollar" class="quickCashButton" type="button" value="1.00">$1.00</button>
-											<button id="fiveDollars" class="quickCashButton" type="button" value="5.00">$5.00</button>
-											<button id="tenDollars" class="quickCashButton" type="button" value="10.00">$10.00</button>
+											<button id="oneDollar" class="quickCashButton btn btn-large btn-success" type="button" value="1.00">$1.00</button>
+											<button id="fiveDollars" class="quickCashButton btn btn-large btn-success" type="button" value="5.00">$5.00</button>
+											<button id="tenDollars" class="quickCashButton btn btn-large btn-success" type="button" value="10.00">$10.00</button>
 										</li>
 										<li>
-											<button id="twentyDollars" class="quickCashButton" type="button" value="20.00">$20.00</button>
-											<button id="fiftyDollars" class="quickCashButton" type="button" value="50.00">$50.00</button>
-											<button id="onehundredDollars" class="quickCashButton" type="button" value="100.00">$100.00</button>
+											<button id="twentyDollars" class="quickCashButton btn btn-large btn-success" type="button" value="20.00">$20.00</button>
+											<button id="fiftyDollars" class="quickCashButton btn btn-large btn-success" type="button" value="50.00">$50.00</button>
+											<button id="onehundredDollars" class="quickCashButton btn btn-large btn-success" type="button" value="100.00">$100.00</button>
 										</li>
 									</ul>
 								</div>								
 							</div>
 							<div class="control-group">
-								<label class="control-label">Change:</label>
+								<label id="" class="control-label">Change:</label>
 								<div class="controls">
 									<div class="input-prepend">
 										<span class="add-on">$</span>
 										<input id="changeDue" type="text" class="span2" disabled="disabled"/>
 									</div>
+									<span class="help-block"></span>
 								</div>
 							</div>
 						</div>

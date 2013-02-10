@@ -80,7 +80,13 @@ dashboard = {
 			var cashDue = $("#cashDue").val();
 			var change = parseFloat(cashTendered) - parseFloat(cashDue);
 			var change = change.toFixed(2);
-			
+			if(change < 0){
+				$("#changeDue").parent().parent().parent().addClass('error');
+				$("#changeDue").parent().parent().parent().find('.help-block').html('Improper count of change. Please enter in a valid tender');
+			} else {
+				$("#changeDue").parent().parent().parent().removeClass('error');
+				$("#changeDue").parent().parent().parent().find('.help-block').html('');
+			}
 			$("#changeDue").val(change);
 		});
 		

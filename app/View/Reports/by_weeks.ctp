@@ -1,25 +1,6 @@
 <?php
-//css links
-$this->Html->css(array('../js/jqueryUI/css/black-tie/jquery-ui-1.8.23.custom','frames_reports','content','tables','pagination','forms','buttons','style','navigation'),'stylesheet', array('inline' => false)); 
-//jquery script
-echo $this->Html->script(array('FusionCharts.js','jqueryUI/js/jquery-ui-1.8.23.custom.min.js','events.js'),FALSE);
+
 if(isset($weekSet)){
-/**
- * Header Content
- */
-$headerContent =  $this->Html->div('loginInfoDiv',
-
-	$this->Html->para('companyLogout',
-		$company_info['company_name'].', '.$this->Html->link('Logout',array('controller'=>'companies','action'=>'logout'))).
-	$this->Html->para('userLogout',
-		$logged_user.', '.$this->Html->link('Logout',array('controller'=>'users','action'=>'logout'))).
-	$this->Html->link('Back',array('controller'=>'reports','action'=>'index'),array('class'=>'backToReportsLink')).
-	$this->Html->link('Select Week',array('controller'=>'reports','action'=>'byWeeks'),array('class'=>'backToSelection')),
-	FALSE
-);
-
-$this->set('headerContent',$headerContent);
-
 
 ?>
 <div class="chart">
@@ -44,7 +25,7 @@ $this->set('headerContent',$headerContent);
 		$category_sum_tax = $category_totals[$i]['tax'];
 		?>
 		<h3><?php echo $category_name;?></h3>
-		<table class="reportTable">
+		<table class="table table-bordered table-hover table-striped">
 			<thead>
 				<tr>
 					<th>Item</th>
@@ -105,7 +86,7 @@ $this->set('headerContent',$headerContent);
 	}
 	?>
 	<h2>End of day Totals</h2>
-	<table class="reportTable">
+	<table class="table table-bordered table-hover table-striped">
 		<thead>
 			<tr>
 				<th>Category</th>
@@ -167,20 +148,7 @@ $this->set('headerContent',$headerContent);
 <?php
 //IF a month has not been selected
 } else {
-/**
- * Header Content
- */
-$headerContent =  $this->Html->div('loginInfoDiv',
 
-	$this->Html->para('companyLogout',
-		$company_info['company_name'].', '.$this->Html->link('Logout',array('controller'=>'companies','action'=>'logout'))).
-	$this->Html->para('userLogout',
-		$logged_user.', '.$this->Html->link('Logout',array('controller'=>'users','action'=>'logout'))).
-	$this->Html->link('Back',array('controller'=>'reports','action'=>'index'),array('class'=>'backToReportsLink')),
-	FALSE
-);
-
-$this->set('headerContent',$headerContent);
 ?>
 <h1 class="reportH1">Select a week to view</h1>
 <?php

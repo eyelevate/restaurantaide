@@ -9,7 +9,7 @@ echo $this->Html->css(array('reports'),FALSE);
 <?php echo $this->FusionCharts->render('Column3D Chart'); ?>
 </div>
 
-<div class="reportSummary">
+<div class="reportSummary formSep">
 	<h1>Today's Report - <?php echo date('n/d/y');?></h1>
 	<h2>By Category</h2>
 	<?php
@@ -146,4 +146,7 @@ echo $this->Html->css(array('reports'),FALSE);
 			</tr>
 		</tfoot>
 	</table>
+</div>
+<div>
+	<button id="printReport-today" type="button" class="printReport btn btn-primary btn-large">Print Report</button>
 </div>

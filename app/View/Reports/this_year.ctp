@@ -26,7 +26,7 @@ echo $this->Html->script(array(
 <div id="yearChart-month" class="chart hide" name="notselected">
 	<?php echo $this->FusionCharts->render('Column3DLineDY Chart'); ?>
 </div>
-<div class="reportSummary">
+<div class="reportSummary formSep">
 	<h1>This Year Report - <?php echo date('Y');?></h1>
 	<h2>By Category</h2>
 	<?php
@@ -163,4 +163,7 @@ echo $this->Html->script(array(
 			</tr>
 		</tfoot>
 	</table>	
+</div>
+<div>
+	<button id="printReport-this_year" type="button" class="printReport btn btn-primary btn-large">Print Report</button>
 </div>

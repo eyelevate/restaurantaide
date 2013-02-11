@@ -8,7 +8,7 @@ if(isset($setMonth)){
 <?php echo $this->FusionCharts->render('Column3D Chart'); ?>
 </div>
 
-<div class="reportSummary">
+<div class="reportSummary formSep">
 	<h1>By Selected Month Report - <?php echo date('F Y',strtotime($date['start']));?></h1>
 	<h2>By Category</h2>
 	<?php
@@ -145,6 +145,9 @@ if(isset($setMonth)){
 			</tr>
 		</tfoot>
 	</table>	
+</div>
+<div>
+	<button id="printReport-by_month" type="button" class="printReport btn btn-primary btn-large">Print Report</button>
 </div>
 <?php
 //IF a month has not been selected

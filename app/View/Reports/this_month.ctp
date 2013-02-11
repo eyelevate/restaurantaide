@@ -4,7 +4,7 @@
 <?php echo $this->FusionCharts->render('Column3D Chart'); ?>
 </div>
 
-<div class="reportSummary">
+<div class="reportSummary formSep">
 	<h1>This Month's Report - <?php echo date('F Y');?></h1>
 	<h2>By Category</h2>
 	<?php
@@ -141,4 +141,7 @@
 			</tr>
 		</tfoot>
 	</table>		
+</div>
+<div>
+	<button id="printReport-this_month" type="button" class="printReport btn btn-primary btn-large">Print Report</button>
 </div>

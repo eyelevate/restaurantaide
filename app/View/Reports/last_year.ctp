@@ -17,7 +17,7 @@
 <div id="yearChart-month" class="chart" name="notselected">
 	<?php echo $this->FusionCharts->render('Column3DLineDY Chart'); ?>
 </div>
-<div class="table table-bordered table-hover table-striped">
+<div class="formSep">
 	<h1>Last Year's Report - <?php echo (date('Y')-1);?></h1>
 	<h2>By Category</h2>
 	<?php
@@ -154,4 +154,7 @@
 			</tr>
 		</tfoot>
 	</table>		
+</div>
+<div>
+	<button id="printReport-last_year" type="button" class="printReport btn btn-primary btn-large">Print Report</button>
 </div>

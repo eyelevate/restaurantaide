@@ -7,7 +7,7 @@ if(isset($weekSet)){
 <?php echo $this->FusionCharts->render('Column3D Chart'); ?>
 </div>
 
-<div class="reportSummary">
+<div class="reportSummary formSep">
 	<h1>Selected Week's Report - <?php echo date('n/d/y',strtotime($dateRange['start'])).' - '.date('n/d/y',strtotime($dateRange['end']));?></h1>
 	<h2>By Category</h2>
 	<?php
@@ -144,6 +144,9 @@ if(isset($weekSet)){
 			</tr>
 		</tfoot>
 	</table>	
+</div>
+<div>
+	<button id="printReport-by_weeks" type="button" class="printReport btn btn-primary btn-large">Print Report</button>
 </div>
 <?php
 //IF a month has not been selected

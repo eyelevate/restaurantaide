@@ -146,7 +146,7 @@ CREATE TABLE `categories` (
   `created` datetime NOT NULL,
   `modified` datetime NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -155,6 +155,7 @@ CREATE TABLE `categories` (
 
 LOCK TABLES `categories` WRITE;
 /*!40000 ALTER TABLE `categories` DISABLE KEYS */;
+INSERT INTO `categories` VALUES (1,1,NULL,'Combo',1,'2013-02-09 15:23:29','2013-02-09 15:23:29'),(2,1,NULL,'Sides',1,'2013-02-09 15:23:56','2013-02-09 15:23:56'),(3,1,NULL,'Plates',1,'2013-02-09 15:24:17','2013-02-09 15:24:17');
 /*!40000 ALTER TABLE `categories` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -243,7 +244,7 @@ CREATE TABLE `invoice_lineitems` (
   `created` datetime NOT NULL,
   `modified` datetime NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=60 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -252,6 +253,7 @@ CREATE TABLE `invoice_lineitems` (
 
 LOCK TABLES `invoice_lineitems` WRITE;
 /*!40000 ALTER TABLE `invoice_lineitems` DISABLE KEYS */;
+INSERT INTO `invoice_lineitems` VALUES (1,1,'Combo',1,1,1,4.99,'5.46','Saturday','2013-02-09 15:43:12','2013-02-09 15:43:12'),(2,1,'Combo',1,2,1,4.99,'5.46','Saturday','2013-02-09 15:43:12','2013-02-09 15:43:12'),(3,1,'Combo',1,3,1,5.50,'6.02','Saturday','2013-02-09 15:43:12','2013-02-09 15:43:12'),(4,2,'Combo',1,3,1,5.50,'6.02','Saturday','2013-02-09 15:43:52','2013-02-09 15:43:52'),(5,2,'Sides',1,4,1,0.99,'1.08','Saturday','2013-02-09 15:43:52','2013-02-09 15:43:52'),(6,2,'Plates',1,6,1,6.75,'7.39','Saturday','2013-02-09 15:43:52','2013-02-09 15:43:52'),(7,3,'Plates',1,6,1,6.75,'7.39','Saturday','2013-02-09 15:44:48','2013-02-09 15:44:48'),(8,3,'Sides',1,4,1,0.99,'1.08','Saturday','2013-02-09 15:44:48','2013-02-09 15:44:48'),(9,3,'Sides',1,5,1,0.99,'1.08','Saturday','2013-02-09 15:44:48','2013-02-09 15:44:48'),(10,3,'Combo',1,1,1,4.99,'5.46','Saturday','2013-02-09 15:44:48','2013-02-09 15:44:48'),(11,3,'Combo',1,2,1,4.99,'5.46','Saturday','2013-02-09 15:44:48','2013-02-09 15:44:48'),(12,3,'Combo',1,3,1,5.50,'6.02','Saturday','2013-02-09 15:44:48','2013-02-09 15:44:48'),(13,4,'Combo',1,1,1,4.99,'5.46','Sunday','2013-02-10 22:42:06','2013-02-10 22:42:06'),(14,4,'Combo',1,2,1,4.99,'5.46','Sunday','2013-02-10 22:42:06','2013-02-10 22:42:06'),(15,4,'Combo',1,3,1,5.50,'6.02','Sunday','2013-02-10 22:42:06','2013-02-10 22:42:06'),(16,5,'Combo',1,2,1,4.99,'5.46','Sunday','2013-02-10 22:42:54','2013-02-10 22:42:54'),(17,5,'Combo',1,3,1,5.50,'6.02','Sunday','2013-02-10 22:42:54','2013-02-10 22:42:54'),(18,5,'Combo',1,1,1,4.99,'5.46','Sunday','2013-02-10 22:42:54','2013-02-10 22:42:54'),(19,5,'Sides',1,5,1,0.99,'1.08','Sunday','2013-02-10 22:42:54','2013-02-10 22:42:54'),(20,5,'Sides',1,4,1,0.99,'1.08','Sunday','2013-02-10 22:42:54','2013-02-10 22:42:54'),(21,5,'Plates',1,6,1,6.75,'7.39','Sunday','2013-02-10 22:42:54','2013-02-10 22:42:54'),(22,6,'Combo',1,2,1,4.99,'5.46','Sunday','2013-02-10 22:44:12','2013-02-10 22:44:12'),(23,6,'Combo',1,3,1,5.50,'6.02','Sunday','2013-02-10 22:44:12','2013-02-10 22:44:12'),(24,7,'Combo',1,2,1,4.99,'5.46','Sunday','2013-02-10 22:47:41','2013-02-10 22:47:41'),(25,7,'Combo',1,3,1,5.50,'6.02','Sunday','2013-02-10 22:47:41','2013-02-10 22:47:41'),(26,8,'Combo',1,1,1,4.99,'5.46','Sunday','2013-02-10 22:47:59','2013-02-10 22:47:59'),(27,8,'Combo',1,2,1,4.99,'5.46','Sunday','2013-02-10 22:47:59','2013-02-10 22:47:59'),(28,8,'Combo',1,3,1,5.50,'6.02','Sunday','2013-02-10 22:47:59','2013-02-10 22:47:59'),(29,8,'Sides',1,4,1,0.99,'1.08','Sunday','2013-02-10 22:47:59','2013-02-10 22:47:59'),(30,8,'Sides',1,5,1,0.99,'1.08','Sunday','2013-02-10 22:47:59','2013-02-10 22:47:59'),(31,8,'Plates',1,6,1,6.75,'7.39','Sunday','2013-02-10 22:47:59','2013-02-10 22:47:59'),(32,9,'Combo',1,1,1,4.99,'5.46','Sunday','2013-02-10 22:49:34','2013-02-10 22:49:34'),(33,9,'Combo',1,2,1,4.99,'5.46','Sunday','2013-02-10 22:49:34','2013-02-10 22:49:34'),(34,9,'Combo',1,3,1,5.50,'6.02','Sunday','2013-02-10 22:49:34','2013-02-10 22:49:34'),(35,9,'Sides',1,4,1,0.99,'1.08','Sunday','2013-02-10 22:49:34','2013-02-10 22:49:34'),(36,9,'Sides',1,5,1,0.99,'1.08','Sunday','2013-02-10 22:49:34','2013-02-10 22:49:34'),(37,9,'Plates',1,6,1,6.75,'7.39','Sunday','2013-02-10 22:49:34','2013-02-10 22:49:34'),(38,10,'Combo',1,1,1,4.99,'5.46','Sunday','2013-02-10 22:50:01','2013-02-10 22:50:01'),(39,10,'Combo',1,2,1,4.99,'5.46','Sunday','2013-02-10 22:50:01','2013-02-10 22:50:01'),(40,10,'Combo',1,3,1,5.50,'6.02','Sunday','2013-02-10 22:50:01','2013-02-10 22:50:01'),(41,10,'Sides',1,4,1,0.99,'1.08','Sunday','2013-02-10 22:50:01','2013-02-10 22:50:01'),(42,10,'Sides',1,5,1,0.99,'1.08','Sunday','2013-02-10 22:50:01','2013-02-10 22:50:01'),(43,10,'Plates',1,6,1,6.75,'7.39','Sunday','2013-02-10 22:50:01','2013-02-10 22:50:01'),(44,11,'Combo',1,3,1,5.50,'6.02','Sunday','2013-02-10 22:50:28','2013-02-10 22:50:28'),(45,11,'Combo',1,2,1,4.99,'5.46','Sunday','2013-02-10 22:50:28','2013-02-10 22:50:28'),(46,12,'Combo',1,3,1,5.50,'6.02','Sunday','2013-02-10 22:57:22','2013-02-10 22:57:22'),(47,12,'Combo',1,2,1,4.99,'5.46','Sunday','2013-02-10 22:57:22','2013-02-10 22:57:22'),(48,13,'Combo',1,1,1,4.99,'5.46','Sunday','2013-02-10 22:57:29','2013-02-10 22:57:29'),(49,13,'Combo',1,2,1,4.99,'5.46','Sunday','2013-02-10 22:57:29','2013-02-10 22:57:29'),(50,13,'Combo',1,3,1,5.50,'6.02','Sunday','2013-02-10 22:57:29','2013-02-10 22:57:29'),(51,14,'Combo',1,1,1,4.99,'5.46','Sunday','2013-02-10 23:03:00','2013-02-10 23:03:00'),(52,14,'Combo',1,2,1,4.99,'5.46','Sunday','2013-02-10 23:03:00','2013-02-10 23:03:00'),(53,14,'Combo',1,3,1,5.50,'6.02','Sunday','2013-02-10 23:03:00','2013-02-10 23:03:00'),(54,15,'Combo',1,2,2,NULL,'10.93','Sunday','2013-02-10 23:03:14','2013-02-10 23:03:14'),(55,15,'Combo',1,3,2,NULL,'12.04','Sunday','2013-02-10 23:03:14','2013-02-10 23:03:14'),(56,15,'Combo',1,1,2,NULL,'10.93','Sunday','2013-02-10 23:03:14','2013-02-10 23:03:14'),(57,15,'Sides',1,4,1,0.99,'1.08','Sunday','2013-02-10 23:03:14','2013-02-10 23:03:14'),(58,15,'Sides',1,5,1,0.99,'1.08','Sunday','2013-02-10 23:03:14','2013-02-10 23:03:14'),(59,15,'Plates',1,6,3,NULL,'22.17','Sunday','2013-02-10 23:03:14','2013-02-10 23:03:14');
 /*!40000 ALTER TABLE `invoice_lineitems` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -276,7 +278,7 @@ CREATE TABLE `invoices` (
   `created` datetime NOT NULL,
   `modified` datetime NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -285,6 +287,7 @@ CREATE TABLE `invoices` (
 
 LOCK TABLES `invoices` WRITE;
 /*!40000 ALTER TABLE `invoices` DISABLE KEYS */;
+INSERT INTO `invoices` VALUES (1,1,1,'15.48','16.94','cash',NULL,'','','Saturday','2013-02-09 15:43:12','2013-02-09 15:43:12'),(2,2,1,'13.24','14.49','credit',NULL,'4567','','Saturday','2013-02-09 15:43:52','2013-02-09 15:43:52'),(3,3,1,'24.21','26.49','credit',NULL,'12346','','Saturday','2013-02-09 15:44:48','2013-02-09 15:44:48'),(4,4,1,'15.48','16.94','cash',NULL,'','','Sunday','2013-02-10 22:42:06','2013-02-10 22:42:06'),(5,5,1,'24.21','26.49','cash',NULL,'','','Sunday','2013-02-10 22:42:54','2013-02-10 22:42:54'),(6,6,1,'10.49','11.48','cash',NULL,'','','Sunday','2013-02-10 22:44:12','2013-02-10 22:44:12'),(7,7,1,'10.49','11.48','cash',NULL,'','','Sunday','2013-02-10 22:47:41','2013-02-10 22:47:41'),(8,8,1,'24.21','26.49','credit',NULL,'2312','','Sunday','2013-02-10 22:47:59','2013-02-10 22:47:59'),(9,9,1,'24.21','26.49','credit',NULL,'2312','','Sunday','2013-02-10 22:49:34','2013-02-10 22:49:34'),(10,10,1,'24.21','26.49','credit',NULL,'2312','','Sunday','2013-02-10 22:50:01','2013-02-10 22:50:01'),(11,11,1,'10.49','11.48','cash',NULL,'','','Sunday','2013-02-10 22:50:28','2013-02-10 22:50:28'),(12,12,1,'10.49','11.48','cash',NULL,'','','Sunday','2013-02-10 22:57:22','2013-02-10 22:57:22'),(13,13,1,'15.48','16.94','cash',NULL,'','','Sunday','2013-02-10 22:57:29','2013-02-10 22:57:29'),(14,14,1,'15.48','16.94','cash',NULL,'','','Sunday','2013-02-10 23:03:00','2013-02-10 23:03:00'),(15,15,1,'53.19','58.23','credit',NULL,'2321','','Sunday','2013-02-10 23:03:14','2013-02-10 23:03:14');
 /*!40000 ALTER TABLE `invoices` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -362,7 +365,7 @@ CREATE TABLE `orders` (
   `created` datetime NOT NULL,
   `modified` datetime NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -371,6 +374,7 @@ CREATE TABLE `orders` (
 
 LOCK TABLES `orders` WRITE;
 /*!40000 ALTER TABLE `orders` DISABLE KEYS */;
+INSERT INTO `orders` VALUES (1,1,NULL,1,'Chicken Combo','','4.99','2013-02-09 15:32:04','2013-02-09 15:32:04'),(2,1,NULL,1,'Beef Combo','','4.99','2013-02-09 15:32:20','2013-02-09 15:32:20'),(3,1,NULL,1,'Pork Combo','','5.50','2013-02-09 15:33:04','2013-02-09 15:33:04'),(4,1,NULL,2,'Chicken Humbao','','0.99','2013-02-09 15:33:23','2013-02-09 15:33:23'),(5,1,NULL,2,'Kimchee Humbao','','0.99','2013-02-09 15:33:44','2013-02-09 15:33:44'),(6,1,NULL,3,'Chicken Dinner','','6.75','2013-02-09 15:34:09','2013-02-09 15:34:09');
 /*!40000 ALTER TABLE `orders` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -433,6 +437,32 @@ CREATE TABLE `pages` (
 LOCK TABLES `pages` WRITE;
 /*!40000 ALTER TABLE `pages` DISABLE KEYS */;
 /*!40000 ALTER TABLE `pages` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `printers`
+--
+
+DROP TABLE IF EXISTS `printers`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `printers` (
+  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `company_id` int(11) NOT NULL,
+  `name` varchar(100) NOT NULL,
+  `created` datetime NOT NULL,
+  `modified` datetime NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `printers`
+--
+
+LOCK TABLES `printers` WRITE;
+/*!40000 ALTER TABLE `printers` DISABLE KEYS */;
+/*!40000 ALTER TABLE `printers` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -502,4 +532,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2013-02-09  4:44:33
+-- Dump completed on 2013-02-11  8:03:14

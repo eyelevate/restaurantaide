@@ -140,6 +140,12 @@ class AdminsController extends AppController {
 				}
 				$this->InvoiceLineitem->saveAll($this->request->data['InvoiceLineitem']);
 				
+				$cmd = 'mysqldump restaurantaide > /vagrant/app/restaurantaide.sql';
+				
+				//auto backup the database to the file
+				exec('mysqldump --user=root --password=root --host=localhost restaurantaide > /vagrant/app/restaurantaide.sql');
+				
+				//redirect back to page
 				$this->Session->setFlash(__('Successfully completed order #'.$new_id),'default',array(),'success');
 	
 			}

@@ -657,7 +657,7 @@ class InvoiceLineitem extends AppModel {
 				//set up variables
 				$start = date('Y-m-d').' 00:00:00';
 				$end = date('Y-m-d').' 23:59:59';
-				$tax = $param5;
+				$tax = ($param5 / 100);
 				//first get the sum qty and base price of all the orders
 				$countCategory = count($category);
 				$category_sum = array();
@@ -684,7 +684,7 @@ class InvoiceLineitem extends AppModel {
 				//set up variables
 				$start = date('Y-m-d').' 00:00:00';
 				$end = date('Y-m-d').' 23:59:59';
-				$tax = $param5;
+				$tax = ($param5 / 100);
 				//first get the sum qty and base price of all the orders
 				$countCategory = count($category);
 				
@@ -738,7 +738,7 @@ class InvoiceLineitem extends AppModel {
 				//set up variables
 				$start = date('Y-m-d',$date).' 00:00:00';
 				$end = date('Y-m-d',$date).' 23:59:59';
-				$tax = $param5;
+				$tax = ($param5 / 100);
 				//first get the sum qty and base price of all the orders
 				$countCategory = count($category);
 				$category_sum = array();
@@ -765,7 +765,7 @@ class InvoiceLineitem extends AppModel {
 				//set up variables
 				$start = date('Y-m-d',$date).' 00:00:00';
 				$end = date('Y-m-d',$date).' 23:59:59';
-				$tax = $param5;
+				$tax = ($param5 / 100);
 				//first get the sum qty and base price of all the orders
 				$countCategory = count($category);
 				
@@ -819,7 +819,7 @@ class InvoiceLineitem extends AppModel {
 				//set up variables
 				$start = date('Y-m-d',$date['start']).' 00:00:00';
 				$end = date('Y-m-d',$date['end']).' 23:59:59';
-				$tax = $param5;
+				$tax = ($param5 / 100);
 				//first get the sum qty and base price of all the orders
 				$countCategory = count($category);
 				$category_sum = array();
@@ -846,7 +846,7 @@ class InvoiceLineitem extends AppModel {
 				//set up variables
 				$start = date('Y-m-d',$date['start']).' 00:00:00';
 				$end = date('Y-m-d',$date['end']).' 23:59:59';
-				$tax = $param5;
+				$tax = ($param5 / 100);
 				//first get the sum qty and base price of all the orders
 				$countCategory = count($category);
 				
@@ -926,7 +926,7 @@ class InvoiceLineitem extends AppModel {
 						$end = date('Y-m-d H:i:s',strtotime('next sunday, 11:59:59pm ',strtotime(date('Y-m-d H:i:s'))));		
 						break;
 				}
-				$tax = $param5;
+				$tax = ($param5 / 100);
 				//first get the sum qty and base price of all the orders
 				$countCategory = count($category);
 				$category_sum = array();
@@ -966,7 +966,7 @@ class InvoiceLineitem extends AppModel {
 						$end = date('Y-m-d H:i:s',strtotime('next sunday, 11:59:59pm ',strtotime(date('Y-m-d H:i:s'))));		
 						break;
 				}
-				$tax = $param5;
+				$tax = ($param5 / 100);
 				//first get the sum qty and base price of all the orders
 				$countCategory = count($category);
 				
@@ -1048,7 +1048,7 @@ class InvoiceLineitem extends AppModel {
 						$end = date('Y-m-d H:i:s',strtotime('next sunday, 11:59:59pm ',strtotime(date('Y-m-d H:i:s'))-$minusWeek));
 						break;
 				}
-				$tax = $param5;
+				$tax = ($param5 / 100);
 				//first get the sum qty and base price of all the orders
 				$countCategory = count($category);
 				$category_sum = array();
@@ -1089,7 +1089,7 @@ class InvoiceLineitem extends AppModel {
 						$end = date('Y-m-d H:i:s',strtotime('next sunday, 11:59:59pm ',strtotime(date('Y-m-d H:i:s'))-$minusWeek));
 						break;
 				}
-				$tax = $param5;
+				$tax = ($param5 / 100);
 				//first get the sum qty and base price of all the orders
 				$countCategory = count($category);
 				
@@ -1143,7 +1143,7 @@ class InvoiceLineitem extends AppModel {
 				//create variables
 				$start = $date['start'];
 				$end = $date['end'];
-				$tax = $param5;
+				$tax = ($param5 / 100);
 				//first get the sum qty and base price of all the orders
 				$countCategory = count($category);
 				$category_sum = array();
@@ -1170,7 +1170,7 @@ class InvoiceLineitem extends AppModel {
 				//create variables
 				$start = $date['start'];
 				$end = $date['end'];
-				$tax = $param5;
+				$tax = ($param5 / 100);
 				//first get the sum qty and base price of all the orders
 				$countCategory = count($category);
 				
@@ -1224,7 +1224,7 @@ class InvoiceLineitem extends AppModel {
 				//create variables
 				$start = $date['start'];
 				$end = $date['end'];
-				$tax = $param5;
+				$tax = ($param5 / 100);
 				//first get the sum qty and base price of all the orders
 				$countCategory = count($category);
 				$category_sum = array();
@@ -1251,7 +1251,7 @@ class InvoiceLineitem extends AppModel {
 				//create variables
 				$start = $date['start'];
 				$end = $date['end'];
-				$tax = $param5;
+				$tax = ($param5 / 100);
 				//first get the sum qty and base price of all the orders
 				$countCategory = count($category);
 				

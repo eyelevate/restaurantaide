@@ -232,15 +232,15 @@ dashboard = {
 	},
 	printSalesReciept: function(){
 		
-		alert('now printing')
+		//alert('now printing')
 		//print the copy and send the form
 		dashboard.printSalesCopy();
 		
 	},
 	printSalesCopy: function(){
-		alert('now sending')
+		//alert('now sending')
 		//send the form 
-		//$(".invoiceForm").submit();				
+		$(".invoiceForm").submit();				
 	}
 }
 

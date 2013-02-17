@@ -55,7 +55,8 @@ dashboard = {
 			var new_price = new_price.toFixed(2);
 			var tax_rate = parseFloat($("#tax_rate").val());
 			
-			var after_tax = new_price * (1+tax_rate);
+			var after_tax = afterTax(new_price, tax_rate);
+
 			var addRow = newRow(newCount, order_id, order_name, cat_name, cat_id, new_price, after_tax);
 			var editRow = updateRow(newCount, order_id, order_name, cat_name, cat_id, new_price, after_tax);
 
@@ -283,7 +284,7 @@ var updateRow = function(count, order_id, order_name, cat_name, cat_id, new_pric
 				'<input class="qtyInput" type="hidden" name="data[InvoiceLineitem]['+idx+'][quantity]" value="'+count+'"/>'+
 				'<input class="catidInput" type="hidden" name="data[InvoiceLineitem]['+idx+'][category]" value="'+cat_id+'"/>'+
 				'<input class="orderidInput" type="hidden" name="data[InvoiceLineitem]['+idx+'][order_id]" value="'+order_id+'"/>'+
-				'<input class="pretaxInput" type="hidden" name="data[InvoiceLineitem]['+idx+'][pre_tax]" value="'+new_price+'"/>'+
+				'<input class="pretaxInput" type="hidden" name="data[InvoiceLineitem]['+idx+'][before_tax]" value="'+new_price+'"/>'+
 				'<input class="aftertaxInput" type="hidden" name="data[InvoiceLineitem]['+idx+'][after_tax]" value="'+after_tax+'"/>'+
 			'<div>'+
 		'</td>';
@@ -317,4 +318,14 @@ var updateTotalTax = function(tax){
 		'<input type="hidden" name="data[Invoice][tax]" value="'+tax+'"/>';
 		
 	return input;
+}
+var afterTax = function(before_tax, tax){
+	var before_tax = parseFloat(before_tax);
+	var tax = parseFloat(tax);
+	var after_tax = before_tax * (1+tax);
+	var after_tax = after_tax*100;
+	var after_tax = Math.round(after_tax);
+	var after_tax = after_tax / 100;	
+	
+	return after_tax;
 }

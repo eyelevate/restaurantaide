@@ -114,7 +114,7 @@ class AdminsController extends AppController {
 		$this->set('taxes',$taxes);
 		
 		if($this->request->is('post')){
-			//debug($this->request->data);
+			debug($this->request->data);
 			//get the invoice_number 
 			$find_new_id = $this->Invoice->find('all',array(
 				'conditions'=>array('Invoice.company_id'=>$company_id),

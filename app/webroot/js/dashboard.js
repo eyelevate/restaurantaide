@@ -247,7 +247,7 @@ dashboard = {
 
 
 var newRow = function(count, order_id, order_name, cat_name, cat_id, new_price, after_tax){
-	after_tax = after_tax.toFixed(2);
+
 	var idx = $("#orderProcessingTable tbody tr").length;
 
 	tr = 

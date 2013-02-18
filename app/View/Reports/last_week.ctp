@@ -4,7 +4,7 @@
 <?php echo $this->FusionCharts->render('Column3D Chart'); ?>
 </div>
 
-<div class="reportSummary formSep">
+<div class="reportSummary">
 	<h1>Last Week's Report - <?php echo date('n/d/y',strtotime($dateRange['start'])).' - '.date('n/d/y',strtotime($dateRange['end']));?></h1>
 	<h2>By Category</h2>
 	<?php
@@ -141,7 +141,4 @@
 			</tr>
 		</tfoot>
 	</table>	
-</div>
-<div>
-	<button id="printReport-last_week" type="button" class="printReport btn btn-primary btn-large">Print Report</button>
 </div>

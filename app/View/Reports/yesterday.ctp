@@ -2,7 +2,7 @@
 <?php echo $this->FusionCharts->render('Column3D Chart'); ?>
 </div>
 
-<div class="formSep">
+<div class="">
 	<?php $yesterdayDate = (strtotime(date('Y-m-d H:i:s'))-86400);?>
 	<h1>Yesterday's Report - <?php echo date('n/d/y',$yesterdayDate);?></h1>
 	<h2>By Category</h2>
@@ -140,7 +140,4 @@
 			</tr>
 		</tfoot>
 	</table>
-</div>
-<div>
-	<button id="printReport-yesterday" type="button" class="printReport btn btn-primary btn-large">Print Report</button>
 </div>

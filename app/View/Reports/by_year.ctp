@@ -22,7 +22,7 @@ if(isset($setYear)){
 <div id="yearChart-month" class="chart" name="notselected">
 	<?php echo $this->FusionCharts->render('Column3DLineDY Chart'); ?>
 </div>
-<div class="reportSummary formSep">
+<div class="reportSummary">
 	<h1>Selected Year Report - <?php echo date('Y',strtotime($date['start']));?></h1>
 	<h2>By Category</h2>
 	<?php
@@ -159,9 +159,6 @@ if(isset($setYear)){
 			</tr>
 		</tfoot>
 	</table>		
-</div>
-<div>
-	<button id="printReport-by_year" type="button" class="printReport btn btn-primary btn-large">Print Report</button>
 </div>
 <?php
 //IF a year has not been selected
